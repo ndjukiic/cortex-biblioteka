@@ -3,27 +3,3 @@
   top: 76.53px;
   left: 5rem;
 }
-
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 76.53px;
-  width: 5rem;
-  background-color: #eff3f6;
-  height: 100vh;
-}
-
-.sidebar ul{
-  list-style: none;
-  padding:0;
-}
-
-.sidebar ul img{
-  padding: 0 0.9rem;
-  transition: 0.2s;
-}
-
-.sidebar ul img:hover{
-  background-color:#d0d5d8;
-  transition: 0.4s;
-}
