@@ -7,4 +7,26 @@ import { Component } from '@angular/core';
 })
 export class KnjigeListComponent {
 
+dummyData = [
+  {
+    nazivKnjige: 'knjiga1',
+    autor: 'John Johnson',
+    kategorija: 'Roman',
+    naRaspolaganju: 50,
+    rezervisano: 1,
+    izdato: 14,
+    prekoracenje: 0,
+    ukupnaKolicina: 65 
+  },    
+  {
+    nazivKnjige: 'knjiga2',
+    autor: 'Mark Whalberg',
+    kategorija: 'Epika',
+    naRaspolaganju: 89,
+    rezervisano: 2,
+    izdato: 39,
+    prekoracenje: 5,
+    ukupnaKolicina: 135 
+  },    
+];
 }

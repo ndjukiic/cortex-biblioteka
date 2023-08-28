@@ -1,5 +1,57 @@
 <div class="naslov">
-    <h1>Evidencija iznajmljivanja</h1>
-    <hr>
+  <h1>Evidencija iznajmljivanja</h1>
+  <hr />
 </div>
-    
+<div class="component-body">
+  <div class="lista">
+    <ul>
+      <a>
+        <li>Izdate knjige</li>
+      </a>
+      <a>
+        <li>Vraćene knjige</li>
+      </a>
+      <a>
+        <li>Otpisane knjige</li>
+      </a>
+      <a>
+        <li>Knjige u prekoračenju</li>
+      </a>
+      <a>
+        <li>Aktivne rezervacije</li>
+      </a>
+      <a>
+        <li>Arhivirane rezervacije</li>
+      </a>
+    </ul>
+  </div>
+  <div class="tabela">
+    <div class="search-view">
+      <label for="search">Pretraga:</label>
+      <input type="text" />
+
+      <!-- opcija za količinu contenta u listi po stranici -->
+    </div>
+    <div class="table-view">
+      <table>
+        <thead>
+          <tr>
+            <th>Naziv knjige</th>
+            <th>Izdato učeniku</th>
+            <th>Datum izdavanja</th>
+            <th>Trenutno zadržavanje knjige</th>
+            <th>Knjigu izdao</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="">
+          <!-- <tr>
+                  <td style="font-weight: 600;">{{data.name}}</td>
+                  <td>{{data.email}}</td>
+                  <td>{{data.tip}}</td>
+                  <td>{{data.pristup}}</td>
+                </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

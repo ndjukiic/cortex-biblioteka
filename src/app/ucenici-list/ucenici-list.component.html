@@ -1,5 +1,36 @@
 <div class="naslov">
-    <h1>Učenici</h1>
-    <hr>
+  <h1>Učenici</h1>
+  <hr />
 </div>
-    
+<div class="component-body">
+  <div class="edit-opcije">
+    <!-- po selectu učenika na checkbox iz tabele se pojavljuju opcije pogledaj detalje izmijeni i izbriši -->
+    <button type="button">+ Novi Učenik</button>
+  </div>
+  <div class="search-view">
+    <label for="search">Pretraga:</label>
+    <input type="text" />
+
+    <!-- opcija za broj prikazivanja ucenika -->
+  </div>
+  <div class="table-view">
+    <table>
+      <thead>
+        <tr>
+          <th>Ime i prezime</th>
+          <th>Email</th>
+          <th>Tip korisnika</th>
+          <th>Poslednji pristup sistemu</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of dummyData; let i = index">
+        <tr>
+          <td style="font-weight: 600;">{{data.name}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.tip}}</td>
+          <td>{{data.pristup}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

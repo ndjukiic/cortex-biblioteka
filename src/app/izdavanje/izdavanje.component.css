@@ -1,4 +1,71 @@
-.naslov hr{
-    margin-top: -0.2rem;
-    margin-left: -4rem;
+.naslov hr {
+  margin-top: -0.2rem;
+  margin-left: -4rem;
+}
+
+.component-body {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.lista {
+  width: 20%;
+}
+
+.lista a {
+  text-decoration: none;
+  color: black;
+}
+
+.lista ul {
+  list-style: none;
+  padding: 0;
+  padding-right: 1rem;
+}
+
+.lista li {
+  padding: 1.25rem 0;
+  padding-left: 1rem;
+  border-radius: 5px;
+  transition: 0.4s;
+}
+
+.lista li:hover {
+  background-color: rgb(236, 236, 236);
+  transition: 0.3s;
+}
+
+.tabela {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+
+.tabela input {
+  margin: 0 0.5rem;
+  height: 1rem;
+}
+
+.table-view table {
+  margin-top: 1.5rem;
+  width: 90%;
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.table-view thead th {
+  border-bottom: 1px solid black;
+}
+
+.table-view tbody td {
+  padding: 2px 0;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+.table-view tbody td:hover {
+  background-color: rgb(245, 245, 245);
+  transition: 0.4s;
 }
