@@ -1,0 +1,52 @@
+<div class="naslov">
+  <h1>Knjige</h1>
+  <hr>
+</div>
+<div class="component-body">
+  <div class="edit-opcije">
+    <!-- po selectu knjige na checkbox iz tabele se pojavljuju opcije pogledaj detalje izmijeni i izbriši -->
+    <button type="button">+ Nova Knjiga</button>
+  </div>
+  <div class="search-view">
+    <label for="search">Pretraga:</label>
+    <input type="text" />
+
+    <!-- opcija za količinu contenta u listi po stranici -->
+  </div>
+  <div class="table-view">
+    <table>
+      <thead>
+        <tr>
+          <th>Naziv knjige</th>
+          <th>Autor</th>
+          <th>Kategorija</th>
+          <th>Na raspolaganju</th>
+          <th>Rezervisano</th>
+          <th>Izdato</th>
+          <th>U prekoračenju</th>
+          <th>Ukupna količina</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--
+    nazivKnjige: 'knjiga1',
+    autor: 'John Johnson',
+    naRaspolaganju: 50,
+    rezervisano: 1,
+    izdato: 14,
+    prekoracenje: 0,
+    ukupnaKolicina: 65 -->
+        <tr *ngFor="let data of dummyData; let i = index">
+          <td style="font-weight: 600;">{{data.nazivKnjige}}</td>
+          <td>{{data.autor}}</td>
+          <td>{{data.kategorija}}</td>
+          <td>{{data.naRaspolaganju}}</td>
+          <td>{{data.rezervisano}}</td>
+          <td>{{data.izdato}}</td>
+          <td>{{data.prekoracenje}}</td>
+          <td>{{data.ukupnaKolicina}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

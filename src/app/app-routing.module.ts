@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UceniciListComponent } from './ucenici-list/ucenici-list.component';
-import { KnjigeListComponent } from './knjige-list/knjige-list.component';
 import { IzdavanjeComponent } from './izdavanje/izdavanje.component';
 import { AutoriListComponent } from './autori-list/autori-list.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -17,8 +16,11 @@ const routes: Routes = [
     component: UceniciListComponent,
   },
   {
-    path: 'knjige',
-    component: KnjigeListComponent,
+    path: 'books',
+    loadChildren: () =>
+      import('./book/book.module').then(
+        m => m.BookModule
+      ),
   },
   {
     path: 'autori',
