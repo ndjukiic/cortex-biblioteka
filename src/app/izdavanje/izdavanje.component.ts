@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./izdavanje.component.css']
 })
 export class IzdavanjeComponent {
-
+  dummyData = [{
+    name: 'placeholder'
+  }]
 }

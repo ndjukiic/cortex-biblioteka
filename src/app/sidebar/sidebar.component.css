@@ -1,63 +1,9 @@
-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 90%;
-}
-
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 76.53px;
-  width: 5rem;
-  background-color: #eff3f6;
-  height: 100vh;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul img {
-  transition: 0.2s;
-}
-
-.sidebar li {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-}
-
-.sidebar li:hover {
-  background-color: #d0d5d8;
-  transition: 0.4s;
-}
-
-.active li{
-  background-color: #d0d5d8;
-}
-
-.hamburger {
-  padding-top: 1.5rem;
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.hamburger hr {
-  margin-top: 1.5rem;
-}
-
 .hamburger div {
-  width: 40%;
+  width: 50%;
   height: 4px;
   background-color: black;
   margin: 0 auto;
   margin-bottom: 0.5rem;
 }
 
-.hamburger:hover {
-  background-color: #d0d5d8;
-  transition: 0.4s;
-}
 

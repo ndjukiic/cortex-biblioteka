@@ -2,35 +2,44 @@
   <h1>Učenici</h1>
   <hr />
 </div>
-<div class="component-body">
+<div>
   <div class="edit-opcije">
-    <!-- po selectu učenika na checkbox iz tabele se pojavljuju opcije pogledaj detalje izmijeni i izbriši -->
-    <button type="button">+ Novi Učenik</button>
+    <!-- CRUD options show upon item checkmark selection, we can define them here -->
+    <button
+      class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
+      type="button"
+    >
+      + Nova Knjiga
+    </button>
   </div>
-  <div class="search-view">
-    <label for="search">Pretraga:</label>
-    <input type="text" />
+  <div class="table w-full mt-[20px]">
+    <div>
+      <label for="search">Pretraga:</label>
+      <input class="rounded-md border-[1px] ml-2" type="text" />
 
-    <!-- opcija za broj prikazivanja ucenika -->
-  </div>
-  <div class="table-view">
-    <table>
-      <thead>
-        <tr>
-          <th>Ime i prezime</th>
-          <th>Email</th>
-          <th>Tip korisnika</th>
-          <th>Poslednji pristup sistemu</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let data of dummyData; let i = index">
-        <tr>
-          <td style="font-weight: 600;">{{data.name}}</td>
-          <td>{{data.email}}</td>
-          <td>{{data.tip}}</td>
-          <td>{{data.pristup}}</td>
-        </tr>
-      </tbody>
-    </table>
+      <!-- list amount per page option goes here (view 5/15/30 books for e.g.) -->
+    </div>
+    <div class="table-view">
+      <table
+        class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
+      >
+        <thead class="bg-[#EFF3F6]">
+          <tr>
+            <th>Ime i prezime</th>
+            <th>Email</th>
+            <th>Tip korisnika</th>
+            <th>Poslednji pristup sistemu</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let data of dummyData">
+          <tr class="text-center hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
+            <td>{{ data.name }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.role }}</td>
+            <td>{{ data.lastSeen }}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

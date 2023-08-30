@@ -11,20 +11,20 @@ export class AutoriListComponent {
 
   dummyData = [
     {
-      ime: 'Albert Kami',
-      opis: this.lipsum,
+      name: 'Albert Kami',
+      description: this.lipsum,
     },
     {
-      ime: 'Johan Volfgang Gete',
-      opis: this.lipsum,
+      name: 'Johan Volfgang Gete',
+      description: this.lipsum,
     },
     {
-      ime: 'Ivo Andrić',
-      opis: this.lipsum,
+      name: 'Ivo Andrić',
+      description: this.lipsum,
     },
     {
-      ime: 'Desanka Maksimović',
-      opis: this.lipsum,
+      name: 'Desanka Maksimović',
+      description: this.lipsum,
     },
   ];
 }

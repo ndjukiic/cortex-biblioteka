@@ -1,17 +1,29 @@
-<div class="sidebar">
-  <nav>
-    <div class="main-list">
-      <div class="hamburger">
+<nav
+  class="fixed flex flex-col justify-between sidebar left-0 nav-height overflow-x-hidden overflow-y-auto bg-[#EFF3F6]"
+  id="sidebar"
+>
+  <div>
+    <div class="cursor-pointer">
+      <!-- hamburger -->
+      <div
+        class="hamburger pt-[24px] cursor-pointer border-b-[1px] border-[#E4DFDF] pb-[20px] hover:bg-gray-200 hover:shadow-md"
+      >
         <div></div>
         <div></div>
         <div></div>
-        <hr>
       </div>
-      <ul>
-        <a routerLink="/"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact: true}">
-          <li>
+    </div>
+
+    <div class="border-b-[1px]">
+      <ul class="mt-[30px]">
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <li
+            class="flex justify-center py-4 hover:bg-gray-200 hover:shadow-md"
+          >
             <img
               width="30"
               height="30"
@@ -20,9 +32,10 @@
             /></li
         ></a>
 
-        <a routerLink="/ucenici"
-        routerLinkActive="active">
-          <li>
+        <a routerLink="/ucenici" routerLinkActive="active">
+          <li
+            class="flex justify-center py-4 hover:bg-gray-200 hover:shadow-md"
+          >
             <img
               width="30"
               height="30"
@@ -33,7 +46,9 @@
         </a>
 
         <a routerLink="/books" routerLinkActive="active">
-          <li>
+          <li
+            class="flex justify-center py-4 hover:bg-gray-200 hover:shadow-md"
+          >
             <img
               width="30"
               height="30"
@@ -43,9 +58,10 @@
           </li>
         </a>
 
-        <a routerLink="/autori"
-        routerLinkActive="active"
-          ><li>
+        <a routerLink="/autori" routerLinkActive="active"
+          ><li
+            class="flex justify-center py-4 hover:bg-gray-200 hover:shadow-md"
+          >
             <img
               width="30"
               height="30"
@@ -54,9 +70,10 @@
             /></li
         ></a>
 
-        <a routerLink="/izdavanje"
-        routerLinkActive="active">
-          <li>
+        <a routerLink="/izdavanje" routerLinkActive="active">
+          <li
+            class="flex justify-center py-4 hover:bg-gray-200 hover:shadow-md"
+          >
             <img
               width="30"
               height="30"
@@ -65,23 +82,21 @@
             />
           </li>
         </a>
-        <hr>
       </ul>
     </div>
-
-    <div class="settings">
-      <hr>
-      <a routerLink="/settings"
-      routerLinkActive="active">
-        <li>
-          <img
-            width="30"
-            height="30"
-            src="https://img.icons8.com/ios/50/services--v1.png"
-            alt="services--v1"
-          />
-        </li>
-      </a>
-    </div>
-  </nav>
-</div>
+  </div>
+  <div>
+    <a routerLink="/settings" routerLinkActive="active">
+      <li
+        class="flex justify-center py-4 mb-3 border-t-[1px] hover:bg-gray-200 hover:shadow-md"
+      >
+        <img
+          width="30"
+          height="30"
+          src="https://img.icons8.com/ios/50/services--v1.png"
+          alt="services--v1"
+        />
+      </li>
+    </a>
+  </div>
+</nav>

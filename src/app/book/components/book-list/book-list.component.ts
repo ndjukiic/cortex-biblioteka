@@ -9,24 +9,24 @@ export class BookListComponent {
 
   dummyData = [
     {
-      nazivKnjige: 'knjiga1',
-      autor: 'John Johnson',
-      kategorija: 'Roman',
-      naRaspolaganju: 50,
-      rezervisano: 1,
-      izdato: 14,
-      prekoracenje: 0,
-      ukupnaKolicina: 65
+      name: 'knjiga1',
+      author: 'John Johnson',
+      category: 'Roman',
+      available: 50,
+      booked: 1,
+      issued: 14,
+      exceeded: 0,
+      totalCopies: 65
     },
     {
-      nazivKnjige: 'knjiga2',
-      autor: 'Mark Whalberg',
-      kategorija: 'Epika',
-      naRaspolaganju: 89,
-      rezervisano: 2,
-      izdato: 39,
-      prekoracenje: 5,
-      ukupnaKolicina: 135
+      name: 'knjiga2',
+      author: 'Mark Whalberg',
+      category: 'Epika',
+      available: 89,
+      booked: 2,
+      issued: 39,
+      exceeded: 5,
+      totalCopies: 135
     },
   ];
 }

@@ -10,14 +10,14 @@ export class UceniciListComponent{
     {
       name: 'John Johnson',
       email: 'john@john.john',
-      tip: 'Učenik',
-      pristup: 'Juče'
+      role: 'Učenik',
+      lastSeen: 'Juče'
     },    
     {
       name: 'Drugo Ime',
       email: 'test2@john.john',
-      tip: 'Učenik',
-      pristup: 'Juče'
+      role: 'Učenik',
+      lastSeen: 'Juče'
     }
   ];
 }
