@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
-import { UceniciListComponent } from './ucenici-list/ucenici-list.component';
-import { AutoriListComponent } from './autori-list/autori-list.component';
-import { IzdavanjeComponent } from './izdavanje/izdavanje.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { AuthorListComponent } from './author-list/author-list.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SettingsComponent } from './settings/settings.component';
 
@@ -16,17 +16,14 @@ import { SettingsComponent } from './settings/settings.component';
     AppComponent,
     HeaderComponent,
     DashboardComponent,
-    UceniciListComponent,
-    AutoriListComponent,
-    IzdavanjeComponent,
+    StudentListComponent,
+    AuthorListComponent,
+    TransactionsComponent,
     SidebarComponent,
-    SettingsComponent
+    SettingsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

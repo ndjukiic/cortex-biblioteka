@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UceniciListComponent } from './ucenici-list/ucenici-list.component';
-import { IzdavanjeComponent } from './izdavanje/izdavanje.component';
-import { AutoriListComponent } from './autori-list/autori-list.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { AuthorListComponent } from './author-list/author-list.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
@@ -12,28 +12,25 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'ucenici',
-    component: UceniciListComponent,
+    path: 'students',
+    component: StudentListComponent,
   },
   {
     path: 'books',
-    loadChildren: () =>
-      import('./book/book.module').then(
-        m => m.BookModule
-      ),
+    loadChildren: () => import('./book/book.module').then((m) => m.BookModule),
   },
   {
-    path: 'autori',
-    component: AutoriListComponent,
+    path: 'authors',
+    component: AuthorListComponent,
   },
   {
-    path: 'izdavanje',
-    component: IzdavanjeComponent,
+    path: 'transactions',
+    component: TransactionsComponent,
   },
   {
     path: 'settings',
-    component: SettingsComponent
-  }
+    component: SettingsComponent,
+  },
 ];
 
 @NgModule({
