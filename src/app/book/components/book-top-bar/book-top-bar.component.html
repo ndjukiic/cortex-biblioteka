@@ -1,0 +1,35 @@
+<!-- topbar -->
+<div id="topbar" class="pl-2 pt-3 flex flex-row justify-between">
+  <div class="flex flex-row pl-[32px]">
+    <div class="w-9 mr-3">
+      <img src="../../../../assets/images/tomsojer.jpg" alt="" />
+    </div>
+    <div class="flex flex-col">
+      <h1 class="text-[25px]">{{ dummyData[0].name }}</h1>
+      <div class="flex flex-row">
+        <a href="/books">
+          <p class="mr-[5px]">Evidencija knjiga</p>
+        </a>
+        /
+        <a>
+          <p class="uppercase ml-[5px]">{{ dummyData[0].name }} - ID: 3522</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <ul class="flex flex-row my-4 pr-2">
+      <a href="" class="hover:text-blue-600"
+        ><li class="px-2">Otpiši knjigu</li></a
+      >
+      <a href=""><li class="px-2">Izdaj knjigu</li></a>
+      <a href=""><li class="px-2">Vrati knjigu</li></a>
+      <a href=""> <li class="px-2">Rezerviši knjigu</li></a>
+      <!-- kebab menu gets implemented here and incorporates two options below -->
+      <a href=""> <li class="px-2">Izmijeni knjigu</li></a>
+      <a href=""> <li class="px-2">Izbriši knjigu</li></a>
+    </ul>
+  </div>
+</div>
+<hr class="ml-[-25px] mt-[7px]" />

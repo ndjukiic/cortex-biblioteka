@@ -1227,6 +1227,9 @@ h4 {
 .ml-\[-13px\] {
   margin-left: -13px;
 }
+.ml-\[-25px\] {
+  margin-left: -25px;
+}
 .ml-\[57px\] {
   margin-left: 57px;
 }
@@ -1313,6 +1316,9 @@ h4 {
 }
 .ml-\[3px\] {
   margin-left: 3px;
+}
+.ml-\[85px\] {
+  margin-left: 85px;
 }
 .mt-\[15px\] {
   margin-top: 15px;
@@ -1447,6 +1453,9 @@ h4 {
 }
 .w-8 {
   width: 2rem;
+}
+.w-9{
+  width: 2.5rem;
 }
 .w-56 {
   width: 14rem;

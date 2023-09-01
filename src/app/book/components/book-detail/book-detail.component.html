@@ -1,1 +1,40 @@
-<p>book-detail works!</p>
+<app-book-top-bar></app-book-top-bar>
+<!-- menu -->
+<div class="flex flex-row">
+  <div class="w-[80%]">
+    <div>
+      <ul class="pl-[32px] flex flex-row mt-4 w-full border-b-[1px]">
+        <a
+          routerLink="details"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Osnovni detalji</li></a
+        >
+        <a
+          routerLink="specs"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Specifikacija</li></a
+        >
+        <a
+          routerLink="logs"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Evidencija iznajmljivanja</li></a
+        >
+        <a
+          routerLink="multimedia"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Multimedija</li></a
+        >
+      </ul>
+    </div>
+    <!-- content -->
+    <!-- stvoriti komponente za svaku opciju iz ul i implementirati je u book routing -->
+    <div class="pl-[32px]">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-book-sidebar></app-book-sidebar>
+</div>

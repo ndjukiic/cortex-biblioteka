@@ -1,8 +1,8 @@
-<div class="naslov">
+<div class="naslov ml-4">
   <h1>Knjige</h1>
   <hr />
 </div>
-<div>
+<div class="ml-4">
   <div class="edit-opcije">
     <!-- CRUD options show upon item checkmark selection, we can define them here -->
     <button
@@ -35,9 +35,13 @@
             <th>Ukupna količina</th>
           </tr>
         </thead>
-        <tbody *ngFor="let data of dummyData">
-          <tr class="text-center hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
-            <td>{{ data.name }}</td>
+        <tbody *ngFor="let data of dummyData; let i = index">
+          <tr
+            class="text-center hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+          >
+            <td>
+              <a [routerLink]="['/books', i, 'details']">{{ data.name }}</a>
+            </td>
             <td>{{ data.author }}</td>
             <td>{{ data.category }}</td>
             <td>{{ data.available }}</td>
