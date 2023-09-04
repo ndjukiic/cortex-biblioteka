@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { StudentListComponent } from './student-list/student-list.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -13,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'students',
-    component: StudentListComponent,
+    loadChildren: () => import('./student/student.module').then((m) => m.StudentModule),
   },
   {
     path: 'books',
