@@ -4,7 +4,8 @@ import { LibrarianListComponent } from './components/librarian-list/librarian-li
 import { RouterModule } from '@angular/router';
 import { LibrarianRoutingModule } from  './librarian-routing.module';
 import { LibrarianDetailComponent } from './components/librarian-detail/librarian-detail.component';
-import { LibrarianTopBarComponent } from './components/librarian-detail/librarian-top-bar/librarian-top-bar.component'
+import { LibrarianTopBarComponent } from './components/librarian-detail/librarian-top-bar/librarian-top-bar.component';
+import { LibrarianAddComponent } from './components/librarian-add/librarian-add.component'
 
 
 
@@ -12,7 +13,8 @@ import { LibrarianTopBarComponent } from './components/librarian-detail/libraria
   declarations: [
     LibrarianListComponent,
     LibrarianDetailComponent,
-    LibrarianTopBarComponent
+    LibrarianTopBarComponent,
+    LibrarianAddComponent
   ],
   imports: [
     CommonModule,
