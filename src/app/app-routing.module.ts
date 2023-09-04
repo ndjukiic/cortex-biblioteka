@@ -11,6 +11,10 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
+    path: 'librarians',
+    loadChildren: () => import('./librarian/librarian.module').then((m) => m.LibrarianModule),
+  },
+  {
     path: 'students',
     loadChildren: () => import('./student/student.module').then((m) => m.StudentModule),
   },
