@@ -1,0 +1,114 @@
+<div class="scroll height-content section-content">
+  <form class="text-gray-700 forma h-screen">
+    <div class="flex flex-row ml-[30px] mb-[150px]">
+      <div class="w-[50%]">
+        <div class="mt-[20px]">
+          <label for="name">Naziv knjige </label>
+          <input
+            type="text"
+            class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            value="Tom Sojer"
+          />
+        </div>
+
+        <div class="mt-[20px]">
+          <label for="content">Unesite kratak sadržaj </label>
+          <textarea
+            name="content"
+            class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            [value]="content"
+          ></textarea>
+        </div>
+
+        <div class="mt-[20px]">
+          <label for="category">Izaberite kategorije </label>
+          <select
+            name="category"
+            class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          >
+            <option disabled selected></option>
+            <option value="udzbenici">Udžbenici</option>
+            <option value="romani" selected>Romani</option>
+          </select>
+        </div>
+        <div class="mt-[20px]">
+          <label for="genre">Izaberite žanrove </label>
+
+          <select
+            name="category"
+            class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          >
+            <option value="kids" selected>Knjiga za djecu</option>
+            <option value="poetry">Poezija</option>
+            <option value="specialised-literature">Stručna literatura</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="w-[50%]">
+        <div class="mt-[20px]">
+          <label for="authors">Izaberite autore </label>
+          <select
+            name="authors"
+            class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          >
+            <option disabled selected></option>
+            <option value="mark-twain" selected>Mark Twain</option>
+            <option value="pero-peric">Pero Perić</option>
+          </select>
+        </div>
+        <div class="mt-[20px]">
+          <label for="publishers">Izaberite izdavača </label>
+          <select
+            name="publishers"
+            class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          >
+            <option selected>Delfi knjižare</option>
+            <option value="publisher1">Izdavac 1</option>
+          </select>
+        </div>
+
+        <div class="mt-[20px]">
+          <label for="year">Godina izdavanja </label>
+          <select
+            name="year"
+            class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          >
+            <option selected>30.03.2011</option>
+            <option value="year1">2023</option>
+          </select>
+        </div>
+
+        <div class="mt-[20px]">
+          <label for="quantity">Količina </label>
+          <input
+            type="text"
+            class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" value="30"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-[20px] w-full">
+      <div class="flex flex-row">
+        <div
+          class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+        >
+          <button
+            type="button"
+            class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+          >
+            Poništi
+            <i class="fas fa-times ml-[4px]"></i>
+          </button>
+          <button
+            type="button"
+            id="sacuvajKnjigu"
+            class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+          >
+            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

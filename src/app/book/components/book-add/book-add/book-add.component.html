@@ -1,0 +1,42 @@
+<div class="ml-4">
+  <div>
+    <div class="flex flex-col">
+      <h1 class="py-1">Nova knjiga</h1>
+      <div class="flex flex-row">
+        <a href="/books">
+          <p class="mr-[5px] text-xs">Evidencija knjiga /</p>
+        </a>
+
+        <a>
+          <p class="uppercase text-xs">Nova knjiga - ID: 3522</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="ml-[-25px] mt-[7px]" />
+
+<div>
+  <ul class="flex flex-row mt-4 w-full border-b-[1px]">
+    <a
+      routerLink="."
+      routerLinkActive="active-book-nav"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="ml-4"
+      ><li>Osnovni detalji</li></a
+    >
+    <a routerLink="specs" routerLinkActive="active-book-nav" class="ml-[70px]"
+      ><li>Specifikacija</li></a
+    >
+    <a
+      routerLink="multimedia"
+      routerLinkActive="active-book-nav"
+      class="ml-[70px]"
+      ><li>Multimedija</li></a
+    >
+  </ul>
+</div>
+<div class="ml-4 py-3">
+  <router-outlet></router-outlet>
+</div>

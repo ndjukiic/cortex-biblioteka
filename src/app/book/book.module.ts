@@ -12,6 +12,14 @@ import { BookTopBarComponent } from './components/book-top-bar/book-top-bar.comp
 import { BookStatsComponent } from './components/book-sidebar/book-stats/book-stats.component';
 import { BookLogsComponent } from './components/book-sidebar/book-logs/book-logs.component';
 import { BookSidebarComponent } from './components/book-sidebar/book-sidebar.component';
+import { BookAddComponent } from './components/book-add/book-add/book-add.component';
+import { BookAddDetailsComponent } from './components/book-add/book-add-details/book-add-details.component';
+import { BookAddSpecsComponent } from './components/book-add/book-add-specs/book-add-specs.component';
+import { BookAddMultimediaComponent } from './components/book-add/book-add-multimedia/book-add-multimedia.component';
+import { BookEditComponent } from './components/book-edit/book-edit/book-edit.component';
+import { BookEditDetailsComponent } from './components/book-edit/book-edit-details/book-edit-details.component';
+import { BookEditSpecsComponent } from './components/book-edit/book-edit-specs/book-edit-specs.component';
+import { BookEditMultimediaComponent } from './components/book-edit/book-edit-multimedia/book-edit-multimedia.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +33,14 @@ import { BookSidebarComponent } from './components/book-sidebar/book-sidebar.com
     BookStatsComponent,
     BookLogsComponent,
     BookSidebarComponent,
+    BookAddComponent,
+    BookAddDetailsComponent,
+    BookAddSpecsComponent,
+    BookAddMultimediaComponent,
+    BookEditComponent,
+    BookEditDetailsComponent,
+    BookEditSpecsComponent,
+    BookEditMultimediaComponent,
   ],
   imports: [CommonModule, BookRoutingModule, RouterModule],
 })
