@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { LibrarianListComponent } from './components/librarian-list/librarian-list.component';
 import { LibrarianDetailComponent } from './components/librarian-detail/librarian-detail.component';
 import { LibrarianAddComponent } from './components/librarian-add/librarian-add.component';
+import { LibrarianEditComponent } from './components/librarian-edit/librarian-edit.component';
 
 
 const routes = [
@@ -18,6 +19,10 @@ const routes = [
   {
     path: ':id',
     component: LibrarianDetailComponent,
+  },
+  {
+    path: ':id/edit',
+    component: LibrarianEditComponent,
   },
 ]
 

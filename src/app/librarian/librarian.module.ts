@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import { LibrarianRoutingModule } from  './librarian-routing.module';
 import { LibrarianDetailComponent } from './components/librarian-detail/librarian-detail.component';
 import { LibrarianTopBarComponent } from './components/librarian-detail/librarian-top-bar/librarian-top-bar.component';
-import { LibrarianAddComponent } from './components/librarian-add/librarian-add.component'
+import { LibrarianAddComponent } from './components/librarian-add/librarian-add.component';
+import { LibrarianEditComponent } from './components/librarian-edit/librarian-edit.component'
 
 
 
@@ -14,7 +15,8 @@ import { LibrarianAddComponent } from './components/librarian-add/librarian-add.
     LibrarianListComponent,
     LibrarianDetailComponent,
     LibrarianTopBarComponent,
-    LibrarianAddComponent
+    LibrarianAddComponent,
+    LibrarianEditComponent
   ],
   imports: [
     CommonModule,

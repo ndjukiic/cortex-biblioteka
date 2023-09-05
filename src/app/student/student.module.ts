@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { StudentTopBarComponent } from './components/student-detail/student-top-bar/student-top-bar.component';
 import { StudentTabDetailComponent } from './components/student-detail/student-tab-detail/student-tab-detail.component';
 import { StudentAddComponent } from './components/student-add/student-add.component';
+import { StudentEditComponent } from './components/student-edit/student-edit.component';
 
 
 
@@ -17,7 +18,8 @@ import { StudentAddComponent } from './components/student-add/student-add.compon
     StudentDetailComponent,
     StudentTopBarComponent,
     StudentTabDetailComponent,
-    StudentAddComponent
+    StudentAddComponent,
+    StudentEditComponent
   ],
   imports: [
     CommonModule,
