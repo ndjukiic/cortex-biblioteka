@@ -6,6 +6,7 @@ import { StudentDetailComponent } from './components/student-detail/student-deta
 import { RouterModule } from '@angular/router';
 import { StudentTopBarComponent } from './components/student-detail/student-top-bar/student-top-bar.component';
 import { StudentTabDetailComponent } from './components/student-detail/student-tab-detail/student-tab-detail.component';
+import { StudentAddComponent } from './components/student-add/student-add.component';
 
 
 
@@ -15,7 +16,8 @@ import { StudentTabDetailComponent } from './components/student-detail/student-t
     StudentListComponent,
     StudentDetailComponent,
     StudentTopBarComponent,
-    StudentTabDetailComponent
+    StudentTabDetailComponent,
+    StudentAddComponent
   ],
   imports: [
     CommonModule,
