@@ -3,7 +3,7 @@
   <hr />
 </div>
 <div class="ml-4">
-  <div class="edit-opcije">
+  <div class="flex flex-row justify-between">
     <!-- CRUD options show upon item checkmark selection, we can define them here -->
     <a href="books/add"
       ><button
@@ -13,44 +13,119 @@
         + Nova Knjiga
       </button></a
     >
-  </div>
-  <div class="table w-full mt-[20px]">
-    <div>
-      <label for="search">Pretraga:</label>
-      <input class="rounded-md border-[1px] ml-2" type="text" />
 
-      <!-- list amount per page option goes here (view 5/15/30 books for e.g.) -->
+    <div class="flex items-center">
+      <div class="relative text-gray-600 focus-within:text-gray-400">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+          <button
+            type="submit"
+            class="p-1 focus:outline-none focus:shadow-outline"
+          >
+            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+          </button>
+        </span>
+        <input
+          type="search"
+          name="q"
+          class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+          placeholder="Search..."
+          autocomplete="off"
+        />
+      </div>
     </div>
-    <div class="table-view">
+  </div>
+
+  <div class="px-[30px] pt-2 bg-white">
+    <div class="table w-full mt-[20px]">
       <table
         class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
       >
         <thead class="bg-[#EFF3F6]">
-          <tr>
-            <th>Naziv knjige</th>
-            <th>Autor</th>
-            <th>Kategorija</th>
-            <th>Na raspolaganju</th>
-            <th>Rezervisano</th>
-            <th>Izdato</th>
-            <th>U prekoračenju</th>
-            <th>Ukupna količina</th>
+          <tr class="border-b-[1px] border-[#e4dfdf]">
+            <th
+              class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
+            >
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+              </label>
+            </th>
+            <th class="px-4 py-4 leading-4 tracking-wider text-left">
+              Naziv knjige
+              <a href=""><i class="ml-3 fa-solid fa-arrow-down-long"></i></a>
+            </th>
+            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+              Autor
+            </th>
+            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+              Kategorija
+            </th>
+            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+              Na raspolaganju
+            </th>
+            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+              Rezervisano
+            </th>
+            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+              Izdato
+            </th>
+            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+              U prekoračenju
+            </th>
+            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+              Ukupna količina
+            </th>
+
+            <th class="px-4 py-4"></th>
           </tr>
         </thead>
-        <tbody *ngFor="let data of dummyData; let i = index">
+        <tbody class="bg-white" *ngFor="let data of dummyData; let i = index">
           <tr
-            class="text-center hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+            class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
           >
-            <td>
-              <a [routerLink]="['/books', i, 'details']">{{ data.name }}</a>
+            <td class="px-4 py-4 whitespace-no-wrap">
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+              </label>
             </td>
-            <td>{{ data.author }}</td>
-            <td>{{ data.category }}</td>
-            <td>{{ data.available }}</td>
-            <td>{{ data.booked }}</td>
-            <td>{{ data.issued }}</td>
-            <td>{{ data.exceeded }}</td>
-            <td>{{ data.totalCopies }}</td>
+            <td class="flex flex-row items-center px-4 py-4">
+              <img
+                class="object-cover w-8 mr-2 h-11"
+                src="../../../../assets/images/tomsojer.jpg"
+                alt=""
+              /><a [routerLink]="['/books', i, 'details']"
+                ><span class="font-medium text-center">{{ data.name }}</span></a
+              >
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              {{ data.author }}
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              {{ data.category }}
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              {{ data.available }}
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              {{ data.booked }}
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              {{ data.issued }}
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              {{ data.exceeded }}
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              {{ data.totalCopies }}
+            </td>
+            <td
+              class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap"
+            >
+              <p
+                class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]"
+              >
+                <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+              </p>
+            </td>
           </tr>
         </tbody>
       </table>
