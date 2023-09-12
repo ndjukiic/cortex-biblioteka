@@ -25,11 +25,13 @@
           </button>
         </span>
         <input
-          type="search"
+          [(ngModel)]="searchName"
+          type="text"
           name="q"
           class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
           placeholder="Search..."
           autocomplete="off"
+          (change)="filterBooks()"
         />
       </div>
     </div>
@@ -51,7 +53,10 @@
             </th>
             <th class="px-4 py-4 leading-4 tracking-wider text-left">
               Naziv knjige
-              <a href=""><i class="ml-3 fa-solid fa-arrow-down-long"></i></a>
+              <a (click)="sort()" class="cursor-pointer">
+                <i *ngIf="!sorted" class="ml-3 fa-solid fa-arrow-down-long"></i>
+                <i *ngIf="sorted" class="ml-3 fa-solid fa-arrow-up-long"></i
+              ></a>
             </th>
             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
               Autor
@@ -78,7 +83,10 @@
             <th class="px-4 py-4"></th>
           </tr>
         </thead>
-        <tbody class="bg-white" *ngFor="let data of dummyData; let i = index">
+        <tbody
+          class="bg-white"
+          *ngFor="let book of filteredArray; let i = index"
+        >
           <tr
             class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
           >
@@ -90,32 +98,34 @@
             <td class="flex flex-row items-center px-4 py-4">
               <img
                 class="object-cover w-8 mr-2 h-11"
-                src="../../../../assets/images/tomsojer.jpg"
-                alt=""
-              /><a [routerLink]="['/books', i, 'details']"
-                ><span class="font-medium text-center">{{ data.name }}</span></a
+                [src]="book.photo"
+                alt="Book cover"
+              /><a [routerLink]="['/books', book.id, 'details']"
+                ><span class="font-medium text-center">{{
+                  book.title
+                }}</span></a
               >
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ data.author }}
+              <!-- {{ book.authors.name }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ data.category }}
+              <!-- {{ book.category }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ data.available }}
+              <!-- {{ book.available }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ data.booked }}
+              <!-- {{ book.bSamples }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ data.issued }}
+              <!-- {{ book.issued }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ data.exceeded }}
+              <!-- {{ book.exceeded }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ data.totalCopies }}
+              <!-- {{ book.samples }} -->
             </td>
             <td
               class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap"
@@ -130,5 +140,60 @@
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+<!-- pagination -->
+<div class="flex flex-row items-center justify-end my-2">
+  <div>
+    <p class="inline text-md">Rows per page:</p>
+    <select
+      id="viewSize"
+      [(ngModel)]="viewSize"
+      class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
+      (change)="pagPage()"
+    >
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+  </div>
+  <div>
+    <nav class="inline-flex">
+      <div>
+        <a
+          href="#"
+          class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
+        >
+          1 of 1
+        </a>
+      </div>
+      <div>
+        <a
+          class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400 cursor-pointer"
+          aria-label="Previous"
+          (click)="previousPage()"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+      <div>
+        <a
+          class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400 cursor-pointer"
+          aria-label="Next"
+          (click)="nextPage()"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 20 20">
+            <path
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </nav>
   </div>
 </div>

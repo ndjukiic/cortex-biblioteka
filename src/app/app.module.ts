@@ -9,6 +9,7 @@ import { AuthorListComponent } from './author-list/author-list.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SettingsComponent } from './settings/settings.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { SettingsComponent } from './settings/settings.component';
     SidebarComponent,
     SettingsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
