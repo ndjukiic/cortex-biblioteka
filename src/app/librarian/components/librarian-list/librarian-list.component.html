@@ -22,11 +22,13 @@
           </button>
         </span>
         <input
+        [(ngModel)]="searchName"
           type="search"
           name="q"
           class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
           placeholder="Search..."
           autocomplete="off"
+          (input)="filterLibrarians()"
         />
       </div>
     </div>
@@ -46,7 +48,10 @@
           </th>
           <th class="px-4 py-4 leading-4 tracking-wider text-left">
             Ime i prezime
-            <a href=""><i class="ml-3 fa-solid fa-arrow-down-long"></i></a>
+            <a (click)="sortLibrariansByName()" class="cursor-pointer">
+              <i *ngIf="ascendingOrder" class="ml-3 fa-solid fa-arrow-down-long"></i>
+              <i *ngIf="!ascendingOrder" class="ml-3 fa-solid fa-arrow-up-long"></i
+            ></a>
           </th>
           <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
             Email
@@ -60,7 +65,7 @@
           <th class="px-4 py-4"></th>
         </tr>
       </thead>
-      <tbody class="bg-white" *ngFor="let data of dummyData; let i = index">
+      <tbody class="bg-white" *ngFor="let librarian of filteredLibrarians; let i = index">
         <tr
           class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
         >
@@ -72,17 +77,17 @@
           <td class="flex flex-row items-center px-4 py-4">
             <img class="object-cover w-8 h-8 mr-2 rounded-full" src="" alt="" /><a
             [routerLink]="['/librarians', i]"
-              ><span class="font-medium text-center">{{ data.name }}</span></a
+              ><span class="font-medium text-center">{{ librarian.name }} {{ librarian.surname }}</span></a
             >
           </td>
           <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-            {{ data.email }}
+            {{ librarian.email }}
           </td>
           <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-            {{ data.role }}
+            {{ librarian.role }}
           </td>
           <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-            {{ data.lastSeen }}
+            {{ librarian.lastSeen }}
           </td>
           <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
             <p
@@ -101,14 +106,14 @@
     <div>
       <p class="inline text-md">Rows per page:</p>
       <select
+        [(ngModel)]="rowsPerPage"
+        (change)="onRowsPerPageChange()"  
         class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
-        name="ucenici"
+        name="bibliotekari"
       >
-        <option value="">20</option>
-        <option value="">Option1</option>
-        <option value="">Option2</option>
-        <option value="">Option3</option>
-        <option value="">Option4</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
       </select>
     </div>
     <div>
@@ -118,14 +123,14 @@
             href="#"
             class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
           >
-            1 of 1
+          {{ currentPage }} of {{ totalPages }}
           </a>
         </div>
         <div>
           <a
-            href="#"
             class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400"
             aria-label="Previous"
+            (click)="previousPage()"
           >
             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
               <path
@@ -137,9 +142,9 @@
         </div>
         <div>
           <a
-            href="#"
             class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400"
             aria-label="Next"
+            (click)="nextPage()"
           >
             <svg class="w-5 h-5" viewBox="0 0 20 20">
               <path

@@ -7,6 +7,9 @@ import { LibrarianDetailComponent } from './components/librarian-detail/libraria
 import { LibrarianTopBarComponent } from './components/librarian-detail/librarian-top-bar/librarian-top-bar.component';
 import { LibrarianAddComponent } from './components/librarian-add/librarian-add.component';
 import { LibrarianEditComponent } from './components/librarian-edit/librarian-edit.component'
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LibrarianService } from './services/librarian.service';
 
 
 
@@ -21,7 +24,12 @@ import { LibrarianEditComponent } from './components/librarian-edit/librarian-ed
   imports: [
     CommonModule,
     RouterModule,
-    LibrarianRoutingModule
+    LibrarianRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    LibrarianService
   ]
 })
 export class LibrarianModule { }

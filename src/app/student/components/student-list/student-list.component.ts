@@ -40,13 +40,13 @@ export class StudentListComponent implements OnInit, OnDestroy {
     const endIndex = startIndex + this.rowsPerPage;
     
     if (this.searchName && this.searchName.trim() !== '') {
-      this.filteredStudents = this.students.filter((student: Student) => {
+      const filteredResults = this.students.filter((student: Student) => {
         const fullName = `${student.name} ${student.surname}`;
         const searchValue = this.searchName.toLowerCase();
         return fullName.toLowerCase().includes(searchValue);
       });
-      this.filteredStudents = this.filteredStudents.slice(startIndex, endIndex);
-      this.totalPages = Math.ceil(this.filteredStudents.length / this.rowsPerPage);
+      this.filteredStudents = filteredResults.slice(startIndex, endIndex);
+      this.totalPages = Math.ceil(filteredResults.length / this.rowsPerPage);
     } else {
       this.filteredStudents = this.students.slice(startIndex, endIndex);
       this.totalPages = Math.ceil(this.students.length / this.rowsPerPage);
