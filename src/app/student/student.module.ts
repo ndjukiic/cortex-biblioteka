@@ -8,6 +8,9 @@ import { StudentTopBarComponent } from './components/student-detail/student-top-
 import { StudentTabDetailComponent } from './components/student-detail/student-tab-detail/student-tab-detail.component';
 import { StudentAddComponent } from './components/student-add/student-add.component';
 import { StudentEditComponent } from './components/student-edit/student-edit.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { StudentService } from './services/student.service';
 
 
 
@@ -24,7 +27,12 @@ import { StudentEditComponent } from './components/student-edit/student-edit.com
   imports: [
     CommonModule,
     StudentRoutingModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
+    FormsModule
+  ],
+  providers: [
+    StudentService
   ]
 })
 export class StudentModule { }
