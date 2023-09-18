@@ -2,162 +2,163 @@
   <h1>Učenici</h1>
   <hr />
 </div>
-
-<!-- Button and search -->
-<div class="ml-4 pr-[30px] flex items-center justify-between">
-  <button
-    routerLink="add"
-    class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
-    type="button"
-  >
-    <i class="fas fa-plus mr-[15px]"></i>Novi Učenik
-  </button>
-  <div class="flex items-center">
-    <div class="relative text-gray-600 focus-within:text-gray-400">
-      <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-        <button
-          type="submit"
-          class="p-1 focus:outline-none focus:shadow-outline"
-        >
-          <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-        </button>
-      </span>
-      <input
-        [(ngModel)]="searchName"
-        type="search"
-        name="q"
-        class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-        placeholder="Search..."
-        autocomplete="off"
-        (input)="filterStudents()"
-      />
+<div class="height-scroll overflow-y-auto">
+  <!-- Button and search -->
+  <div class="ml-4 pr-[30px] flex items-center justify-between">
+    <button
+      routerLink="add"
+      class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
+      type="button"
+    >
+      <i class="fas fa-plus mr-[15px]"></i>Novi Učenik
+    </button>
+    <div class="flex items-center">
+      <div class="relative text-gray-600 focus-within:text-gray-400">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+          <button
+            type="submit"
+            class="p-1 focus:outline-none focus:shadow-outline"
+          >
+            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+          </button>
+        </span>
+        <input
+          [(ngModel)]="searchName"
+          type="search"
+          name="q"
+          class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+          placeholder="Search..."
+          autocomplete="off"
+          (input)="filterStudents()"
+        />
+      </div>
     </div>
   </div>
-</div>
-
-<!-- Student List -->
-<div class="ml-4 pr-[30px]">
-  <table
-    class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
-  >
-    <thead class="bg-[#EFF3F6]">
-      <tr class="border-b-[1px] border-[#e4dfdf]">
-        <th class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500">
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox" />
-          </label>
-        </th>
-        <th class="px-4 py-4 leading-4 tracking-wider text-left">
-          Ime i prezime
-          <a (click)="sortStudentsByName()" class="cursor-pointer">
-            <i *ngIf="ascendingOrder" class="ml-3 fa-solid fa-arrow-down-long"></i>
-            <i *ngIf="!ascendingOrder" class="ml-3 fa-solid fa-arrow-up-long"></i
-          ></a>
-        </th>
-        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-          Email
-        </th>
-        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-          Tip korisnika
-        </th>
-        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-          Zadnji pristup sistemu
-        </th>
-        <th class="px-4 py-4"></th>
-      </tr>
-    </thead>
-    <tbody
-      class="bg-white"
-      *ngFor="let student of filteredStudents; let i = index"
+  
+  <!-- Student List -->
+  <div class="ml-4 pr-[30px]">
+    <table
+      class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
     >
-      <tr
-        class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+      <thead class="bg-[#EFF3F6]">
+        <tr class="border-b-[1px] border-[#e4dfdf]">
+          <th class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" />
+            </label>
+          </th>
+          <th class="px-4 py-4 leading-4 tracking-wider text-left">
+            Ime i prezime
+            <a (click)="sortStudentsByName()" class="cursor-pointer">
+              <i *ngIf="ascendingOrder" class="ml-3 fa-solid fa-arrow-down-long"></i>
+              <i *ngIf="!ascendingOrder" class="ml-3 fa-solid fa-arrow-up-long"></i
+            ></a>
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Email
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Tip korisnika
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Zadnji pristup sistemu
+          </th>
+          <th class="px-4 py-4"></th>
+        </tr>
+      </thead>
+      <tbody
+        class="bg-white"
+        *ngFor="let student of filteredStudents; let i = index"
       >
-        <td class="px-4 py-4 whitespace-no-wrap">
-          <label class="inline-flex items-center">
-            <input type="checkbox" class="form-checkbox" />
-          </label>
-        </td>
-        <td class="flex flex-row items-center px-4 py-4">
-          <img class="object-cover w-8 h-8 mr-2 rounded-full" src="" alt="" /><a
-            [routerLink]="['/students', student.id, 'details']"
-            ><span class="font-medium text-center"
-              >{{ student.name }} {{ student.surname }}</span
-            ></a
-          >
-        </td>
-        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-          {{ student.email }}
-        </td>
-        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-          {{ student.role }}
-        </td>
-        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-          {{ student.lastSeen }}
-        </td>
-        <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-          <p
-            class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]"
-          >
-            <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
-          </p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Row Display Control -->
-<div class="flex flex-row items-center justify-end my-2 pr-[30px]">
-  <div>
-    <p class="inline text-md">Rows per page:</p>
-    <select
-      [(ngModel)]="rowsPerPage"
-      (change)="onRowsPerPageChange()"
-      class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
-      name="ucenici"
-    >
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="15">15</option>
-    </select>
+        <tr
+          class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+        >
+          <td class="px-4 py-4 whitespace-no-wrap">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" />
+            </label>
+          </td>
+          <td class="flex flex-row items-center px-4 py-4">
+            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="" alt="" /><a
+              [routerLink]="['/students', student.id, 'details']"
+              ><span class="font-medium text-center"
+                >{{ student.name }} {{ student.surname }}</span
+              ></a
+            >
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            {{ student.email }}
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            {{ student.role }}
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            {{ student.lastSeen }}
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
+            <p
+              class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]"
+            >
+              <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div>
-    <nav class="inline-flex">
-      <div>
-        <p
-          class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
-        >
-          {{ currentPage }} of {{ totalPages }}
-        </p>
-      </div>
-      <div>
-        <a
-          class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400"
-          aria-label="Previous"
-          (click)="previousPage()"
-        >
-          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-            <path
-              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </a>
-      </div>
-      <div>
-        <a
-          class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400"
-          aria-label="Next"
-          (click)="nextPage()"
-        >
-          <svg class="w-5 h-5" viewBox="0 0 20 20">
-            <path
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-            ></path>
-          </svg>
-        </a>
-      </div>
-    </nav>
+  
+  <!-- Row Display Control -->
+  <div class="flex flex-row items-center justify-end my-2 pr-[30px]">
+    <div>
+      <p class="inline text-md">Rows per page:</p>
+      <select
+        [(ngModel)]="rowsPerPage"
+        (change)="onRowsPerPageChange()"
+        class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
+        name="ucenici"
+      >
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
+    </div>
+    <div>
+      <nav class="inline-flex">
+        <div>
+          <p
+            class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
+          >
+            {{ currentPage }} of {{ totalPages }}
+          </p>
+        </div>
+        <div>
+          <a
+            class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400"
+            aria-label="Previous"
+            (click)="previousPage()"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <div>
+          <a
+            class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400"
+            aria-label="Next"
+            (click)="nextPage()"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 20 20">
+              <path
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
   </div>
 </div>
