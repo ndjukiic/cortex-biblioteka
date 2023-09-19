@@ -76,6 +76,7 @@ export class LibrarianListComponent implements OnInit, OnDestroy {
   }
 
   onRowsPerPageChange() {
+    this.currentPage = 1;
     const startIndex = (this.currentPage - 1) * this.rowsPerPage;
     const endIndex = startIndex + this.rowsPerPage;
   
