@@ -25,13 +25,16 @@ export class StudentAddComponent implements OnInit {
 
   onSubmit() {
     console.log(this.studentAddForm);
+    this.studentAddForm.reset({
+      userType: this.studentAddForm.get('userType').value
+    });
   }
 
   minTwoWords(control: FormControl): {[s: string]: boolean} | null {
     if (!control.value) {
       return null;
     }
-    const words = control.value.split(' ').filter(word => word.trim() != '');
+    const words = control.value.split(' ').filter((word: string) => word.trim() != '');
     if (words.length < 2) {
       return { 'minimumTwoWords': true };
     } 
