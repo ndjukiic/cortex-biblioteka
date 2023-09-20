@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, map } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { Librarian } from '../models/librarian.model';
+import { LibrarianCreate } from '../models/librarian-create.model';
 
 
 @Injectable({
@@ -30,5 +31,13 @@ export class LibrarianService {
           return librariansOnly;
         })
       );
+  }
+
+  createNewLibrarian(librarian: LibrarianCreate): Observable<any> {
+    return this.httpClient.post(`${this.url}/store`, librarian, {
+      headers: {
+        Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
+      },
+    });
   }
 }

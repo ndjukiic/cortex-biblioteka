@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, map } from 'rxjs';
 import { Student } from '../models/student.model';
 import { ApiResponse } from 'src/app/shared/api-response.model';
-
+import { StudentCreate } from '../models/student-create.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,5 +30,13 @@ export class StudentService {
           return studentsOnly;
         })
       );
+  }
+
+  createNewStudent(student: StudentCreate): Observable<any> {
+    return this.httpClient.post(`${this.url}/store`, student, {
+      headers: {
+        Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
+      },
+    });
   }
 }
