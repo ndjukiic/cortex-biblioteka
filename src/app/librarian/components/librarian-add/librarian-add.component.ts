@@ -60,7 +60,7 @@ export class LibrarianAddComponent  implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['/students']);
+    this.router.navigate(['/librarians']);
   }
 
   minTwoWords(control: FormControl): { [s: string]: boolean } | null {
