@@ -21,7 +21,7 @@ import { BookEditDetailsComponent } from './components/book-edit/book-edit-detai
 import { BookEditSpecsComponent } from './components/book-edit/book-edit-specs/book-edit-specs.component';
 import { BookEditMultimediaComponent } from './components/book-edit/book-edit-multimedia/book-edit-multimedia.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,6 +44,6 @@ import { FormsModule } from '@angular/forms';
     BookEditSpecsComponent,
     BookEditMultimediaComponent,
   ],
-  imports: [CommonModule, BookRoutingModule, RouterModule, HttpClientModule, FormsModule]
+  imports: [CommonModule, BookRoutingModule, RouterModule, HttpClientModule, ReactiveFormsModule, FormsModule]
 })
 export class BookModule {}

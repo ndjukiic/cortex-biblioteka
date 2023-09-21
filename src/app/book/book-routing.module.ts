@@ -23,20 +23,6 @@ const routes = [
   {
     path: 'add',
     component: BookAddComponent,
-    children: [
-      {
-        path: '',
-        component: BookAddDetailsComponent,
-      },
-      {
-        path: 'specs',
-        component: BookAddSpecsComponent,
-      },
-      {
-        path: 'multimedia',
-        component: BookAddMultimediaComponent,
-      },
-    ],
   },
   {
     path: ':id',

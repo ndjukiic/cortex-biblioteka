@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 
 @Component({
   selector: 'app-book-add-multimedia',
@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./book-add-multimedia.component.css']
 })
 export class BookAddMultimediaComponent {
-
 }

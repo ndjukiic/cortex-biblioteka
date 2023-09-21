@@ -9,6 +9,7 @@
 
         <a>
           <p class="uppercase text-xs">Nova knjiga - ID: 3522</p>
+          
         </a>
       </div>
     </div>
@@ -19,46 +20,24 @@
 
 <div>
   <ul class="flex flex-row mt-4 w-full border-b-[1px]">
-    <a
-      routerLink="."
-      routerLinkActive="active-book-nav"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="ml-4"
+    <a class="ml-4 cursor-pointer" (click)="showDetails()"
       ><li>Osnovni detalji</li></a
     >
-    <a routerLink="specs" routerLinkActive="active-book-nav" class="ml-[70px]"
+    <a class="ml-[70px] cursor-pointer" (click)="showSpecs()"
       ><li>Specifikacija</li></a
     >
-    <a
-      routerLink="multimedia"
-      routerLinkActive="active-book-nav"
-      class="ml-[70px]"
+    <a class="ml-[70px] cursor-pointer" (click)="showMultimedia()"
       ><li>Multimedija</li></a
     >
   </ul>
 </div>
-<div class="ml-4 py-3">
-  <router-outlet></router-outlet>
-  <div class="absolute bottom-[20px] w-full">
-    <div class="flex flex-row">
-      <div
-        class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
-      >
-        <button
-          type="button"
-          class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
-        >
-          Poništi
-          <i class="fas fa-times ml-[4px]"></i>
-        </button>
-        <button
-          type="button"
-          id="sacuvajKnjigu"
-          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-        >
-          Sačuvaj <i class="fas fa-check ml-[4px]"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+<div *ngIf="visibleComponent == 1" class="ml-4 py-3">
+  <app-book-add-details (formEmitter)="detailsReceived($event)"></app-book-add-details>
 </div>
+<div *ngIf="visibleComponent == 2" class="ml-4 py-3">
+  <app-book-add-specs (formEmitter)="specsReceived($event)"></app-book-add-specs>
+</div>
+<div *ngIf="visibleComponent == 3" class="ml-4 py-3">
+  <app-book-add-multimedia></app-book-add-multimedia>
+</div>
+

@@ -1,11 +1,17 @@
 <div class="scroll height-content section-content">
-  <form class="text-gray-700 forma h-screen">
+  <form
+    class="text-gray-700 forma h-screen"
+    [formGroup]="bookAddForm"
+    (ngSubmit)="onSubmit()"
+  >
     <div class="flex flex-row ml-[30px] mb-[150px]">
       <div class="w-[50%]">
         <div class="mt-[20px]">
-          <label for="name">Naziv knjige </label>
+          <label for="title">Naziv knjige </label>
           <input
             type="text"
+            id="title"
+            formControlName="nazivKnjiga"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
         </div>
@@ -13,32 +19,35 @@
         <div class="mt-[20px]">
           <label for="content">Unesite kratak sadržaj </label>
           <textarea
-            name="content"
+            id="content"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="kratki_sadrzaj"
           ></textarea>
         </div>
 
         <div class="mt-[20px]">
           <label for="category">Izaberite kategorije </label>
           <select
-            name="category"
+            id="category"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="categories"
           >
             <option disabled selected></option>
-            <option value="udzbenici">Udžbenici</option>
-            <option value="romani">Romani</option>
+            <option value="1">Udžbenici</option>
+            <option value="2">Romani</option>
           </select>
         </div>
         <div class="mt-[20px]">
-          <label for="genre">Izaberite žanrove </label>
+          <label for="genres">Izaberite žanrove </label>
 
           <select
-            name="genre"
+            name="genres"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="genres"
           >
             <option disabled selected></option>
-            <option value="poezija">Poezija</option>
-            <option value="strucna-literatura">Stručna literatura</option>
+            <option value="1">Poezija</option>
+            <option value="2">Stručna literatura</option>
           </select>
         </div>
       </div>
@@ -49,10 +58,11 @@
           <select
             name="authors"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="authors"
           >
             <option disabled selected></option>
-            <option value="mark-twain">Mark Twain</option>
-            <option value="pero-peric">Pero Perić</option>
+            <option value="1">Mark Twain</option>
+            <option value="2">Pero Perić</option>
           </select>
         </div>
         <div class="mt-[20px]">
@@ -60,30 +70,52 @@
           <select
             name="publishers"
             class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="izdavac"
           >
             <option disabled selected></option>
-            <option value="izdavac1">Izdavac 1</option>
+            <option value="1">Izdavac 1</option>
           </select>
         </div>
 
         <div class="mt-[20px]">
-          <label for="year">Godina izdavanja </label>
-          <select
-            name="year"
-            class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-          >
-            <option disabled selected></option>
-            <option value="year1">2023</option>
-          </select>
+          <label for="publishingYear">Godina izdavanja </label>
+          <input
+            type="text"
+            name="quantity"
+            class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="godinaIzdavanja"
+          />
         </div>
 
         <div class="mt-[20px]">
           <label for="quantity">Količina </label>
           <input
-            type="text"
+            type="number"
             name="quantity"
             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="knjigaKolicina"
           />
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-[20px] w-full">
+      <div class="flex flex-row">
+        <div
+          class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+        >
+          <button
+            type="reset"
+            class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+          >
+            Poništi
+            <i class="fas fa-times ml-[4px]"></i>
+          </button>
+          <button
+            type="submit"
+            class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+          >
+            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+          </button>
         </div>
       </div>
     </div>

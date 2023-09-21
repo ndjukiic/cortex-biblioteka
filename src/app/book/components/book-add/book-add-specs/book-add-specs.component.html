@@ -1,4 +1,6 @@
-<form class="text-gray-700 forma">
+<form class="text-gray-700 forma"
+[formGroup] = "bookAddForm"
+(ngSubmit)="onSubmit()">
   <div class="flex flex-row ml-[30px]">
     <div class="w-[50%] mb-[150px]">
       <div class="mt-[20px]">
@@ -6,41 +8,45 @@
         <input
           type="text"
           class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          formControlName="brStrana"
         />
       </div>
       <div class="mt-[20px]">
-        <label for="category">Pismo </label>
+        <label for="script">Pismo </label>
         <select
-          name="category"
+          name="script"
           class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          formControlName="pismo"
         >
           <option disabled selected></option>
-          <option value="cirilica">Ćirilica</option>
-          <option value="latinica">Latinica</option>
-          <option value="arapsko">Arapsko</option>
-          <option value="kinesko">Kinesko</option>
+          <option value="1">Ćirilica</option>
+          <option value="2">Latinica</option>
+          <option value="3">Arapsko</option>
+          <option value="4">Kinesko</option>
         </select>
       </div>
       <div class="mt-[20px]">
-        <label for="category">Povez</label>
+        <label for="bookbind">Povez</label>
         <select
-          name="category"
+          name="bookbind"
           class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          formControlName="povez"
         >
           <option disabled selected></option>
-          <option value="tvrdi">Tvrdi</option>
-          <option value="meki">Meki</option>
+          <option value="1">Tvrdi</option>
+          <option value="2">Meki</option>
         </select>
       </div>
       <div class="mt-[20px]">
-        <label for="category">Format</label>
+        <label for="format">Format</label>
         <select
-          name="category"
+          name="format"
           class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          formControlName="format"
         >
           <option disabled selected></option>
-          <option value="a1">A1</option>
-          <option value="a2">A2</option>
+          <option value="1">A1</option>
+          <option value="2">A2</option>
         </select>
       </div>
       <div class="mt-[20px]">
@@ -48,7 +54,29 @@
         <input
           type="text"
           class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          formControlName="isbn"
         />
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-[20px] w-full">
+    <div class="flex flex-row">
+      <div
+        class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+      >
+        <button
+          type="reset"
+          class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+        >
+          Poništi
+          <i class="fas fa-times ml-[4px]"></i>
+        </button>
+        <button
+          type="submit"
+          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+        >
+          Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+        </button>
       </div>
     </div>
   </div>
