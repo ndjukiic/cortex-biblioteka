@@ -14,6 +14,7 @@
             formControlName="nazivKnjiga"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
+          <span *ngIf="!bookAddForm.get('nazivKnjiga').valid && bookAddForm.get('nazivKnjiga').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
         </div>
 
         <div class="mt-[20px]">
@@ -23,6 +24,8 @@
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
             formControlName="kratki_sadrzaj"
           ></textarea>
+          
+          <span *ngIf="!bookAddForm.get('kratki_sadrzaj').valid && bookAddForm.get('kratki_sadrzaj').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
         </div>
 
         <div class="mt-[20px]">
@@ -36,6 +39,8 @@
             <option value="1">Udžbenici</option>
             <option value="2">Romani</option>
           </select>
+          
+          <span *ngIf="!bookAddForm.get('categories').valid && bookAddForm.get('categories').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
         </div>
         <div class="mt-[20px]">
           <label for="genres">Izaberite žanrove </label>
@@ -49,6 +54,8 @@
             <option value="1">Poezija</option>
             <option value="2">Stručna literatura</option>
           </select>
+          
+          <span *ngIf="!bookAddForm.get('genres').valid && bookAddForm.get('genres').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
         </div>
       </div>
 
@@ -64,6 +71,8 @@
             <option value="1">Mark Twain</option>
             <option value="2">Pero Perić</option>
           </select>
+          
+          <span *ngIf="!bookAddForm.get('authors').valid && bookAddForm.get('authors').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
         </div>
         <div class="mt-[20px]">
           <label for="publishers">Izaberite izdavača </label>
@@ -75,6 +84,8 @@
             <option disabled selected></option>
             <option value="1">Izdavac 1</option>
           </select>
+          
+          <span *ngIf="!bookAddForm.get('izdavac').valid && bookAddForm.get('izdavac').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
         </div>
 
         <div class="mt-[20px]">
@@ -85,6 +96,7 @@
             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
             formControlName="godinaIzdavanja"
           />
+          <span *ngIf="!bookAddForm.get('godinaIzdavanja').valid && bookAddForm.get('godinaIzdavanja').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
         </div>
 
         <div class="mt-[20px]">
@@ -95,6 +107,7 @@
             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
             formControlName="knjigaKolicina"
           />
+          <span *ngIf="!bookAddForm.get('knjigaKolicina').valid && bookAddForm.get('knjigaKolicina').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
         </div>
       </div>
     </div>
@@ -113,6 +126,7 @@
           <button
             type="submit"
             class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+            [disabled]="!bookAddForm.valid"
           >
             Sačuvaj <i class="fas fa-check ml-[4px]"></i>
           </button>
