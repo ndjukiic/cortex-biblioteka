@@ -9,11 +9,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./book-top-bar.component.css'],
 })
 export class BookTopBarComponent implements OnInit {
-  dummyData = [
-    {
-      name: 'Tom Sojer',
-    },
-  ];
   book: Book;
   id: number;
 

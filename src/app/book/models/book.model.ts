@@ -12,9 +12,9 @@ export class Book {
   pages: number;
   writingSystem: string;
   bookbind: string;
-  language: string;
+  language: { id: number; name: string };
   cover?: string;
-  format: string;
+  format: { id: number; name: string };
   isbn: number;
 
   constructor(
@@ -30,10 +30,10 @@ export class Book {
     quantity: number,
     pages: number,
     writingSystem: string,
-    language: string,
+    language: { id: number; name: string },
     bookbind: string,
     cover: string,
-    format: string,
+    format: { id: number; name: string },
     isbn: number
   ) {
     this.id = id;
