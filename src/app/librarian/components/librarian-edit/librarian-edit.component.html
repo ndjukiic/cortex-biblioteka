@@ -22,96 +22,202 @@
 </div>
 <hr class="ml-[-25px] mt-[7px]" />
 
-<div class="scroll height-content section-content">
-  <form class="text-gray-700 text-[14px] forma">
+<div class="height-scroll overflow-y-auto">
+  <form
+    [formGroup]="librarianEditForm"
+    (ngSubmit)="onSubmit()"
+    class="text-gray-700 text-[14px] forma"
+  >
     <div class="flex flex-row ml-[30px]">
       <div class="w-[50%] mb-[100px]">
         <div class="mt-[20px]">
-          <span>Ime i prezime <span class="text-red-500">*</span></span>
+          <label for="nameAndSurname"
+            >Ime i prezime <span class="text-red-500">*</span></label
+          >
           <input
             type="text"
-            name="imePrezimeBibliotekarEdit"
-            id="imePrezimeBibliotekarEdit"
-            value="Marko Markovic"
+            name="nameAndSurname"
+            id="nameAndSurname"
+            formControlName="nameAndSurname"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validateNameBibliotekarEdit"></div>
+          <span
+            *ngIf="
+              !librarianEditForm.get('nameAndSurname').valid &&
+              librarianEditForm.get('nameAndSurname').touched
+            "
+            class="text-red-500 pt-1 block"
+          >
+            <div
+              *ngIf="
+              librarianEditForm.get('nameAndSurname').errors['minimumTwoWords']
+              "
+            >
+              *Polje mora sadržati najmanje dvije riječi!
+            </div>
+            <div *ngIf="librarianEditForm.get('nameAndSurname').errors['pattern']">
+              *Polje može sadržati samo slova i razmake!
+            </div>
+            <div
+              *ngIf="librarianEditForm.get('nameAndSurname').errors['required']"
+            >
+              *Ovo polje je obavezno!
+            </div>
+          </span>
         </div>
 
         <div class="mt-[20px]">
-          <span>Tip korisnika</span>
+          <label for="userType">Tip korisnika</label>
           <select
             class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            name="tip_korisnika"
-            disabled=""
+            name="userType"
+            id="userType"
+            formControlName="userType"
           >
-            <option value="">Bibliotekar</option>
+            <option value="Bibliotekar">Bibliotekar</option>
           </select>
         </div>
 
         <div class="mt-[20px]">
-          <span>JMBG <span class="text-red-500">*</span></span>
+          <label for="jmbg">JMBG <span class="text-red-500">*</span></label>
           <input
             type="text"
-            name="jmbgBibliotekarEdit"
-            id="jmbgBibliotekarEdit"
-            value="1546213456878"
+            name="jmbg"
+            id="jmbg"
+            formControlName="jmbg"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validateJmbgBibliotekarEdit"></div>
+          <span
+            *ngIf="
+              !librarianEditForm.get('jmbg').valid &&
+              librarianEditForm.get('jmbg').touched
+            "
+            class="text-red-500 pt-1"
+            >Ovo polje je obavezno!</span
+          >
         </div>
 
         <div class="mt-[20px]">
-          <span>E-mail <span class="text-red-500">*</span></span>
+          <label for="email">E-mail <span class="text-red-500">*</span></label>
           <input
             type="email"
-            name="emailBibliotekarEdit"
-            id="emailBibliotekarEdit"
-            value="marko@marko.marko"
+            name="email"
+            id="email"
+            formControlName="email"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validateEmailBibliotekarEdit"></div>
+          <span
+            *ngIf="
+              !librarianEditForm.get('email').valid &&
+              librarianEditForm.get('email').touched
+            "
+            class="text-red-500 pt-1"
+          >
+            <div *ngIf="librarianEditForm.get('email').errors['required']">
+              *Ovo polje je obavezno!
+            </div>
+            <div *ngIf="librarianEditForm.get('email').errors['email']">
+              *Unesite validnu email adresu!
+            </div>
+          </span>
         </div>
 
         <div class="mt-[20px]">
-          <span>Korisnicko ime <span class="text-red-500">*</span></span>
+          <label for="username"
+            >Korisnicko ime <span class="text-red-500">*</span></label
+          >
           <input
             type="text"
-            name="usernameBibliotekarEdit"
-            id="usernameBibliotekarEdit"
-            value="marko.markovic"
+            name="username"
+            id="username"
+            formControlName="username"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validateUsernameBibliotekarEdit"></div>
+          <span
+            *ngIf="
+              !librarianEditForm.get('username').valid &&
+              librarianEditForm.get('username').touched
+            "
+            class="text-red-500 pt-1"
+          >
+            <div *ngIf="librarianEditForm.get('username').errors['required']">
+              *Ovo polje je obavezno!
+            </div>
+            <div *ngIf="librarianEditForm.get('username').errors['minlength']">
+              *Korisničko ime mora imati najmanje 3 karaktera.
+            </div>
+            <div *ngIf="librarianEditForm.get('username').errors['maxlength']">
+              *Korisničko ime ne smije biti duže od 20 karaktera.
+            </div>
+            <div *ngIf="librarianEditForm.get('username').errors['pattern']">
+              *Dozvoljeni karakteri su slova, brojevi, crte i donje crte!
+            </div>
+          </span>
         </div>
 
         <div class="mt-[20px]">
-          <span>Sifra <span class="text-red-500">*</span></span>
+          <label for="password"
+            >Šifra <span class="text-red-500">*</span></label
+          >
           <input
             type="password"
-            name="pwBibliotekarEdit"
-            id="pwBibliotekarEdit"
-            value="123456"
+            name="password"
+            id="password"
+            formControlName="password"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validatePwBibliotekarEdit"></div>
+          <span
+            *ngIf="
+              !librarianEditForm.get('password').valid &&
+              librarianEditForm.get('password').touched
+            "
+            class="text-red-500 pt-1"
+          >
+            <div *ngIf="librarianEditForm.get('password').errors['required']">
+              *Ovo polje je obavezno!
+            </div>
+            <div *ngIf="librarianEditForm.get('password').errors['minlength']">
+              *Šifra mora sadržati najmanje 8 karaktera!
+            </div>
+          </span>
         </div>
 
         <div class="mt-[20px]">
-          <span>Ponovi sifru <span class="text-red-500">*</span></span>
+          <label for="confirmPassword"
+            >Ponovi šifru <span class="text-red-500">*</span></label
+          >
           <input
             type="password"
-            name="pw2BibliotekarEdit"
-            id="pw2BibliotekarEdit"
-            value="123456"
+            name="confirmPassword"
+            id="confirmPassword"
+            formControlName="confirmPassword"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validatePw2BibliotekarEdit"></div>
+          <span
+            *ngIf="
+              !librarianEditForm.get('confirmPassword').valid &&
+              librarianEditForm.get('confirmPassword').touched
+            "
+            class="text-red-500 pt-1"
+          >
+            <div
+              *ngIf="librarianEditForm.get('confirmPassword').errors['required']"
+            >
+              *Ovo polje je obavezno!
+            </div>
+            <div
+              *ngIf="
+              librarianEditForm.get('confirmPassword').errors['passwordMismatch']
+              "
+            >
+              *Šifre se ne podudaraju!
+            </div>
+          </span>
         </div>
       </div>
 
       <div class="mt-[50px]">
-        <label class="mt-6 cursor-pointer">
+        <label class="mt-6 cursor-pointer" for="userImage">
           <div
             id="empty-cover-art"
             class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid"
@@ -134,42 +240,42 @@
                 <polyline points="21 15 16 10 5 21"></polyline>
               </svg>
               <span class="px-4 py-2 mt-2 leading-normal">Add photo</span>
-              <input
-                type="file"
-                class="hidden"
-                :accept="accept"
-              />
             </div>
-            <img
-              src=""
-              id="image-output-librarian"
-              class="absolute w-48 h-[188px] bottom-0"
-            />
           </div>
         </label>
+        <input
+          type="file"
+          class="hidden"
+          id="userImage"
+          name="userImage"
+          formControlName="userImage"
+        />
       </div>
-    </div>
 
-    <div class="absolute bottom-0 w-full">
-      <div class="flex flex-row">
-        <div
-          class="inline-block w-full text-right py-[7px] mr-[100px] text-white"
-        >
-          <button
-            type="button"
-            class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+      <div class="absolute bottom-0 w-full">
+        <div class="flex flex-row">
+          <div
+            class="inline-block w-full text-right py-[7px] mr-[100px] text-white px-[30px]"
           >
-            Ponisti <i class="fas fa-times ml-[4px]"></i>
-          </button>
-          <button
-            id="sacuvajBibliotekaraEdit"
-            type="submit"
-            class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-          >
-            Sacuvaj <i class="fas fa-check ml-[4px]"></i>
-          </button>
+            <button
+              type="button"
+              class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+              (click)="onCancel()"
+              >
+              Poništi <i class="fas fa-times ml-[4px]"></i>
+            </button>
+            <button
+              id="save"
+              type="submit"
+              class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+              [disabled]="!librarianEditForm.valid"
+            >
+              Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </form>
 </div>
+

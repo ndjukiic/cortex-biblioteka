@@ -1,0 +1,15 @@
+.height-scroll {
+    height: calc(100vh - 175px);
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid rgb(250, 86, 86);
+}
+
+#save[disabled] {
+    pointer-events: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: not-allowed;
+  }
+  
