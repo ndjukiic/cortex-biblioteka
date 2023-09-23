@@ -5,6 +5,7 @@ import { StudentDetailComponent } from './components/student-detail/student-deta
 import { StudentTabDetailComponent } from './components/student-detail/student-tab-detail/student-tab-detail.component';
 import { StudentAddComponent } from './components/student-add/student-add.component';
 import { StudentEditComponent } from './components/student-edit/student-edit.component';
+import { StudentTabHistoryComponent } from './components/student-detail/student-tab-history/student-tab-history.component';
 
 const routes = [
   {
@@ -26,6 +27,10 @@ const routes = [
       {
         path: 'details',
         component: StudentTabDetailComponent,
+      },
+      {
+        path: 'history',
+        component: StudentTabHistoryComponent,
       },
     ],
   },

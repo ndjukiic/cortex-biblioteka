@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Librarian } from 'src/app/librarian/models/librarian.model';
 
 @Component({
   selector: 'app-librarian-top-bar',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class LibrarianTopBarComponent {
 
+  @Input() librarian: Librarian;
 }

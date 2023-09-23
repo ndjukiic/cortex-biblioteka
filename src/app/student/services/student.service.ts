@@ -11,6 +11,8 @@ import { StudentCreate } from '../models/student-create.model';
 export class StudentService {
   private url = 'https://tim7.petardev.live/api/users';
   public students$ = new Subject<Student[]>();
+  public student$ = new Subject<Student>();
+  public id: number;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -32,11 +34,34 @@ export class StudentService {
       );
   }
 
+  loadStudent(id: number): Observable<Student> {
+    return this.httpClient
+      .get<ApiResponse<Student>>(`${this.url}/${id}`, {
+        headers: {
+          Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
+        },
+      })
+      .pipe(
+        map((response: ApiResponse<Student>) => {
+          this.student$.next(response.data);
+          return response.data;
+        })
+      );
+  }
+
   createNewStudent(student: StudentCreate): Observable<any> {
     return this.httpClient.post(`${this.url}/store`, student, {
       headers: {
         Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
       },
     });
+  }
+
+  setId(id: number) {
+    this.id = id;
+  }
+
+  getId() {
+    return this.id;
   }
 }

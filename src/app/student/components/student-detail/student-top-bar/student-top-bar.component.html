@@ -1,22 +1,22 @@
 <!-- topbar -->
-<div class="pl-2 pt-1.5 flex flex-row justify-between items-center">
+<div class="pt-1.5 flex flex-row justify-between items-center">
   <div class="flex flex-col pl-[32px]">
     <div>
-      <h1>Marko Marković</h1>
+      <h1>{{ student.name }} {{ student.surname }} </h1>
     </div>
     <div>
       <nav class="w-full rounded">
         <ol class="flex list-reset">
           <li>
             <a routerLink="/students" class="text-[#2196f3] hover:text-blue-600">
-              Svi ucenici
+              Svi učenici
             </a>
           </li>
           <li>
             <span class="mx-2">/</span>
           </li>
           <li>
-              ID-354
+              ID-{{ student.id }}
           </li>
         </ol>
       </nav>

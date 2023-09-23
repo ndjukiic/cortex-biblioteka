@@ -1,8 +1,8 @@
 <!-- topbar -->
-<div class="pl-2 pt-1.5 flex flex-row justify-between items-center">
+<div class="pt-1.5 flex flex-row justify-between items-center">
     <div class="flex flex-col pl-[32px]">
       <div>
-        <h1>Petar Petrović</h1>
+          <h1>{{ librarian.name }} {{ librarian.surname }}</h1>
       </div>
       <div>
         <nav class="w-full rounded">
@@ -16,7 +16,7 @@
               <span class="mx-2">/</span>
             </li>
             <li>
-                ID-240
+                ID-{{ librarian.id }}
             </li>
           </ol>
         </nav>

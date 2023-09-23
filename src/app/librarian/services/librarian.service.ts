@@ -12,6 +12,7 @@ import { LibrarianCreate } from '../models/librarian-create.model';
 export class LibrarianService {
   private url = 'https://tim7.petardev.live/api/users';
   public librarians$ = new Subject<Librarian[]>();
+  public librarian$ = new Subject<Librarian>();
 
   constructor(private httpClient: HttpClient) {}
 
@@ -29,6 +30,21 @@ export class LibrarianService {
           );
           this.librarians$.next(librariansOnly);
           return librariansOnly;
+        })
+      );
+  }
+
+  loadLibrarian(id: number): Observable<Librarian> {
+    return this.httpClient
+      .get<ApiResponse<Librarian>>(`${this.url}/${id}`, {
+        headers: {
+          Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
+        },
+      })
+      .pipe(
+        map((response: ApiResponse<Librarian>) => {
+          this.librarian$.next(response.data);
+          return response.data;
         })
       );
   }

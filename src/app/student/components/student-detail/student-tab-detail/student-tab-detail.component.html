@@ -1,46 +1,37 @@
-<div class="height-ucenikProfile pb-[30px] scroll">
-  <div class="pl-[30px] section- mt-[20px]">
-    <div class="flex flex-row">
-      <div class="mr-[30px]">
-        <div class="mt-[20px]">
-          <span class="text-gray-500">Ime i prezime</span>
-          <p class="font-medium">Marko Marković</p>
-        </div>
-        <div class="mt-[40px]">
-          <span class="text-gray-500">Tip korisnika</span>
-          <p class="font-medium">Ucenik</p>
-        </div>
-        <div class="mt-[40px]">
-          <span class="text-gray-500">JMBG</span>
-          <p class="font-medium">1345687815462</p>
-        </div>
-        <div class="mt-[40px]">
-          <span class="text-gray-500">Email</span>
-          <a href="#" class="block font-medium text-[#2196f3]"
-            >marko.markovic@domain.net</a
-          >
-        </div>
-        <div class="mt-[40px]">
-          <span class="text-gray-500">Korisnicko ime</span>
-          <p class="font-medium">marko.markovic</p>
-        </div>
-        <div class="mt-[40px]">
-          <span class="text-gray-500">Broj logovanja</span>
-          <p class="font-medium">60</p>
-        </div>
-        <div class="mt-[40px]">
-          <span class="text-gray-500">Poslednji put logovan/a</span>
-          <p class="font-medium">Prekjuce 11:57 AM</p>
-        </div>
+<div class="height-scroll overflow-y-auto">
+  <div class="flex flex-row  mt-[40px] pb-[20px]">
+    <div class="mr-[30px]">
+      <div class="">
+        <span class="text-gray-500">Ime i prezime</span>
+        <p class="font-medium">{{ student.name }} {{ student.surname }}</p>
       </div>
-      <div class="ml-[100px] mt-[20px]">
-        <img
-          class="p-2 border-2 border-gray-300"
-          width="300px"
-          src=""
-          alt=""
-        />
+      <div class="mt-[40px]">
+        <span class="text-gray-500">Tip korisnika</span>
+        <p class="font-medium">{{ student.role }}</p>
       </div>
+      <div class="mt-[40px]">
+        <span class="text-gray-500">JMBG</span>
+        <p class="font-medium">{{ student.jmbg }}</p>
+      </div>
+      <div class="mt-[40px]">
+        <span class="text-gray-500">Email</span>
+        <p class="font-medium text-[#2196f3]">{{ student.email }}</p>
+      </div>
+      <div class="mt-[40px]">
+        <span class="text-gray-500">Korisnicko ime</span>
+        <p class="font-medium">{{ student.username }}</p>
+      </div>
+      <div class="mt-[40px]">
+        <span class="text-gray-500">Broj logovanja</span>
+        <p class="font-medium">60</p>
+      </div>
+      <div class="mt-[40px]">
+        <span class="text-gray-500">Poslednji put logovan/a</span>
+        <p class="font-medium">Prekjuce 11:57 AM</p>
+      </div>
+    </div>
+    <div class="ml-[100px] mt-[20px]">
+      <img class="p-2 border-2 border-gray-300" width="300px" src="{{ student.photoPath }}" alt="" />
     </div>
   </div>
 </div>

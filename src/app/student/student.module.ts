@@ -11,6 +11,7 @@ import { StudentEditComponent } from './components/student-edit/student-edit.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentService } from './services/student.service';
+import { StudentTabHistoryComponent } from './components/student-detail/student-tab-history/student-tab-history.component';
 
 
 
@@ -22,7 +23,8 @@ import { StudentService } from './services/student.service';
     StudentTopBarComponent,
     StudentTabDetailComponent,
     StudentAddComponent,
-    StudentEditComponent
+    StudentEditComponent,
+    StudentTabHistoryComponent
   ],
   imports: [
     CommonModule,
