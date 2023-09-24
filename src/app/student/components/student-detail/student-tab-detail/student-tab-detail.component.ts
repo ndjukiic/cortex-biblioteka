@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Student } from 'src/app/student/models/student.model';
 import { StudentService } from 'src/app/student/services/student.service';
 
@@ -20,10 +19,7 @@ export class StudentTabDetailComponent implements OnInit {
     email: '',
   };
 
-  constructor(
-    private route: ActivatedRoute,
-    private studentService: StudentService
-  ) {}
+  constructor(private studentService: StudentService) {}
 
   ngOnInit(): void {
     this.loadStudent();

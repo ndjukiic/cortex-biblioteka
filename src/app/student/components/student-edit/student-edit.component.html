@@ -8,7 +8,7 @@
         <ol class="flex list-reset">
           <li>
             <a routerLink="../../" class="text-[#2196f3] hover:text-blue-600">
-              Svi ucenici
+              Svi učenici
             </a>
           </li>
           <li>
@@ -22,97 +22,202 @@
 </div>
 <hr class="ml-[-25px] mt-[7px]" />
 
-<div class="scroll height-content section-content">
-  <form class="text-gray-700 text-[14px] forma">
+<div class="height-scroll overflow-y-auto">
+  <form
+    [formGroup]="studentEditForm"
+    (ngSubmit)="onSubmit()"
+    class="text-gray-700 text-[14px] forma"
+  >
     <div class="flex flex-row ml-[30px]">
       <div class="w-[50%] mb-[100px]">
         <div class="mt-[20px]">
-          <span>Ime i prezime <span class="text-red-500">*</span></span>
+          <label for="nameAndSurname"
+            >Ime i prezime <span class="text-red-500">*</span></label
+          >
           <input
             type="text"
-            name="imePrezimeUcenikEdit"
-            id="imePrezimeUcenikEdit"
-            value="Marko Markovic"
+            name="nameAndSurname"
+            id="nameAndSurname"
+            formControlName="nameAndSurname"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validateNameUcenikEdit"></div>
+          <span
+            *ngIf="
+              !studentEditForm.get('nameAndSurname').valid &&
+              studentEditForm.get('nameAndSurname').touched
+            "
+            class="text-red-500 pt-1 block"
+          >
+            <div
+              *ngIf="
+              studentEditForm.get('nameAndSurname').errors['minimumTwoWords']
+              "
+            >
+              *Polje mora sadržati najmanje dvije riječi!
+            </div>
+            <div *ngIf="studentEditForm.get('nameAndSurname').errors['pattern']">
+              *Polje može sadržati samo slova i razmake!
+            </div>
+            <div
+              *ngIf="studentEditForm.get('nameAndSurname').errors['required']"
+            >
+              *Ovo polje je obavezno!
+            </div>
+          </span>
         </div>
 
         <div class="mt-[20px]">
-          <span>Tip korisnika</span>
+          <label for="userType">Tip korisnika</label>
           <select
             class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            name="tip_korisnika"
-            disabled=""
+            name="userType"
+            id="userType"
+            formControlName="userType"
           >
-            <option value="">Ucenik</option>
+            <option value="Učenik">Učenik</option>
           </select>
         </div>
 
         <div class="mt-[20px]">
-          <span>JMBG <span class="text-red-500">*</span></span>
+          <label for="jmbg">JMBG <span class="text-red-500">*</span></label>
           <input
             type="text"
-            name="jmbgUcenikEdit"
-            id="jmbgUcenikEdit"
-            value="1345687815462"
+            name="jmbg"
+            id="jmbg"
+            formControlName="jmbg"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validateJmbgUcenikEdit"></div>
+          <span
+            *ngIf="
+              !studentEditForm.get('jmbg').valid &&
+              studentEditForm.get('jmbg').touched
+            "
+            class="text-red-500 pt-1"
+            >Ovo polje je obavezno!</span
+          >
         </div>
 
         <div class="mt-[20px]">
-          <span>E-mail <span class="text-red-500">*</span></span>
+          <label for="email">E-mail <span class="text-red-500">*</span></label>
           <input
             type="email"
-            name="emailUcenikEdit"
-            id="emailUcenikEdit"
-            value="marko.marko@marko"
+            name="email"
+            id="email"
+            formControlName="email"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validateEmailUcenikEdit"></div>
+          <span
+            *ngIf="
+              !studentEditForm.get('email').valid &&
+              studentEditForm.get('email').touched
+            "
+            class="text-red-500 pt-1"
+          >
+            <div *ngIf="studentEditForm.get('email').errors['required']">
+              *Ovo polje je obavezno!
+            </div>
+            <div *ngIf="studentEditForm.get('email').errors['email']">
+              *Unesite validnu email adresu!
+            </div>
+          </span>
         </div>
 
         <div class="mt-[20px]">
-          <span>Korisnicko ime <span class="text-red-500">*</span></span>
+          <label for="username"
+            >Korisnicko ime <span class="text-red-500">*</span></label
+          >
           <input
             type="text"
-            name="usernameUcenikEdit"
-            id="usernameUcenikEdit"
-            value="marko.markovic"
+            name="username"
+            id="username"
+            formControlName="username"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            onkeydown="clearErrorsUsernameUcenikEdit()"
           />
-          <div id="validateUsernameUcenikEdit"></div>
+          <span
+            *ngIf="
+              !studentEditForm.get('username').valid &&
+              studentEditForm.get('username').touched
+            "
+            class="text-red-500 pt-1"
+          >
+            <div *ngIf="studentEditForm.get('username').errors['required']">
+              *Ovo polje je obavezno!
+            </div>
+            <div *ngIf="studentEditForm.get('username').errors['minlength']">
+              *Korisničko ime mora imati najmanje 3 karaktera.
+            </div>
+            <div *ngIf="studentEditForm.get('username').errors['maxlength']">
+              *Korisničko ime ne smije biti duže od 20 karaktera.
+            </div>
+            <div *ngIf="studentEditForm.get('username').errors['pattern']">
+              *Dozvoljeni karakteri su slova, brojevi, crte i donje crte!
+            </div>
+          </span>
         </div>
 
         <div class="mt-[20px]">
-          <span>Sifra <span class="text-red-500">*</span></span>
+          <label for="password"
+            >Šifra <span class="text-red-500">*</span></label
+          >
           <input
             type="password"
-            name="pwUcenikEdit"
-            id="pwUcenikEdit"
-            value="123456"
+            name="password"
+            id="password"
+            formControlName="password"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validatePwUcenikEdit"></div>
+          <span
+            *ngIf="
+              !studentEditForm.get('password').valid &&
+              studentEditForm.get('password').touched
+            "
+            class="text-red-500 pt-1"
+          >
+            <div *ngIf="studentEditForm.get('password').errors['required']">
+              *Ovo polje je obavezno!
+            </div>
+            <div *ngIf="studentEditForm.get('password').errors['minlength']">
+              *Šifra mora sadržati najmanje 8 karaktera!
+            </div>
+          </span>
         </div>
 
         <div class="mt-[20px]">
-          <span>Ponovi sifru <span class="text-red-500">*</span></span>
+          <label for="confirmPassword"
+            >Ponovi šifru <span class="text-red-500">*</span></label
+          >
           <input
             type="password"
-            name="pw2UcenikEdit"
-            id="pw2UcenikEdit"
-            value="123456"
+            name="confirmPassword"
+            id="confirmPassword"
+            formControlName="confirmPassword"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
-          <div id="validatePw2UcenikEdit"></div>
+          <span
+            *ngIf="
+              !studentEditForm.get('confirmPassword').valid &&
+              studentEditForm.get('confirmPassword').touched
+            "
+            class="text-red-500 pt-1"
+          >
+            <div
+              *ngIf="studentEditForm.get('confirmPassword').errors['required']"
+            >
+              *Ovo polje je obavezno!
+            </div>
+            <div
+              *ngIf="
+              studentEditForm.get('confirmPassword').errors['passwordMismatch']
+              "
+            >
+              *Šifre se ne podudaraju!
+            </div>
+          </span>
         </div>
       </div>
 
       <div class="mt-[50px]">
-        <label class="mt-6 cursor-pointer">
+        <label class="mt-6 cursor-pointer" for="userImage">
           <div
             id="empty-cover-art"
             class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid"
@@ -135,42 +240,42 @@
                 <polyline points="21 15 16 10 5 21"></polyline>
               </svg>
               <span class="px-4 py-2 mt-2 leading-normal">Add photo</span>
-              <input
-                type="file"
-                class="hidden"
-                :accept="accept"
-              />
             </div>
-            <img
-              src=""
-              id="image-output-student"
-              class="absolute w-48 h-[188px] bottom-0"
-            />
           </div>
         </label>
+        <input
+          type="file"
+          class="hidden"
+          id="userImage"
+          name="userImage"
+          formControlName="userImage"
+        />
       </div>
-    </div>
 
-    <div class="absolute bottom-0 w-full">
-      <div class="flex flex-row">
-        <div
-          class="inline-block w-full text-right py-[7px] mr-[100px] text-white"
-        >
-          <button
-            type="button"
-            class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+      <div class="absolute bottom-0 w-full">
+        <div class="flex flex-row">
+          <div
+            class="inline-block w-full text-right py-[7px] mr-[100px] text-white px-[30px]"
           >
-            Ponisti <i class="fas fa-times ml-[4px]"></i>
-          </button>
-          <button
-            id="sacuvajUcenikaEdit"
-            type="submit"
-            class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-          >
-            Sacuvaj <i class="fas fa-check ml-[4px]"></i>
-          </button>
+            <button
+              type="button"
+              class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+              (click)="onCancel()"
+              >
+              Poništi <i class="fas fa-times ml-[4px]"></i>
+            </button>
+            <button
+              id="save"
+              type="submit"
+              class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+              [disabled]="!studentEditForm.valid"
+            >
+              Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </form>
 </div>
+

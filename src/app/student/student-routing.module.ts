@@ -17,10 +17,6 @@ const routes = [
     component: StudentAddComponent,
   },
   {
-    path: 'edit',
-    component: StudentEditComponent,
-  },
-  {
     path: ':id',
     component: StudentDetailComponent,
     children: [
@@ -33,6 +29,10 @@ const routes = [
         component: StudentTabHistoryComponent,
       },
     ],
+  },
+  {
+    path: ':id/edit',
+    component: StudentEditComponent,
   },
 ]
 
