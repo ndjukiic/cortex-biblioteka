@@ -38,7 +38,7 @@ export class StudentEditComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log('Uspješno sačuvano', response);
-          this.router.navigate(['../'], { relativeTo: this.route });
+          this.router.navigate(['../details'], { relativeTo: this.route });
         },
         error: (error) => {
           console.error('Greška', error);
