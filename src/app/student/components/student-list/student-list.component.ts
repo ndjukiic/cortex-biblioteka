@@ -17,6 +17,8 @@ export class StudentListComponent implements OnInit, OnDestroy {
   rowsPerPage: number = 5;
   currentPage: number = 1;
   totalPages: number;
+  startIndex: number;
+  endIndex: number;
 
   constructor(private studentService: StudentService) {}
 
@@ -30,31 +32,34 @@ export class StudentListComponent implements OnInit, OnDestroy {
       .subscribe((students: Student[]) => {
         this.students = students;
         this.totalPages = Math.ceil(this.students.length / this.rowsPerPage);
-        this.filteredStudents = this.students.slice(0, this.rowsPerPage);
+        this.setPageRange();
       });
   }
 
   filterStudents() {
-    this.currentPage = 1;
-    const startIndex = (this.currentPage - 1) * this.rowsPerPage;
-    const endIndex = startIndex + this.rowsPerPage;
-    
     if (this.searchName && this.searchName.trim() !== '') {
+      this.currentPage = 1;
       const filteredResults = this.students.filter((student: Student) => {
         const fullName = `${student.name} ${student.surname}`;
         const searchValue = this.searchName.toLowerCase();
         return fullName.toLowerCase().includes(searchValue);
       });
-      this.filteredStudents = filteredResults.slice(startIndex, endIndex);
+      this.filteredStudents = filteredResults.slice(0, this.rowsPerPage);
       this.totalPages = Math.ceil(filteredResults.length / this.rowsPerPage);
     } else {
-      this.filteredStudents = this.students.slice(startIndex, endIndex);
+      this.setPageRange();
       this.totalPages = Math.ceil(this.students.length / this.rowsPerPage);
     }
   }
   
+  onRowsPerPageChange() {
+    this.currentPage = 1;
+    this.filterStudents();
+  }
+
   sortStudentsByName() {
     this.ascendingOrder = !this.ascendingOrder;
+    this.currentPage = 1;
     
     const sortFunction = (a: Student, b: Student) => {
       const fullNameA = `${a.name} ${a.surname}`;
@@ -64,52 +69,32 @@ export class StudentListComponent implements OnInit, OnDestroy {
         : fullNameB.localeCompare(fullNameA);
     };
     this.students.sort(sortFunction);
-  
     this.totalPages = Math.ceil(this.students.length / this.rowsPerPage);
-    this.currentPage = 1;
   
     if (this.searchName && this.searchName.trim() !== '') {
       this.filterStudents();
     } else {
-      this.updateFilteredStudents();
+      this.setPageRange();
     }
   }
 
-  onRowsPerPageChange() {
-    const startIndex = (this.currentPage - 1) * this.rowsPerPage;
-    const endIndex = startIndex + this.rowsPerPage;
-  
-    if (this.searchName && this.searchName.trim() !== '') {
-      const filteredResults = this.students.filter((student: Student) => {
-        const fullName = `${student.name} ${student.surname}`;
-        const searchValue = this.searchName.toLowerCase();
-        return fullName.toLowerCase().includes(searchValue);
-      });
-      this.totalPages = Math.ceil(filteredResults.length / this.rowsPerPage);
-      this.filteredStudents = filteredResults.slice(startIndex, endIndex);
-    } else {
-      this.totalPages = Math.ceil(this.students.length / this.rowsPerPage);
-      this.filteredStudents = this.students.slice(startIndex, endIndex);
-    }
-  }
-  
-  updateFilteredStudents() {
-    const startIndex = (this.currentPage - 1) * this.rowsPerPage;
-    const endIndex = startIndex + this.rowsPerPage;
-    this.filteredStudents = this.students.slice(startIndex, endIndex);
+  setPageRange() {
+    this.startIndex = (this.currentPage - 1) * this.rowsPerPage;
+    this.endIndex = this.startIndex + +(this.rowsPerPage);
+    this.filteredStudents = this.students.slice(this.startIndex, this.endIndex);
   }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.updateFilteredStudents();
+      this.setPageRange();
     }
   }
 
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.updateFilteredStudents();
+      this.setPageRange();
     }
   }
 

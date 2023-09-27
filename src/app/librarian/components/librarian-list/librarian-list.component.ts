@@ -17,6 +17,8 @@ export class LibrarianListComponent implements OnInit, OnDestroy {
   rowsPerPage: number = 5;
   currentPage: number = 1;
   totalPages: number;
+  startIndex: number;
+  endIndex: number;
 
   constructor(private librarianService: LibrarianService) {}
 
@@ -30,31 +32,33 @@ export class LibrarianListComponent implements OnInit, OnDestroy {
       .subscribe((librarians: Librarian[]) => {
         this.librarians = librarians;
         this.totalPages = Math.ceil(this.librarians.length / this.rowsPerPage);
-        this.filteredLibrarians = this.librarians.slice(0, this.rowsPerPage);
+        this.setPageRange();
       });
   }
 
   filterLibrarians() {
-    this.currentPage = 1;
-    const startIndex = (this.currentPage - 1) * this.rowsPerPage;
-    const endIndex = startIndex + this.rowsPerPage;
-    
     if (this.searchName && this.searchName.trim() !== '') {
       const filteredResults = this.librarians.filter((librarian: Librarian) => {
         const fullName = `${librarian.name} ${librarian.surname}`;
         const searchValue = this.searchName.toLowerCase();
         return fullName.toLowerCase().includes(searchValue);
       });
-      this.filteredLibrarians = filteredResults.slice(startIndex, endIndex);
+      this.filteredLibrarians = filteredResults.slice(0, this.rowsPerPage);
       this.totalPages = Math.ceil(filteredResults.length / this.rowsPerPage);
     } else {
-      this.filteredLibrarians = this.librarians.slice(startIndex, endIndex);
+      this.setPageRange();
       this.totalPages = Math.ceil(this.librarians.length / this.rowsPerPage);
     }
   }
   
+  onRowsPerPageChange() {
+    this.currentPage = 1;
+    this.filterLibrarians();
+  }
+
   sortLibrariansByName() {
     this.ascendingOrder = !this.ascendingOrder;
+    this.currentPage = 1;
     
     const sortFunction = (a: Librarian, b: Librarian) => {
       const fullNameA = `${a.name} ${a.surname}`;
@@ -64,53 +68,32 @@ export class LibrarianListComponent implements OnInit, OnDestroy {
         : fullNameB.localeCompare(fullNameA);
     };
     this.librarians.sort(sortFunction);
-  
     this.totalPages = Math.ceil(this.librarians.length / this.rowsPerPage);
-    this.currentPage = 1;
   
     if (this.searchName && this.searchName.trim() !== '') {
       this.filterLibrarians();
     } else {
-      this.updateFilteredLibrarians();
+      this.setPageRange();
     }
   }
 
-  onRowsPerPageChange() {
-    this.currentPage = 1;
-    const startIndex = (this.currentPage - 1) * this.rowsPerPage;
-    const endIndex = startIndex + this.rowsPerPage;
-  
-    if (this.searchName && this.searchName.trim() !== '') {
-      const filteredResults = this.librarians.filter((librarian: Librarian) => {
-        const fullName = `${librarian.name} ${librarian.surname}`;
-        const searchValue = this.searchName.toLowerCase();
-        return fullName.toLowerCase().includes(searchValue);
-      });
-      this.totalPages = Math.ceil(filteredResults.length / this.rowsPerPage);
-      this.filteredLibrarians = filteredResults.slice(startIndex, endIndex);
-    } else {
-      this.totalPages = Math.ceil(this.librarians.length / this.rowsPerPage);
-      this.filteredLibrarians = this.librarians.slice(startIndex, endIndex);
-    }
-  }
-  
-  updateFilteredLibrarians() {
-    const startIndex = (this.currentPage - 1) * this.rowsPerPage;
-    const endIndex = startIndex + this.rowsPerPage;
-    this.filteredLibrarians = this.librarians.slice(startIndex, endIndex);
+  setPageRange() {
+    this.startIndex = (this.currentPage - 1) * this.rowsPerPage;
+    this.endIndex = this.startIndex + +(this.rowsPerPage);
+    this.filteredLibrarians = this.librarians.slice(this.startIndex, this.endIndex);
   }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.updateFilteredLibrarians();
+      this.setPageRange();
     }
   }
 
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.updateFilteredLibrarians();
+      this.setPageRange();
     }
   }
 
