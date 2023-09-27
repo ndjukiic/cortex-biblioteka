@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class StudentListComponent implements OnInit, OnDestroy {
   students: Student[];
   filteredStudents: Student[];
+  filteredResults: Student[];
   subscription: Subscription;
   searchName: string;
   ascendingOrder: boolean = true;
@@ -39,13 +40,13 @@ export class StudentListComponent implements OnInit, OnDestroy {
   filterStudents() {
     if (this.searchName && this.searchName.trim() !== '') {
       this.currentPage = 1;
-      const filteredResults = this.students.filter((student: Student) => {
+       this.filteredResults = this.students.filter((student: Student) => {
         const fullName = `${student.name} ${student.surname}`;
         const searchValue = this.searchName.toLowerCase();
         return fullName.toLowerCase().includes(searchValue);
       });
-      this.filteredStudents = filteredResults.slice(0, this.rowsPerPage);
-      this.totalPages = Math.ceil(filteredResults.length / this.rowsPerPage);
+      this.filteredStudents = this.filteredResults.slice(0, this.rowsPerPage);
+      this.totalPages = Math.ceil(this.filteredResults.length / this.rowsPerPage);
     } else {
       this.setPageRange();
       this.totalPages = Math.ceil(this.students.length / this.rowsPerPage);
@@ -81,7 +82,11 @@ export class StudentListComponent implements OnInit, OnDestroy {
   setPageRange() {
     this.startIndex = (this.currentPage - 1) * this.rowsPerPage;
     this.endIndex = this.startIndex + +(this.rowsPerPage);
-    this.filteredStudents = this.students.slice(this.startIndex, this.endIndex);
+    if (this.searchName && this.searchName.trim() !== '') {
+      this.filteredStudents = this.filteredResults.slice(this.startIndex, this.endIndex);
+    } else {
+      this.filteredStudents = this.students.slice(this.startIndex, this.endIndex);
+    }
   }
 
   nextPage() {

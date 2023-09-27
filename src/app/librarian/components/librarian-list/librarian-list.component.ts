@@ -11,6 +11,7 @@ import { LibrarianService } from '../../services/librarian.service';
 export class LibrarianListComponent implements OnInit, OnDestroy {
   librarians: Librarian[];
   filteredLibrarians: Librarian[];
+  filteredResults: Librarian[];
   subscription: Subscription;
   searchName: string;
   ascendingOrder: boolean = true;
@@ -38,13 +39,14 @@ export class LibrarianListComponent implements OnInit, OnDestroy {
 
   filterLibrarians() {
     if (this.searchName && this.searchName.trim() !== '') {
-      const filteredResults = this.librarians.filter((librarian: Librarian) => {
+      this.currentPage = 1;
+      this.filteredResults = this.librarians.filter((librarian: Librarian) => {
         const fullName = `${librarian.name} ${librarian.surname}`;
         const searchValue = this.searchName.toLowerCase();
         return fullName.toLowerCase().includes(searchValue);
       });
-      this.filteredLibrarians = filteredResults.slice(0, this.rowsPerPage);
-      this.totalPages = Math.ceil(filteredResults.length / this.rowsPerPage);
+      this.filteredLibrarians = this.filteredResults.slice(0, this.rowsPerPage);
+      this.totalPages = Math.ceil(this.filteredResults.length / this.rowsPerPage);
     } else {
       this.setPageRange();
       this.totalPages = Math.ceil(this.librarians.length / this.rowsPerPage);
@@ -80,7 +82,11 @@ export class LibrarianListComponent implements OnInit, OnDestroy {
   setPageRange() {
     this.startIndex = (this.currentPage - 1) * this.rowsPerPage;
     this.endIndex = this.startIndex + +(this.rowsPerPage);
-    this.filteredLibrarians = this.librarians.slice(this.startIndex, this.endIndex);
+    if (this.searchName && this.searchName.trim() !== '') {
+      this.filteredLibrarians = this.filteredResults.slice(this.startIndex, this.endIndex);
+    } else {
+      this.filteredLibrarians = this.librarians.slice(this.startIndex, this.endIndex);
+    }
   }
 
   nextPage() {
