@@ -63,10 +63,8 @@ export class BookAddComponent {
     this.bookService.addBook(this.newBook).subscribe(
       (response) => {
         this.router.navigate(['../'], { relativeTo: this.route });
-        console.log(response);
       },
       (error) => {
-        console.log('e jbg', error);
         alert(
           'Došlo je do naredne greške: ' +
             error.status +

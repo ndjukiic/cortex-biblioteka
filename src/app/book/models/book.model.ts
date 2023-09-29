@@ -16,6 +16,10 @@ export class Book {
   cover?: string;
   format: { id: number; name: string };
   isbn: number;
+  samples?: number;
+  bSamples?: number;
+  rSamples?: number;
+  fSamples?: number;
 
   constructor(
     id: number,
@@ -34,7 +38,11 @@ export class Book {
     bookbind: { id: number; name: string },
     cover: string,
     format: { id: number; name: string },
-    isbn: number
+    isbn: number,
+    samples: number,
+    bSamples: number,
+    rSamples: number,
+    fSamples: number
   ) {
     this.id = id;
     this.title = title;
@@ -53,5 +61,9 @@ export class Book {
     this.cover = cover;
     this.format = format;
     this.isbn = isbn;
+    this.samples = samples;
+    this.bSamples = bSamples;
+    this.rSamples = rSamples;
+    this.fSamples = fSamples;
   }
 }
