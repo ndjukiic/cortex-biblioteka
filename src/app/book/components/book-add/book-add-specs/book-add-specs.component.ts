@@ -14,7 +14,7 @@ export class BookAddSpecsComponent implements OnInit {
 
   ngOnInit() {
     this.bookAddForm = new FormGroup({
-      brStrana: new FormControl(null, Validators.required),
+      brStrana: new FormControl(null, [Validators.required]),
       pismo: new FormControl(null, Validators.required),
       povez: new FormControl(null, Validators.required),
       format: new FormControl(null, Validators.required),
@@ -34,5 +34,13 @@ export class BookAddSpecsComponent implements OnInit {
     this.formEmitter.emit(this.bookAddForm.value);
   }
 
-  isbnLength() {}
+  greaterThanZero(control: FormControl): {
+    [validation: string]: boolean;
+  } {
+    const value = control.value;
+    if (value < 0) {
+      return { greaterThanZero: false };
+    }
+    return null;
+  }
 }

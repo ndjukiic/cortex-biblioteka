@@ -20,9 +20,12 @@ export class BookAddDetailsComponent implements OnInit {
       genres: new FormControl(null, Validators.required),
       authors: new FormControl(null, Validators.required),
       izdavac: new FormControl(null, Validators.required),
-      godinaIzdavanja: new FormControl(null, [Validators.required, Validators.maxLength(4)]),
-      knjigaKolicina: new FormControl(null, Validators.required),
-      jezik: new FormControl(1), 
+      godinaIzdavanja: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(4),
+      ]),
+      knjigaKolicina: new FormControl(null, [Validators.required, this.greaterThanZero]),
+      jezik: new FormControl(1),
       deletePdfs: new FormControl(0),
       //lang and deletePdfs variables were required in api, even though they weren't in the prototype form - therefore the static content (temporarily)
     });
@@ -31,10 +34,19 @@ export class BookAddDetailsComponent implements OnInit {
   onSubmit() {
     this.storeToParent();
     this.bookAddForm.reset();
-    
   }
 
-  storeToParent(){
+  storeToParent() {
     this.formEmitter.emit(this.bookAddForm.value);
+  }
+
+  greaterThanZero(control: FormControl): {
+    [validation: string]: boolean;
+  } {
+    const value = control.value;
+    if (value < 0) {
+      return { greaterThanZero: false };
+    }
+    return null;
   }
 }

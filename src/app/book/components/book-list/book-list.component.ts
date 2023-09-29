@@ -34,7 +34,7 @@ export class BookListComponent implements OnInit, OnDestroy {
       .subscribe((books: Book[]) => {
         this.books = books;
         this.filteredArray = this.books.slice();
-        console.log(this.filteredArray);
+
       });
   }
 

@@ -19,7 +19,6 @@ export class BookTopBarComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((url) => {
-      console.log(url.get('id'));
       this.id = Number(url.get('id'));
     });
 

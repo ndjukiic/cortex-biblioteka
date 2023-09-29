@@ -35,7 +35,6 @@ export class BookAddComponent {
 
   detailsReceived(data: Book) {
     this.detailForm = data;
-    console.log('detail form data', this.detailForm);
     if (this.specsForm) {
       this.fullForm();
     }
@@ -43,7 +42,6 @@ export class BookAddComponent {
 
   specsReceived(data: Book) {
     this.specsForm = data;
-    console.log('specifications form data', this.specsForm);
     if (this.detailForm) {
       this.fullForm();
     }
@@ -55,8 +53,6 @@ export class BookAddComponent {
         ...this.detailForm,
         ...this.specsForm,
       };
-
-      console.log(this.newBook);
     }
     if (this.newBook) {
       this.addBook();
@@ -64,10 +60,21 @@ export class BookAddComponent {
   }
 
   addBook() {
-    this.bookService.addBook(this.newBook).subscribe((response) => {
-      console.log('JUPIIIII', response);
-    });
-    // this.router.navigate(['../'], { relativeTo: this.route });
-    // for whatever reason - router breaks the form result addition to the list
+    this.bookService.addBook(this.newBook).subscribe(
+      (response) => {
+        this.router.navigate(['../'], { relativeTo: this.route });
+        console.log(response);
+      },
+      (error) => {
+        console.log('e jbg', error);
+        alert(
+          'Došlo je do naredne greške: ' +
+            error.status +
+            ' ' +
+            error.statusText +
+            '. Molimo Vas pokušajte kasnije, ili kontaktirajte administratore.'
+        );
+      }
+    );
   }
 }

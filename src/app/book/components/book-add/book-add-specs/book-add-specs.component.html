@@ -1,6 +1,8 @@
-<form class="text-gray-700 forma"
-[formGroup] = "bookAddForm"
-(ngSubmit)="onSubmit()">
+<form
+  class="text-gray-700 forma"
+  [formGroup]="bookAddForm"
+  (ngSubmit)="onSubmit()"
+>
   <div class="flex flex-row ml-[30px]">
     <div class="w-[50%] mb-[150px]">
       <div class="mt-[20px]">
@@ -10,8 +12,16 @@
           class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           formControlName="brStrana"
         />
-        
-        <span *ngIf="!bookAddForm.get('brStrana').valid && bookAddForm.get('brStrana').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
+
+        <span
+          *ngIf="
+            !bookAddForm.get('brStrana').valid &&
+            bookAddForm.get('brStrana').touched &&
+            !bookAddForm.get('brStrana').hasError('greaterThanZero')
+          "
+          class="text-red-800"
+          >* Polje ne smije biti prazno, niti manje od 0!
+        </span>
       </div>
       <div class="mt-[20px]">
         <label for="script">Pismo </label>
@@ -26,7 +36,13 @@
           <option value="3">Arapsko</option>
           <option value="4">Kinesko</option>
         </select>
-        <span *ngIf="!bookAddForm.get('pismo').valid && bookAddForm.get('pismo').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
+        <span
+          *ngIf="
+            !bookAddForm.get('pismo').valid && bookAddForm.get('pismo').touched
+          "
+          class="text-red-800"
+          >* Polje ne smije biti prazno!
+        </span>
       </div>
       <div class="mt-[20px]">
         <label for="bookbind">Povez</label>
@@ -39,7 +55,13 @@
           <option value="1">Tvrdi</option>
           <option value="2">Meki</option>
         </select>
-        <span *ngIf="!bookAddForm.get('povez').valid && bookAddForm.get('povez').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
+        <span
+          *ngIf="
+            !bookAddForm.get('povez').valid && bookAddForm.get('povez').touched
+          "
+          class="text-red-800"
+          >* Polje ne smije biti prazno!
+        </span>
       </div>
       <div class="mt-[20px]">
         <label for="format">Format</label>
@@ -52,7 +74,14 @@
           <option value="1">A1</option>
           <option value="2">A2</option>
         </select>
-        <span *ngIf="!bookAddForm.get('format').valid && bookAddForm.get('format').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
+        <span
+          *ngIf="
+            !bookAddForm.get('format').valid &&
+            bookAddForm.get('format').touched
+          "
+          class="text-red-800"
+          >* Polje ne smije biti prazno!
+        </span>
       </div>
       <div class="mt-[20px]">
         <label for="isbn">International Standard Book Number (ISBN) </label>
@@ -61,7 +90,13 @@
           class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           formControlName="isbn"
         />
-        <span *ngIf="!bookAddForm.get('isbn').valid && bookAddForm.get('isbn').touched" class="text-red-800">* Polje ne smije biti prazno! </span>
+        <span
+          *ngIf="
+            !bookAddForm.get('isbn').valid && bookAddForm.get('isbn').touched
+          "
+          class="text-red-800"
+          >* Polje ne smije biti prazno!
+        </span>
       </div>
     </div>
   </div>
