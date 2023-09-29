@@ -17,6 +17,7 @@ export class BookTabDetailsComponent implements OnInit{
     this.id = this.bookService.getBookID();
     this.bookService.loadBook(this.id).subscribe((book: Book) => {
       this.book = book;
+      console.log(book);
     });
   }
 }

@@ -1,4 +1,4 @@
-<div class="px-6 py-8 flex flex-row justify-between">
+<div class="px-6 py-8 flex flex-row justify-between" *ngIf="book">
   <div>
     <ul>
       <li>
@@ -7,17 +7,21 @@
       </li>
       <li class="mt-6">
         <p class="text-gray-500 text-[14px]">Kategorija</p>
-        <p class="font-medium">{{ book.category }}</p>
+        <div *ngFor="let category of book.categories">
+          <p class="font-medium">{{ category.name }}</p>
+        </div>
       </li>
       <li class="mt-6">
         <p class="text-gray-500 text-[14px]">Žanr</p>
-        <p class="font-medium">{{ book.genre }}</p>
+        <div *ngFor="let genre of book.genres">
+          <p class="font-medium">{{ genre.name }}</p>
+        </div>
       </li>
       <li class="mt-6">
         <p class="text-gray-500 text-[14px]">Autor/i</p>
-        <p class="font-medium">
-          {{ book.authors[0].name }} {{ book.authors[0].surname }}
-        </p>
+        <div *ngFor="let author of book.authors">
+          <p class="font-medium">{{ author.name }} {{author.surname}}</p>
+        </div>
       </li>
       <li class="mt-6">
         <p class="text-gray-500 text-[14px]">Izdavač</p>
@@ -25,7 +29,7 @@
       </li>
       <li class="mt-6">
         <p class="text-gray-500 text-[14px]">Godina Izdavanja</p>
-        <p class="font-medium">{{ book.publishingYear }}</p>
+        <p class="font-medium">{{ book.pDate }}</p>
       </li>
     </ul>
   </div>

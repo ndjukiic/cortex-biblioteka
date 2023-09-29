@@ -3,15 +3,15 @@ export class Book {
   title: string;
   photo?: string;
   description: string;
-  category: { id: number; name: string };
-  genre: { id: number; name: string };
+  categories: { id: number; name: string };
+  genres: { id: number; name: string };
   authors: { id: number; name: string };
   publisher: { id: number; name: string };
-  publishingYear: number;
+  pDate: number;
   quantity: number;
   pages: number;
-  writingSystem: string;
-  bookbind: string;
+  script: { id: number; name: string };
+  bookbind: { id: number; name: string };
   language: { id: number; name: string };
   cover?: string;
   format: { id: number; name: string };
@@ -22,16 +22,16 @@ export class Book {
     title: string,
     photo: string,
     description: string,
-    category: { id: number; name: string },
-    genre: { id: number; name: string },
+    categories: { id: number; name: string },
+    genres: { id: number; name: string },
     authors: { id: number; name: string },
     publisher: { id: number; name: string },
-    publishingYear: number,
+    pDate: number,
     quantity: number,
     pages: number,
-    writingSystem: string,
+    script: { id: number; name: string },
     language: { id: number; name: string },
-    bookbind: string,
+    bookbind: { id: number; name: string },
     cover: string,
     format: { id: number; name: string },
     isbn: number
@@ -40,14 +40,14 @@ export class Book {
     this.title = title;
     this.photo = photo;
     this.description = description;
-    this.category = category;
-    this.genre = genre;
+    this.categories = categories;
+    this.genres = genres;
     this.authors = authors;
     this.publisher = publisher;
-    this.publishingYear = publishingYear;
+    this.pDate = pDate;
     this.quantity = quantity;
     this.pages = pages;
-    this.writingSystem = writingSystem;
+    this.script = script;
     this.bookbind = bookbind;
     this.language = language;
     this.cover = cover;
