@@ -46,6 +46,19 @@ export class BookService {
       );
   }
 
+  loadBookForEdit(id: number): Observable<Book>{
+    const url = `${this.url}/${id}/edit`
+    
+    return this.httpClient.get(url,{ headers: {
+      Authorization: 'Bearer 2|DyPu5MO2VeAwQoHL8dPCkTFfXzMXkZjnP21pFxiV',}}
+      ).pipe(
+        map((response: ApiResponse<Book>)=>{
+          this.book$.next(response.data);
+          return response.data;
+        })
+      )
+  }
+
   addBook(book: Book) {
     return this.httpClient
       .post<Book>(`${this.url}/store`, book, {

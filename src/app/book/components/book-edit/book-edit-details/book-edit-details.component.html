@@ -1,4 +1,4 @@
-<div class="scroll height-content section-content">
+<div class="scroll height-content section-content" *ngIf="bookToEdit">
   <form class="text-gray-700 forma h-screen">
     <div class="flex flex-row ml-[30px] mb-[150px]">
       <div class="w-[50%]">
@@ -7,7 +7,7 @@
           <input
             type="text"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            value="Tom Sojer"
+            [value]="bookToEdit.book.title"
           />
         </div>
 
@@ -16,7 +16,7 @@
           <textarea
             name="content"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [value]="content"
+            [value]="bookToEdit.book.description"
           ></textarea>
         </div>
 
@@ -26,9 +26,12 @@
             name="category"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           >
-            <option disabled selected></option>
-            <option value="udzbenici">Udžbenici</option>
-            <option value="romani" selected>Romani</option>
+            <option
+              *ngFor="let value of bookToEdit.categories"
+              [value]="value.name"
+            >
+              {{ value.name }}
+            </option>
           </select>
         </div>
         <div class="mt-[20px]">
@@ -38,9 +41,9 @@
             name="category"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           >
-            <option value="kids" selected>Knjiga za djecu</option>
-            <option value="poetry">Poezija</option>
-            <option value="specialised-literature">Stručna literatura</option>
+            <option *ngFor="let value of bookToEdit.genres" [value]="value.name">
+              {{ value.name }}
+            </option>
           </select>
         </div>
       </div>
@@ -52,9 +55,9 @@
             name="authors"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           >
-            <option disabled selected></option>
-            <option value="mark-twain" selected>Mark Twain</option>
-            <option value="pero-peric">Pero Perić</option>
+            <option *ngFor="let value of bookToEdit.authors" [value]="value.name">
+              {{ value.name }} {{ value.surname }}
+            </option>
           </select>
         </div>
         <div class="mt-[20px]">
@@ -63,20 +66,23 @@
             name="publishers"
             class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           >
-            <option selected>Delfi knjižare</option>
-            <option value="publisher1">Izdavac 1</option>
+            
+          <option
+          *ngFor="let value of bookToEdit.publishers"
+          [value]="value.name"
+        >
+          {{ value.name }}
+        </option>
           </select>
         </div>
 
         <div class="mt-[20px]">
           <label for="year">Godina izdavanja </label>
-          <select
-            name="year"
-            class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-          >
-            <option selected>30.03.2011</option>
-            <option value="year1">2023</option>
-          </select>
+          <input
+            type="text"
+            class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            [value]="bookToEdit.book.pDate"
+          />
         </div>
 
         <div class="mt-[20px]">
@@ -84,7 +90,7 @@
           <input
             type="text"
             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            value="30"
+            [value]="bookToEdit.book.samples"
           />
         </div>
       </div>
