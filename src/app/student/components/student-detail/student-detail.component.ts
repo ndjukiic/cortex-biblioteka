@@ -18,7 +18,6 @@ export class StudentDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.params['id'];
-    this.studentService.setId(id);
 
     this.studentService.loadStudent(id).subscribe((student: Student) => {
       this.student = student;

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap, throwError } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { Librarian } from '../models/librarian.model';
 import { LibrarianCreate } from '../models/librarian-create.model';
@@ -11,8 +11,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class LibrarianService {
   private url = 'https://tim7.petardev.live/api/users';
-  public librarians$ = new Subject<Librarian[]>();
-  public librarian$ = new Subject<Librarian>();
+  public librarians$ = new BehaviorSubject<Librarian[]>(null);
+  public librarian$ = new BehaviorSubject<Librarian>(null);
 
   constructor(private httpClient: HttpClient) {}
 

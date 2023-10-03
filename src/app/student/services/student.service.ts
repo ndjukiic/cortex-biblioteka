@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap, throwError } from 'rxjs';
 import { Student } from '../models/student.model';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { StudentCreate } from '../models/student-create.model';
@@ -11,9 +11,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class StudentService {
   private url = 'https://tim7.petardev.live/api/users';
-  public students$ = new Subject<Student[]>();
-  public student$ = new Subject<Student>();
-  public id: number;
+  public students$ = new BehaviorSubject<Student[]>(null);
+  public student$ = new BehaviorSubject<Student>(null);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -105,14 +104,5 @@ export class StudentService {
         })
       );
     }
-  }
-  
-
-  setId(id: number) {
-    this.id = id;
-  }
-
-  getId() {
-    return this.id;
   }
 }
