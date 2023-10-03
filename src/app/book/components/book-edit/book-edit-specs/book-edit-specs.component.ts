@@ -5,7 +5,6 @@ import { BookService } from 'src/app/book/services/book.service';
 @Component({
   selector: 'app-book-edit-specs',
   templateUrl: './book-edit-specs.component.html',
-  styleUrls: ['./book-edit-specs.component.css'],
 })
 export class BookEditSpecsComponent implements OnInit {
   bookToEdit: Book;

@@ -7,7 +7,6 @@ import { BookService } from 'src/app/book/services/book.service';
 @Component({
   selector: 'app-book-add',
   templateUrl: './book-add.component.html',
-  styleUrls: ['./book-add.component.css'],
 })
 export class BookAddComponent {
   visibleComponent = 1;

@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-book-top-bar',
   templateUrl: './book-top-bar.component.html',
-  styleUrls: ['./book-top-bar.component.css'],
 })
 export class BookTopBarComponent implements OnInit {
   book: Book;
