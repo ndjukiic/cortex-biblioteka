@@ -20,7 +20,7 @@ export class StudentService {
     return this.httpClient
       .get(this.url, {
         headers: {
-          Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
+          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
         },
       })
       .pipe(
@@ -38,7 +38,7 @@ export class StudentService {
     return this.httpClient
       .get<ApiResponse<Student>>(`${this.url}/${id}`, {
         headers: {
-          Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
+          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
         },
       })
       .pipe(
@@ -52,7 +52,7 @@ export class StudentService {
   createNewStudent(student: StudentCreate): Observable<any> {
     return this.httpClient.post(`${this.url}/store`, student, {
       headers: {
-        Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
+        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
       },
     });
   }
@@ -60,7 +60,7 @@ export class StudentService {
   editStudent(student: StudentCreate, id: number): Observable<any> {
     return this.httpClient.put(`${this.url}/${id}`, student, {
       headers: {
-        Authorization: 'Bearer 4|pzbRL3SYZGbepvDMNH5k1VL6rJtK2TTfNqnovn1H',
+        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
       },
     });
   }
@@ -104,5 +104,13 @@ export class StudentService {
         })
       );
     }
+  }
+
+  deleteStudent(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.url}/${id}`, {
+      headers: {
+        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+      },
+    });
   }
 }

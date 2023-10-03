@@ -20,7 +20,7 @@ export class LibrarianService {
     return this.httpClient
       .get(this.url, {
         headers: {
-          Authorization: 'Bearer 8|sV25Lac7JJ10WvWztDgufeycIoiEuEhsi1rcGnKw',
+          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
         },
       })
       .pipe(
@@ -38,7 +38,7 @@ export class LibrarianService {
     return this.httpClient
       .get<ApiResponse<Librarian>>(`${this.url}/${id}`, {
         headers: {
-          Authorization: 'Bearer 8|sV25Lac7JJ10WvWztDgufeycIoiEuEhsi1rcGnKw',
+          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
         },
       })
       .pipe(
@@ -52,7 +52,7 @@ export class LibrarianService {
   createNewLibrarian(librarian: LibrarianCreate): Observable<any> {
     return this.httpClient.post(`${this.url}/store`, librarian, {
       headers: {
-        Authorization: 'Bearer 8|sV25Lac7JJ10WvWztDgufeycIoiEuEhsi1rcGnKw',
+        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
       },
     });
   }
@@ -60,7 +60,7 @@ export class LibrarianService {
   editLibrarian(librarian: LibrarianCreate, id: number): Observable<any> {
     return this.httpClient.put(`${this.url}/${id}`, librarian, {
       headers: {
-        Authorization: 'Bearer 8|sV25Lac7JJ10WvWztDgufeycIoiEuEhsi1rcGnKw',
+        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
       },
     });
   }
@@ -72,12 +72,12 @@ export class LibrarianService {
     if (!librarianForm.valid) {
       return throwError(() => new Error('Forma nije validna'));
     }
-  
+
     const nameAndSurname = librarianForm.get('nameAndSurname').value;
     const fullName = nameAndSurname.split(/\s(.+)/);
     const name = fullName[0];
     const surname = fullName[1];
-  
+
     const librarianData: LibrarianCreate = {
       role_id: 1,
       name: name,
@@ -88,7 +88,7 @@ export class LibrarianService {
       password: librarianForm.get('password').value,
       password_confirmation: librarianForm.get('confirmPassword').value,
     };
-  
+
     if (librarianId) {
       return this.editLibrarian(librarianData, librarianId).pipe(
         tap(() => {
@@ -105,5 +105,12 @@ export class LibrarianService {
       );
     }
   }
-  
+
+  deleteLibrarian(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.url}/${id}`, {
+      headers: {
+        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+      },
+    });
+  }
 }
