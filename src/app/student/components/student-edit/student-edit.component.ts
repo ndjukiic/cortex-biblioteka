@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Student } from '../../models/student.model';
 import { StudentService } from '../../services/student.service';
+import { createStudentForm } from '../../helpers/student-form.helper';
 
 @Component({
   selector: 'app-student-edit',
@@ -17,10 +18,11 @@ export class StudentEditComponent implements OnInit {
   constructor(private studentService: StudentService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.studentEditForm = createStudentForm();
     const studentId = +this.route.snapshot.paramMap.get('id');
     this.studentService.loadStudent(studentId).subscribe((student: Student) => {
       this.student = student;
-      
+
       this.studentEditForm.patchValue({
         'nameAndSurname': student.name + ' ' + student.surname,
         'jmbg': student.jmbg,
@@ -28,13 +30,11 @@ export class StudentEditComponent implements OnInit {
         'username': student.username,
       });
     });
-    
-    this.studentEditForm = this.studentService.createStudentForm();
   }
   
   onSubmit() {
     this.studentService
-      .saveOrEditStudent(this.studentEditForm, this.student.id)
+      .saveStudent(this.studentEditForm, this.student.id)
       .subscribe({
         next: (response) => {
           console.log('Uspješno sačuvano', response);

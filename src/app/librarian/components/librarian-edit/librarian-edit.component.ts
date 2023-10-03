@@ -3,6 +3,7 @@ import { Librarian } from '../../models/librarian.model';
 import { LibrarianService } from '../../services/librarian.service';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { createLibrarianForm } from '../../helpers/librarian-form.helper';
 
 @Component({
   selector: 'app-librarian-edit',
@@ -29,12 +30,12 @@ export class LibrarianEditComponent implements OnInit {
       });
     });
     
-    this.librarianEditForm = this.librarianService.createLibrarianForm();
+    this.librarianEditForm = createLibrarianForm();
   }
   
   onSubmit() {
     this.librarianService
-      .saveOrEditLibrarian(this.librarianEditForm, this.librarian.id)
+      .saveLibrarian(this.librarianEditForm, this.librarian.id)
       .subscribe({
         next: (response) => {
           console.log('Uspješno sačuvano', response);

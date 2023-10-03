@@ -6,20 +6,10 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-librarian-detail',
   templateUrl: './librarian-detail.component.html',
-  styleUrls: ['./librarian-detail.component.css']
+  styleUrls: ['./librarian-detail.component.css'],
 })
 export class LibrarianDetailComponent {
-
-  librarian: Librarian = {
-    id: 0,
-    role: '',
-    jmbg: '',
-    photoPath: '',
-    username: '',
-    name: '',
-    surname: '',
-    email: '',
-  };
+  librarian: Librarian;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,18 +17,11 @@ export class LibrarianDetailComponent {
   ) {}
 
   ngOnInit(): void {
-    this.loadLibrarian();
-  }
-
-  loadLibrarian() {
     const id = +this.route.snapshot.params['id'];
-    this.librarianService.loadLibrarian(id).subscribe({
-      next: (librarian: Librarian) => {
+    this.librarianService
+      .loadLibrarian(id)
+      .subscribe((librarian: Librarian) => {
         this.librarian = librarian;
-      },
-      error: (error) => {
-        console.error('Greška pri učitavanju bibliotekara', error);
-      },
-    });
+      });
   }
 }

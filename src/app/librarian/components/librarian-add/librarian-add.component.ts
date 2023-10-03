@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LibrarianService } from '../../services/librarian.service';
+import { createLibrarianForm } from '../../helpers/librarian-form.helper';
 
 @Component({
   selector: 'app-librarian-add',
@@ -14,12 +15,12 @@ export class LibrarianAddComponent  implements OnInit {
   constructor(private librarianService: LibrarianService, private router: Router) {}
 
   ngOnInit(): void {
-    this.librarianAddForm = this.librarianService.createLibrarianForm();
+    this.librarianAddForm = createLibrarianForm();
   }
 
   onSubmit() {
     this.librarianService
-      .saveOrEditLibrarian(this.librarianAddForm)
+      .saveLibrarian(this.librarianAddForm)
       .subscribe({
         next: (response) => {
           console.log('Uspješno sačuvano', response);
