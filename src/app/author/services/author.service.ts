@@ -18,7 +18,7 @@ export class AuthorService{
     return this.httpClient
       .get<ApiResponse<Author[]>>(this.url, {
         headers: {
-          Authorization: 'Bearer 2|DyPu5MO2VeAwQoHL8dPCkTFfXzMXkZjnP21pFxiV',
+          Authorization: 'Bearer 3|BvYhZHXMx5QM42xhGNjqDSS2S7lQiJsUTlNAIpwI',
         },
       })
       .pipe(
