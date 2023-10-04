@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
-// import { AuthorListComponent } from './author/components/author-list/author-list.component';
+import { AuthorListComponent } from './author/components/author-list/author-list.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -13,13 +13,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthorEditComponent } from './author/components/author-edit/author-edit.component';
 import { AuthorAddComponent } from './author/components/author-add/author-add.component';
 import { AuthorDetailComponent } from './author/components/author-detail/author-detail.component';
+import { RouterModule } from '@angular/router';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DashboardComponent,
-    // AuthorListComponent,
+    AuthorListComponent,
     TransactionsComponent,
     SidebarComponent,
     SettingsComponent,
@@ -27,7 +31,7 @@ import { AuthorDetailComponent } from './author/components/author-detail/author-
     AuthorAddComponent,
     AuthorDetailComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -31,4 +31,4 @@ import { AuthorService } from './services/author.service';
     AuthorService
   ]
 })
-export class LibrarianModule { }
+export class AuthorModule { }
