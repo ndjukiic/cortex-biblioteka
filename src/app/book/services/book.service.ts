@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../models/book.model';
 import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ export class BookService {
     return this.httpClient
       .get<ApiResponse<Book[]>>(this.url, {
         headers: {
-          Authorization: 'Bearer 2|DyPu5MO2VeAwQoHL8dPCkTFfXzMXkZjnP21pFxiV',
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
         },
       })
       .pipe(
@@ -35,7 +36,7 @@ export class BookService {
     return this.httpClient
       .get(url, {
         headers: {
-          Authorization: 'Bearer 2|DyPu5MO2VeAwQoHL8dPCkTFfXzMXkZjnP21pFxiV',
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
         },
       })
       .pipe(
@@ -50,7 +51,7 @@ export class BookService {
     const url = `${this.url}/${id}/edit`
     
     return this.httpClient.get(url,{ headers: {
-      Authorization: 'Bearer 2|DyPu5MO2VeAwQoHL8dPCkTFfXzMXkZjnP21pFxiV',}}
+      Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',}}
       ).pipe(
         map((response: ApiResponse<Book>)=>{
           this.book$.next(response.data);
@@ -63,7 +64,7 @@ export class BookService {
     return this.httpClient
       .post<Book>(`${this.url}/store`, book, {
         headers: {
-          Authorization: 'Bearer 3|BvYhZHXMx5QM42xhGNjqDSS2S7lQiJsUTlNAIpwI',
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
         },
       })
       .pipe(

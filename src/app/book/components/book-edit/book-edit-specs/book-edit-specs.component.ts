@@ -16,4 +16,8 @@ export class BookEditSpecsComponent implements OnInit {
       this.bookToEdit = response;
     });
   }
+
+  onSubmit(){
+    
+  }
 }

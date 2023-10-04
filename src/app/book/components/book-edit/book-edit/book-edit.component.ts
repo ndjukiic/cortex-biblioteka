@@ -24,4 +24,8 @@ export class BookEditComponent implements OnInit {
   showMultimedia() {
     this.visibleComponent = 3;
   }
+
+  detailsReceiver(data: Book){
+    console.log('primljeno', data)
+  }
 }

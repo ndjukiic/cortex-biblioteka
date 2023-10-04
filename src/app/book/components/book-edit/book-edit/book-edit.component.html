@@ -31,9 +31,8 @@
   </ul>
 </div>
 <div class="ml-4 py-3">
-  <!-- <router-outlet></router-outlet> -->
   <div *ngIf="visibleComponent == 1">
-    <app-book-edit-details></app-book-edit-details>
+    <app-book-edit-details (formEmitter)="detailsReceived($event)"></app-book-edit-details>
   </div>
   <div *ngIf="visibleComponent == 2">
     <app-book-edit-specs></app-book-edit-specs>
@@ -42,26 +41,5 @@
     <app-book-edit-multimedia></app-book-edit-multimedia>
   </div>
 
-  <div class="absolute bottom-[20px] w-full">
-    <div class="flex flex-row">
-      <div
-        class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
-      >
-        <button
-          type="button"
-          class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
-        >
-          Poništi
-          <i class="fas fa-times ml-[4px]"></i>
-        </button>
-        <button
-          type="button"
-          id="sacuvajKnjigu"
-          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-        >
-          Sačuvaj <i class="fas fa-check ml-[4px]"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+ 
 </div>
