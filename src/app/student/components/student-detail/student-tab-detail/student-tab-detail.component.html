@@ -3,23 +3,23 @@
     <div class="mr-[30px]">
       <div class="">
         <span class="text-gray-500">Ime i prezime</span>
-        <p class="font-medium">{{ student.name }} {{ student.surname }}</p>
+        <p class="font-medium">{{ student?.name }} {{ student?.surname }}</p>
       </div>
       <div class="mt-[40px]">
         <span class="text-gray-500">Tip korisnika</span>
-        <p class="font-medium">{{ student.role }}</p>
+        <p class="font-medium">{{ student?.role }}</p>
       </div>
       <div class="mt-[40px]">
         <span class="text-gray-500">JMBG</span>
-        <p class="font-medium">{{ student.jmbg }}</p>
+        <p class="font-medium">{{ student?.jmbg }}</p>
       </div>
       <div class="mt-[40px]">
         <span class="text-gray-500">Email</span>
-        <p class="font-medium text-[#2196f3]">{{ student.email }}</p>
+        <p class="font-medium text-[#2196f3]">{{ student?.email }}</p>
       </div>
       <div class="mt-[40px]">
         <span class="text-gray-500">Korisnicko ime</span>
-        <p class="font-medium">{{ student.username }}</p>
+        <p class="font-medium">{{ student?.username }}</p>
       </div>
       <div class="mt-[40px]">
         <span class="text-gray-500">Broj logovanja</span>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="ml-[100px] mt-[20px]">
-      <img class="p-2 border-2 border-gray-300" width="300px" src="{{ student.photoPath }}" alt="" />
+      <img class="p-2 border-2 border-gray-300" width="300px" src="{{ student?.photoPath }}" alt="" />
     </div>
   </div>
 </div>
