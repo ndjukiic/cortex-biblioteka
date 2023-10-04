@@ -7,10 +7,7 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
 
 
 const routes = [
-    {
-      path: '',
-      component: AuthorListComponent,
-    },
+    
     {
       path: 'add',
       component: AuthorAddComponent,
@@ -30,12 +27,15 @@ const routes = [
       path: ':id/edit',
       component: AuthorEditComponent,
     },
+    {
+      path: '',
+      component: AuthorListComponent,
+    }
   ]
   
   @NgModule({
     imports: [
-      RouterModule.forChild(routes), 
-      RouterModule.forRoot(routes)
+      RouterModule.forChild(routes)
     ],
     
   })
