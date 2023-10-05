@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { AuthorListComponent } from './author/components/author-list/author-list.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
@@ -24,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'authors',
-    component: AuthorListComponent,
+    loadChildren: () => import('./author/author.module').then((m) => m.AuthorModule),
   },
   {
     path: 'transactions',
