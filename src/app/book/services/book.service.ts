@@ -47,17 +47,21 @@ export class BookService {
       );
   }
 
-  loadBookForEdit(id: number): Observable<Book>{
-    const url = `${this.url}/${id}/edit`
-    
-    return this.httpClient.get(url,{ headers: {
-      Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',}}
-      ).pipe(
-        map((response: ApiResponse<Book>)=>{
+  loadBookForEdit(id: number): Observable<Book> {
+    const url = `${this.url}/${id}/edit`;
+
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+        },
+      })
+      .pipe(
+        map((response: ApiResponse<Book>) => {
           this.book$.next(response.data);
           return response.data;
         })
-      )
+      );
   }
 
   addBook(book: Book) {
@@ -71,6 +75,24 @@ export class BookService {
         tap((response: Book) => {
           console.log('succesfully created', response);
         })
+      );
+  }
+
+  editBook(book: Book, id: number) {
+    const url = `${this.url}/${id}/update`;
+
+    return this.httpClient
+      .post(url, book, {
+        headers: {
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+        },
+      })
+      .pipe(
+        map(
+          (response: Book) => {
+            console.log('sucessfully edited', response);
+          },
+        )
       );
   }
 

@@ -32,14 +32,16 @@
 </div>
 <div class="ml-4 py-3">
   <div *ngIf="visibleComponent == 1">
-    <app-book-edit-details (formEmitter)="detailsReceived($event)"></app-book-edit-details>
+    <app-book-edit-details
+      (formEmitter)="detailsReceived($event)"
+    ></app-book-edit-details>
   </div>
   <div *ngIf="visibleComponent == 2">
-    <app-book-edit-specs></app-book-edit-specs>
+    <app-book-edit-specs
+      (formEmitter)="specsReceived($event)"
+    ></app-book-edit-specs>
   </div>
   <div *ngIf="visibleComponent == 3">
     <app-book-edit-multimedia></app-book-edit-multimedia>
   </div>
-
- 
 </div>

@@ -20,6 +20,7 @@ export class Book {
   bSamples?: number;
   rSamples?: number;
   fSamples?: number;
+  book?: Book;
 
   constructor(
     id: number,

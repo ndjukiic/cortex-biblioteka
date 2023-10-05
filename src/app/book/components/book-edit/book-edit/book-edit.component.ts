@@ -8,10 +8,16 @@ import { BookService } from 'src/app/book/services/book.service';
 })
 export class BookEditComponent implements OnInit {
   visibleComponent = 1;
+  id: number;
+  detailsData: Book;
+  specsData: Book;
+  editedBook: Book;
 
-  constructor() {}
+  constructor(private bookService: BookService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.id = +this.bookService.getBookID();
+  }
 
   showDetails() {
     this.visibleComponent = 1;
@@ -25,7 +31,34 @@ export class BookEditComponent implements OnInit {
     this.visibleComponent = 3;
   }
 
-  detailsReceiver(data: Book){
-    console.log('primljeno', data)
+  detailsReceived(data: Book) {
+    this.detailsData = data;
+    if (this.specsData) {
+      this.fullForm();
+    }
+  }
+
+  specsReceived(data: Book) {
+    this.specsData = data;
+    if (this.detailsData) {
+      this.fullForm();
+    }
+  }
+
+  fullForm() {
+    if (this.detailsData && this.specsData) {
+      this.editedBook = {
+        ...this.detailsData,
+        ...this.specsData,
+      };
+      console.log(this.editedBook);
+      this.bookService.editBook(this.editedBook, this.id).subscribe(
+        (response) => {},
+        (error) => {
+          console.log(error);
+        }
+      );
+      //service bookedit call
+    }
   }
 }

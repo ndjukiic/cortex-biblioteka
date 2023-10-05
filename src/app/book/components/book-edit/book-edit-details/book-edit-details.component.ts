@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Book } from 'src/app/book/models/book.model';
 import { BookService } from 'src/app/book/services/book.service';
 
@@ -8,27 +8,26 @@ import { BookService } from 'src/app/book/services/book.service';
   templateUrl: './book-edit-details.component.html',
 })
 export class BookEditDetailsComponent implements OnInit {
+  @Output() formEmitter = new EventEmitter<Book>();
   bookToEdit: Book;
   id: number;
-  bookEditForm: FormGroup;
-  @Input() formEmitter = new EventEmitter<Book>();
+  bookToEmit: Book;
 
-  constructor(private bookService: BookService, private fb: FormBuilder) {}
+  constructor(private bookService: BookService) {}
 
   ngOnInit() {
     this.id = +this.bookService.getBookID();
     this.bookService.loadBookForEdit(this.id).subscribe((response) => {
       this.bookToEdit = response;
-      console.log('post-load log', response);
     });
   }
 
-  onSubmit(){
-    console.log('posle edita', this.bookToEdit);
+  onSubmit() {
+    this.bookToEmit = this.bookToEdit.book;
     this.storeToParent();
   }
 
-  storeToParent(){
-    this.formEmitter.emit(this.bookToEdit);
+  storeToParent() {
+    this.formEmitter.emit(this.bookToEmit);
   }
 }
