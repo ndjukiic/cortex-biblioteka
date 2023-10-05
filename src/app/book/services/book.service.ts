@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../models/book.model';
 import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookService {
-  private url = 'https://tim7.petardev.live/api/books';
+  private url = `${environment.apiUrl}/books`;
   private books$ = new Subject<Book[]>();
   private book$ = new Subject<Book>();
   private bookID: number;
@@ -19,7 +20,7 @@ export class BookService {
     return this.httpClient
       .get<ApiResponse<Book[]>>(this.url, {
         headers: {
-          Authorization: 'Bearer 2|DyPu5MO2VeAwQoHL8dPCkTFfXzMXkZjnP21pFxiV',
+          Authorization: 'Bearer 22|QEQPiuhU5WqsfvOWeooTWXPOM7imTzyvnD0Z4pS8',
         },
       })
       .pipe(
