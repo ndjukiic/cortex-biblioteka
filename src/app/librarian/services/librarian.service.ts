@@ -5,12 +5,13 @@ import { ApiResponse } from 'src/app/shared/api-response.model';
 import { Librarian } from '../models/librarian.model';
 import { LibrarianCreate } from '../models/librarian-create.model';
 import { FormGroup } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LibrarianService {
-  private url = 'https://tim7.petardev.live/api/users';
+  private url = `${environment.apiUrl}/users`;
   public librarians$ = new BehaviorSubject<Librarian[]>(null);
   public librarian$ = new BehaviorSubject<Librarian>(null);
 

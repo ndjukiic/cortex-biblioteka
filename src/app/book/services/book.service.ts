@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../models/book.model';
-import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { environment } from 'src/environments/environment';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +20,7 @@ export class BookService {
     return this.httpClient
       .get<ApiResponse<Book[]>>(this.url, {
         headers: {
-          Authorization: 'Bearer 22|QEQPiuhU5WqsfvOWeooTWXPOM7imTzyvnD0Z4pS8',
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
         },
       })
       .pipe(

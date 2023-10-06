@@ -5,12 +5,13 @@ import { Student } from '../models/student.model';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { StudentCreate } from '../models/student-create.model';
 import { FormGroup } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentService {
-  private url = 'https://tim7.petardev.live/api/users';
+  private url = `${environment.apiUrl}/users`;
   public students$ = new BehaviorSubject<Student[]>(null);
   public student$ = new BehaviorSubject<Student>(null);
 
@@ -72,12 +73,12 @@ export class StudentService {
     if (!studentForm.valid) {
       return throwError(() => new Error('Forma nije validna'));
     }
-  
+
     const nameAndSurname = studentForm.get('nameAndSurname').value;
     const fullName = nameAndSurname.split(/\s(.+)/);
     const name = fullName[0];
     const surname = fullName[1];
-  
+
     const studentData: StudentCreate = {
       role_id: 1,
       name: name,
@@ -88,7 +89,7 @@ export class StudentService {
       password: studentForm.get('password').value,
       password_confirmation: studentForm.get('confirmPassword').value,
     };
-  
+
     if (studentId) {
       return this.editStudent(studentData, studentId).pipe(
         tap(() => {
