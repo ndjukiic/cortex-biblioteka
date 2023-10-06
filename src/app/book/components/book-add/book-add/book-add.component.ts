@@ -7,7 +7,6 @@ import { BookService } from 'src/app/book/services/book.service';
 @Component({
   selector: 'app-book-add',
   templateUrl: './book-add.component.html',
-  styleUrls: ['./book-add.component.css'],
 })
 export class BookAddComponent {
   visibleComponent = 1;
@@ -55,6 +54,7 @@ export class BookAddComponent {
       };
     }
     if (this.newBook) {
+      console.log('ovo se salje', this.newBook);
       this.addBook();
     }
   }

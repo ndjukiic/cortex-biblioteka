@@ -4,6 +4,7 @@ import { Book } from '../models/book.model';
 import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { environment } from 'src/environments/environment';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +37,24 @@ export class BookService {
     return this.httpClient
       .get(url, {
         headers: {
-          Authorization: 'Bearer 2|DyPu5MO2VeAwQoHL8dPCkTFfXzMXkZjnP21pFxiV',
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+        },
+      })
+      .pipe(
+        map((response: ApiResponse<Book>) => {
+          this.book$.next(response.data);
+          return response.data;
+        })
+      );
+  }
+
+  loadBookForEdit(id: number): Observable<Book> {
+    const url = `${this.url}/${id}/edit`;
+
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
         },
       })
       .pipe(
@@ -51,12 +69,28 @@ export class BookService {
     return this.httpClient
       .post<Book>(`${this.url}/store`, book, {
         headers: {
-          Authorization: 'Bearer 3|BvYhZHXMx5QM42xhGNjqDSS2S7lQiJsUTlNAIpwI',
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
         },
       })
       .pipe(
         tap((response: Book) => {
           console.log('succesfully created', response);
+        })
+      );
+  }
+
+  editBook(book: Book, id: number) {
+    const url = `${this.url}/${id}/update`;
+
+    return this.httpClient
+      .post(url, book, {
+        headers: {
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+        },
+      })
+      .pipe(
+        tap((response) => {
+          console.log('successfully edited', response);
         })
       );
   }

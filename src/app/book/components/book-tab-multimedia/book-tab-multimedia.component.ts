@@ -3,8 +3,7 @@ import { Book } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
 @Component({
   selector: 'app-book-tab-multimedia',
-  templateUrl: './book-tab-multimedia.component.html',
-  styleUrls: ['./book-tab-multimedia.component.css']
+  templateUrl: './book-tab-multimedia.component.html'
 })
 export class BookTabMultimediaComponent implements OnInit {
   book: Book;

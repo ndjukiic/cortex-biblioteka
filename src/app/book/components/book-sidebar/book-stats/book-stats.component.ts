@@ -6,7 +6,6 @@ import { BookService } from 'src/app/book/services/book.service';
 @Component({
   selector: 'app-book-stats',
   templateUrl: './book-stats.component.html',
-  styleUrls: ['./book-stats.component.css'],
 })
 export class BookStatsComponent implements OnInit {
   book: Book;

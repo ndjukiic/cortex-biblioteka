@@ -4,7 +4,6 @@ import { BookService } from '../../services/book.service';
 @Component({
   selector: 'app-book-tab-logs',
   templateUrl: './book-tab-logs.component.html',
-  styleUrls: ['./book-tab-logs.component.css'],
 })
 export class BookTabLogsComponent implements OnInit {
   dummyData = [

@@ -107,7 +107,11 @@
               >
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ book.authors[0].name }} {{ book.authors[0].surname }}
+              <div *ngFor="let author of book.authors">
+                <p class="font-medium">
+                  {{ author.name }} {{ author.surname }}
+                </p>
+              </div>
               <!-- {{ book.authors.name }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
