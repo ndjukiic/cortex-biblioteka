@@ -95,6 +95,16 @@ export class BookService {
       );
   }
 
+  deleteBook(id: number) {
+    const url = `${this.url}/${id}/destroy`;
+
+    return this.httpClient.delete(url, {
+      headers: {
+        Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+      },
+    });
+  }
+
   setBookID(id: number) {
     this.bookID = id;
   }
