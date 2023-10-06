@@ -54,6 +54,7 @@ export class BookAddComponent {
       };
     }
     if (this.newBook) {
+      console.log('ovo se salje', this.newBook);
       this.addBook();
     }
   }

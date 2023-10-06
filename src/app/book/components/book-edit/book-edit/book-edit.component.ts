@@ -51,14 +51,18 @@ export class BookEditComponent implements OnInit {
         ...this.detailsData,
         ...this.specsData,
       };
-      console.log(this.editedBook);
       this.bookService.editBook(this.editedBook, this.id).subscribe(
         (response) => {},
         (error) => {
-          console.log(error);
+          alert(
+            'Došlo je do naredne greške: ' +
+              error.status +
+              ' ' +
+              error.statusText +
+              '. Molimo Vas pokušajte kasnije, ili kontaktirajte administratore.'
+          );
         }
       );
-      //service bookedit call
     }
   }
 }

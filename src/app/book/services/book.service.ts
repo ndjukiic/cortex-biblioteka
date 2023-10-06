@@ -88,11 +88,9 @@ export class BookService {
         },
       })
       .pipe(
-        map(
-          (response: Book) => {
-            console.log('sucessfully edited', response);
-          },
-        )
+        tap((response) => {
+          console.log('successfully edited', response);
+        })
       );
   }
 

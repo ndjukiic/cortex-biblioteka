@@ -34,7 +34,7 @@
           >
             <option
               *ngFor="let value of bookToEdit.categories"
-              [value]="value.name"
+              [ngValue]="value.name"
               
             >
               {{ value.name }}
