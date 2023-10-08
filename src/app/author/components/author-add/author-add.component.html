@@ -1,2 +1,46 @@
-<p>author-add works!</p>
-
+<div class="ml-4">
+    
+    <div class="flex flex-col">
+        <h1 class="py-1">Novi autor</h1>
+        <div class="flex flex-row">
+        
+        <form action="">
+            <div class="flex flex-row ml-[30px] mb-[80px]">
+                <div class="w-[300px]">
+                    <div class="mt-[20px]">
+                        <label for="title">Ime i prezime</label>
+                        <input
+                        type="text"
+                        id="title"
+                        formControlName="nazivKnjiga"
+                        class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+                        />
+                        <span
+                        class="text-red-800">* Polje ne smije biti prazno!
+                        </span>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="flex flex-row ml-[30px] mb-[100px]">
+                <div class="w-[300px]">
+                    <div class="mt-[20px]">
+                        <label for="content">Unesite kratak sadržaj </label>
+                        <textarea
+                        id="content"
+                        class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+                        formControlName="kratki_sadrzaj"
+                        ></textarea>
+            
+                        <span
+                        class="text-red-800"
+                        >* Polje ne smije biti prazno!
+                        </span>
+                    </div>   
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+    
