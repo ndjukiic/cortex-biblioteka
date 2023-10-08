@@ -15,6 +15,13 @@
       >
         + Novi Autor
       </button> 
+      <button 
+        routerLink="edit"
+        class="ml-4 inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
+        type="button"
+      >
+        Uredi autora
+      </button> 
     <!-- </a> -->
     </div>
     <div class="table w-full mt-[20px]">
@@ -36,13 +43,13 @@
              
             </tr>
           </thead>
-          <tbody *ngFor="let data of dummyData">
+          <!-- <tbody *ngFor="let data of dummyData">
             <tr class="text-center hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
               <td>{{ data.name }}</td>
               <td class="text-left">{{ data.description }}</td>
               
             </tr>
-          </tbody>
+          </tbody> -->
         </table>
       </div>
     </div>

@@ -27,7 +27,9 @@
 
         <div class="flex flex-row">
         
-        <form action="">
+        <form 
+          [formGroup]="authorAddForm"
+          (ngSubmit)="onSubmit()">
             <div class="flex flex-row ml-[10px] mb-[80px]">
                 <div class="w-[300px]">
                     <div >
@@ -35,10 +37,13 @@
                         <input
                         type="text"
                         id="title"
-                        formControlName="nazivKnjiga"
+                        formControlName="name"
                         class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                         />
-                        <span
+                        <span *ngIf="
+                        !authorAddForm.get('name').valid &&
+                        authorAddForm.get('name').touched
+                      "
                         class="text-red-800">* Polje ne smije biti prazno!
                         </span>
                     </div>
@@ -52,7 +57,7 @@
                         <textarea
                         id="content"
                         class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                        formControlName="kratki_sadrzaj"
+                        formControlName="biography"
                         ></textarea>
             
                         

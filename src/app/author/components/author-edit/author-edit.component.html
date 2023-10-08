@@ -1,1 +1,93 @@
-<p>author-edit works!</p>
+<div class="ml-4">
+    
+    <div class="flex flex-col">
+        <div class="naslov">
+        <h1 class="py-1 ml-2">Izmijeni podatke</h1>
+
+        <div class="flex flex-row mb-[10px] ml-2">
+            <nav class="w-full rounded">
+                <ol class="flex list-reset">
+                  <li>
+                    <a routerLink="../" class="text-[#2196f3] hover:text-blue-600">
+                      Svi autori
+                    </a>
+                  </li>
+                  <li>
+                    <span class="mx-2">/</span>
+                  </li>
+                  <li class="text-gray-400">Izmijeni podatke</li>
+                </ol>
+              </nav>
+        </div>
+
+        <hr/>
+        
+        </div>
+        
+
+        <div class="flex flex-row">
+        
+        <form 
+          [formGroup]="authorAddForm"
+          (ngSubmit)="onSubmit()">
+            <div class="flex flex-row ml-[10px] mb-[80px]">
+                <div class="w-[300px]">
+                    <div >
+                        <label for="title">Ime i prezime</label>
+                        <input
+                        type="text"
+                        id="title"
+                        formControlName="name"
+                        class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+                        />
+                        <span *ngIf="
+                        !authorAddForm.get('name').valid &&
+                        authorAddForm.get('name').touched
+                      "
+                        class="text-red-800">* Polje ne smije biti prazno!
+                        </span>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="flex flex-row ml-[10px] mb-[100px]">
+                <div class="w-[300px]">
+                    <div class="mt-[20px]">
+                        <label for="content">Unesite kratak sadržaj </label>
+                        <textarea
+                        id="content"
+                        class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+                        formControlName="biography"
+                        ></textarea>
+            
+                        
+                    </div>   
+                </div>
+            </div>
+
+            <div class="absolute bottom-[20px] w-full">
+                <div class="flex flex-row">
+                  <div
+                    class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+                  >
+                    <button
+                      type="reset"
+                      class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+                    >
+                      Poništi
+                      <i class="fas fa-times ml-[4px]"></i>
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+                      
+                    >
+                      Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
