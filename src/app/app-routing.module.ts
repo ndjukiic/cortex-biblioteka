@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./student/student.module').then((m) => m.StudentModule),
   },
   {
+    path: 'activity',
+    loadChildren: () => import('./activity/activity.module').then((m) => m.ActivityModule),
+  },
+  {
     path: 'books',
     loadChildren: () => import('./book/book.module').then((m) => m.BookModule),
   },
