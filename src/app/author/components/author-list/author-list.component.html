@@ -30,14 +30,14 @@
       >
         Detalji
       </button> 
-    <!-- </a> -->
+    
     </div>
     <div class="table w-full mt-[20px]">
       <div>
         <label for="search">Pretraga:</label>
         <input class="rounded-md border-[1px] ml-2" type="text" />
   
-        <!-- list amount per page option goes here (view 5/15/30 books for e.g.) -->
+        
       </div>
       <div class="table-view">
         <table
@@ -45,19 +45,20 @@
         >
           <thead class="bg-[#EFF3F6]">
             <tr>
-              <th>Naziv autora</th>
-              <th>Opis</th>
+              <th class="px-4 py-4">Naziv autora</th>
+              <th class="text-left">Opis</th>
               
              
             </tr>
           </thead>
-          <!-- <tbody *ngFor="let data of dummyData">
-            <tr class="text-center hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
-              <td>{{ data.name }}</td>
-              <td class="text-left">{{ data.description }}</td>
+          <tbody *ngFor="let author of authors">
+            <tr class="text-left hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ author.name }} {{author.surname}}</td>
+              <td class="text-left ml-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque modi praesentium similique est dicta? Laudantium quo cupiditate accusantium enim officiis dicta saepe eos quia nemo culpa! Amet deleniti qui a.</td>
               
+            
             </tr>
-          </tbody> -->
+          </tbody>
         </table>
       </div>
     </div>
