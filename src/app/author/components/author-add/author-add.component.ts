@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthorService } from '../../services/author.service';
 
 @Component({
   selector: 'app-author-add',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 export class AuthorAddComponent implements OnInit {
 
   authorAddForm: FormGroup;
+
+  constructor(private authorService: AuthorService){}
 
   ngOnInit(): void {
     this.authorAddForm = new FormGroup({
@@ -21,4 +24,5 @@ export class AuthorAddComponent implements OnInit {
   onSubmit(){
     console.log(this.authorAddForm);
   }
+  
 }

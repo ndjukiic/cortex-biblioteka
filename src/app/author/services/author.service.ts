@@ -28,4 +28,18 @@ export class AuthorService {
         })
       );
   }
+
+  addAuthor(author: Author) {
+    return this.httpClient
+      .post<Author>(`${this.url}/store`, author, {
+        headers: {
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+        },
+      })
+      .pipe(
+        tap((response: Author) => {
+          console.log('succesfully created', response);
+        })
+      );
+  }
 }
