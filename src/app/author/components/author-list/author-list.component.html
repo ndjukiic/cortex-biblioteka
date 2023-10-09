@@ -1,4 +1,4 @@
-<div class="ml-4">
+
 <div class="naslov">
     <h1>Autori</h1>
     <hr />
@@ -10,52 +10,50 @@
       > -->
       <button 
         routerLink="add"
-        class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
+        style="margin-left: 30px;"
+        class="btn-animation items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
         type="button"
       >
         + Novi Autor
       </button> 
-      <button 
-        routerLink="edit"
-        class="ml-4 inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
-        type="button"
-      >
-        Uredi autora
-      </button>  
-
-      <button 
-        routerLink="details"
-        class="ml-4 inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
-        type="button"
-      >
-        Detalji
-      </button> 
+     
     
     </div>
     <div class="table w-full mt-[20px]">
-      <div>
+      <div style="margin-left: 30px;">
         <label for="search">Pretraga:</label>
         <input class="rounded-md border-[1px] ml-2" type="text" />
   
         
       </div>
-      <div class="table-view">
+      <div style="width: 1100px; margin-left: 30px;">
         <table
           class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
         >
           <thead class="bg-[#EFF3F6]">
-            <tr>
-              <th class="px-4 py-4">Naziv autora</th>
-              <th class="text-left">Opis</th>
+            <tr class="border-b-[1px] border-[#e4dfdf]">
+              <th class="px-4 py-3 leading-4 tracking-wider text-left">Naziv autora</th>
+              <th class="px-4 py-4 leading-4 tracking-wider text-left">Opis</th>
               
              
             </tr>
           </thead>
           <tbody *ngFor="let author of authors">
-            <tr class="text-left hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
-              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ author.name }} {{author.surname}}</td>
-              <td class="text-left ml-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque modi praesentium similique est dicta? Laudantium quo cupiditate accusantium enim officiis dicta saepe eos quia nemo culpa! Amet deleniti qui a.</td>
+            <tr
+            [routerLink]="['/authors', authors.id,'details']"
+            style="cursor: pointer;"
+            class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+          >
               
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ author.name }} {{author.surname}}</td>
+              <td class="text-left ml-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque modi praesentium similique est dicta? Laudantium quo cupiditate accusantium enim officiis dicta saepe eos quia nemo culpa! Amet deleniti qui a.  </td>
+            <td
+              class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
+                <p
+                  class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]">
+                <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+                </p>
+            </td>
             
             </tr>
           </tbody>
@@ -63,4 +61,3 @@
       </div>
     </div>
   </div>
-</div>

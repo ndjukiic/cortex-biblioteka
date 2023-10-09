@@ -13,7 +13,7 @@ const routes = [
       component: AuthorAddComponent,
     },
     {
-      path: 'edit',
+      path: ':id/edit',
       component: AuthorEditComponent,
     },
     {
