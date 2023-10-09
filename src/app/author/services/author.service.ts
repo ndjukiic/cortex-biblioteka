@@ -14,7 +14,7 @@ export class AuthorService {
 
   constructor(private httpClient: HttpClient) {}
 
-  loadBooks(): Observable<Author[]> {
+  loadAuthors(): Observable<Author[]> {
     return this.httpClient
       .get<ApiResponse<Author[]>>(this.url, {
         headers: {
