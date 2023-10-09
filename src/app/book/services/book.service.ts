@@ -19,7 +19,7 @@ export class BookService {
     return this.httpClient
       .get<ApiResponse<Book[]>>(this.url, {
         headers: {
-          Authorization: 'Bearer 2|DyPu5MO2VeAwQoHL8dPCkTFfXzMXkZjnP21pFxiV',
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
         },
       })
       .pipe(

@@ -13,6 +13,10 @@ const routes = [
       component: AuthorAddComponent,
     },
     {
+      path: 'edit',
+      component: AuthorEditComponent,
+    },
+    {
       path: ':id',
       component: AuthorDetailComponent,
       children: [
@@ -22,10 +26,6 @@ const routes = [
         },
     
       ],
-    },
-    {
-      path: ':id/edit',
-      component: AuthorEditComponent,
     },
     {
       path: '',
