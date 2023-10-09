@@ -1,1 +1,50 @@
-<p>auth-login works!</p>
+<div class="flex justify-center items-center h-screen">
+  <div class="border-gray-400 rounded-lg bg-[#EFF3F6] p-4 mb-[100px] shadow-lg">
+    <div id="logo">
+      <div class="logo-font inline-flex py-[18px] px-[30px]">
+        <div class="block">
+          <a href="#" class="text-[20px] font-medium">
+            <div class="flex">
+              <img
+                width="35"
+                height="35"
+                src="https://img.icons8.com/ios-glyphs/30/000000/reading.png"
+                style="margin-right: 0.5rem"
+              />
+              <p class="text-[20px] mt-[5px]">Online Biblioteka</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="my-4">
+          <label for="username" class=""></label>
+          <input
+            type="text"
+            name="username"
+            formControlName="username"
+            class="w-full h-8"
+            placeholder="E-MAIL"
+          />
+        </div>
+        <div class="my-4">
+          <label for="password"></label>
+          <input
+            type="password"
+            name="password"
+            formControlName="password"
+            class="w-full h-8"
+            placeholder="PASSWORD"
+          />
+        </div>
+        <div id="button">
+          <button type="submit" class="p-2 bg-green-200 rounded-lg">
+            LOGIN
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

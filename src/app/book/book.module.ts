@@ -44,6 +44,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BookEditSpecsComponent,
     BookEditMultimediaComponent,
   ],
-  imports: [CommonModule, BookRoutingModule, RouterModule, HttpClientModule, ReactiveFormsModule, FormsModule]
+  imports: [
+    CommonModule,
+    BookRoutingModule,
+    RouterModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class BookModule {}
