@@ -11,6 +11,7 @@ import { ActivityOverdueListComponent } from './components/activity-table-contai
 import { ActivityActiveReservationsComponent } from './components/activity-table-container/activity-active-reservations/activity-active-reservations.component';
 import { ActivityTableContainerComponent } from './components/activity-table-container/activity-table-container.component';
 import { ActivityArchivedReservationsComponent } from './components/activity-table-container/activity-archived-reservations/activity-archived-reservations.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -28,6 +29,7 @@ import { ActivityArchivedReservationsComponent } from './components/activity-tab
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
     HttpClientModule,
     ActivityRoutingModule
   ]
