@@ -1,24 +1,32 @@
 .activerl .fa-copy {
-    color: #576cdf;
+  color: #576cdf;
 }
 
 .activerl .fa-file {
-    color: #576cdf;
+  color: #576cdf;
 }
 
 .activerl .fa-exclamation-triangle {
-    color: #576cdf;
+  color: #576cdf;
 }
 
 .activerl .fa-calendar-check {
-    color: #576cdf;
+  color: #576cdf;
 }
 
 .activerl .fa-calendar-alt {
-    color: #576cdf;
+  color: #576cdf;
 }
-  
+
 .activerl p {
-    color: #576cdf;
+  color: #576cdf;
 }
-  
+
+.active-link {
+  background-color: #eff3f6;
+  color: #576cdf;
+}
+
+.group.active-link i {
+  color: #576cdf;
+}

@@ -1,5 +1,5 @@
-<div class="height-scroll overflow-y-auto pr-[30px]">
-    <div class="flex items-center px-4 py-4 space-x-3 rounded-lg">
+<div class="height-scroll overflow-y-auto pt-3 bg-white">
+    <div class="flex items-center px-6 py-4 space-x-3 rounded-lg">
       <div class="flex items-center">
         <div class="relative text-gray-600 focus-within:text-gray-400">
           <input
@@ -18,40 +18,45 @@
         >Pretrazi
       </a>
     </div>
-  
-    <div class="mt-[10px] ml-2 px-2">
+    <div class="px-6 py-2">
       <table
-        class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]"
+        class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf] rezervacije"
         id="myTable"
       >
         <thead class="bg-[#EFF3F6]">
           <tr class="border-b-[1px] border-[#e4dfdf]">
-            <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+            <th
+              class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500"
+            >
               <label class="inline-flex items-center">
                 <input type="checkbox" class="form-checkbox" />
               </label>
             </th>
-            <th class="px-4 py-4 leading-4 tracking-wider text-left">
-              Naziv knjige
-              <a href="#"><i class="ml-2 fa-solid fa-arrow-down-long"></i></a>
+            <th
+              class="flex items-center px-4 py-4 leading-4 tracking-wider text-left"
+            >
+              Naziv knjige<a href="#"
+                ><i class="ml-2 fa-solid fa-arrow-down-long"></i
+              ></a>
             </th>
-            <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
+            <th
+              class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle"
+            >
               Datum rezervacije
-              <div
-                id="uceniciDropdown"
-                class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300"
-              ></div>
             </th>
-  
-            <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-              Rezervacija ističe
+            <th
+              class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle"
+            >
+              Rezervacija istice
             </th>
-  
-            <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
+            <th
+              class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle"
+            >
               Rezervaciju podnio
             </th>
-  
-            <th class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
+            <th
+              class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer statusDrop-toggle"
+            >
               Status
             </th>
             <th class="px-4 py-4"></th>
@@ -59,7 +64,10 @@
         </thead>
         <tbody
           class="bg-white"
-          *ngFor="let activeReservation of filteredActiveReservations; let i = index"
+          *ngFor="
+          let activeReservation of filteredActiveReservations;
+          let i = index
+          "
         >
           <tr
             class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
@@ -70,37 +78,34 @@
               </label>
             </td>
             <td class="flex flex-row items-center px-4 py-3">
-              <img
-                class="object-cover w-8 mr-2 h-11"
-                src=""
-                alt=""
-              />
+              <img class="object-cover w-8 mr-2 h-11" src="" alt="" />
               <a>
                 <span class="font-medium text-center">{{
-                  activeReservation.knjiga.title
+                    activeReservation.knjiga.title
                 }}</span>
               </a>
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-              {{ activeReservation.action_date }}
+                {{ activeReservation.action_date }}
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                 {{ activeReservation.action_date }} ???
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                {{ activeReservation.student.name }} {{ activeReservation.student.surname }}
-              </td>
-            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-              {{ activeReservation.status }}
+                {{ activeReservation.student.name }}
+                {{ activeReservation.student.surname }}
             </td>
-            <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
+            <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                {{ activeReservation.status }}
+            </td>
+            <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">
               <p
-                class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsIzdateKnjige hover:text-[#606FC7]"
+                class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsArhiviraneRezervacije hover:text-[#606FC7]"
               >
                 <i class="fas fa-ellipsis-v"></i>
               </p>
               <div
-                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 izdate-knjige"
+                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 arhivirane-rezervacije"
               >
                 <div
                   class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
@@ -144,53 +149,57 @@
         </tbody>
       </table>
   
-      <div class="flex flex-row items-center justify-end my-2 pr-[30px]">
+      <div class="flex flex-row items-center justify-end my-2">
         <div>
           <p class="inline text-md">Rows per page:</p>
-          <select 
+          <select
             [(ngModel)]="rowsPerPage"
             (change)="onRowsPerPageChange()"
             class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
-            name="bibliotekari"
+            name="ucenici"
           >
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
           </select>
         </div>
+  
         <div>
-          <nav class="inline-flex">
+          <nav class="relative z-0 inline-flex">
             <div>
               <a
                 href="#"
-                class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
+                class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md focus:z-10 focus:outline-none"
               >
-              {{ currentPage}} of {{ totalPages }}
+                {{ currentPage }} of {{ totalPages }}
               </a>
             </div>
             <div>
               <a
-                class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400"
+                class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400 focus:z-10 focus:outline-none"
                 aria-label="Previous"
                 (click)="previousPage()"
               >
                 <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                   <path
+                    fill-rule="evenodd"
                     d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
                     clip-rule="evenodd"
                   ></path>
                 </svg>
               </a>
             </div>
-            <div>
+            <div v-if="pagination.current_page < pagination.last_page">
               <a
-                class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400"
+                class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400 focus:z-10 focus:outline-none"
                 aria-label="Next"
                 (click)="nextPage()"
               >
-                <svg class="w-5 h-5" viewBox="0 0 20 20">
+                <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                   <path
+                    fill-rule="evenodd"
                     d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"
                   ></path>
                 </svg>
               </a>

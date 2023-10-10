@@ -1,139 +1,156 @@
-<div class="flex bg-white">
-    <div class="ml-4 mt-4">
-        <ul class="text-[#2D3B48]">
-          <li class="mb-[4px]">
-            <div class="w-[300px]">
-              <span
-                class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+<div class="flex justify-start pt-3 bg-white">
+  <div class="mt-[10px]">
+    <ul class="text-[#2D3B48]">
+      <li class="mb-[4px]">
+        <div class="w-[300px] pl-[32px]">
+          <span
+            class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+          >
+            <div
+              class="py-[15px] px-[20px] w-[268px] cursor-pointer group hover:bg-[#EFF3F6] rounded-[10px]"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive='active-link'
+            >
+              <a
+                routerLink="borrowed"
+                aria-label="Sve knjige"
+                class="flex items-center"
               >
-                  <div>
-                    <a
-                      routerLink="borrowed"
-                      routerLinkActive="activerl"
-                      class="inline hover:text-blue-800 flex items-center group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
-                    >
-                      <i
-                        class="text-[#707070] text-[20px] far fa-copy transition duration-300 ease-in group-hover:text-[#576cdf]"
-                      ></i>
-                      <div>
-                        <p
-                          class="text-[15px] ml-[19px] transition duration-300 ease-in group-hover:text-[#576cdf]"
-                        >
-                          Izdate knjige
-                        </p>
-                      </div>
-                    </a>
-                  </div>
-
-              </span>
-            </div>
-          </li>
-          <li class="mb-[4px]">
-            <div class="w-[300px]">
-              <span
-                class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
-              >
+                <i
+                  class="text-[#707070] transition duration-300 ease-in group-hover:text-[#576cdf] far fa-copy text-[20px]"
+                ></i>
                 <div>
-                  <a
-                    routerLink="returned"
-                    routerLinkActive="activerl"
-                    class="inline hover:text-blue-800 flex items-center group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
+                  <p
+                    class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[15px] ml-[18px]"
                   >
-                    <i
-                      class="text-[#707070] text-[20px] fas fa-file transition duration-300 ease-in group-hover:text-[#576cdf]"
-                    ></i>
-                    <div>
-                      <p
-                        class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]"
-                      >
-                        Vracene knjige
-                      </p>
-                    </div>
-                  </a>
+                    Izdate knjige
+                  </p>
                 </div>
-              </span>
+              </a>
             </div>
-          </li>
-          <li class="mb-[4px]">
-            <div class="w-[300px]">
-              <span
-                class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+          </span>
+        </div>
+      </li>
+      <li class="mb-[4px]">
+        <div class="w-[300px] pl-[32px]">
+          <span
+            class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+          >
+            <div
+              class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive='active-link'
+            >
+              <a
+                routerLink="returned"
+                aria-label="Vracene knjige"
+                class="flex items-center"
               >
+                <i
+                  class="transition duration-300 ease-in text-[#707070] text-[20px] fas fa-file group-hover:text-[#576cdf]"
+                ></i>
                 <div>
-                  <a
-                  routerLink="overdue"
-                  routerLinkActive="activerl"
-                  class="inline hover:text-blue-800 flex items-center group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
+                  <p
+                    class="transition duration-300 ease-in text-[15px] ml-[21px] group-hover:text-[#576cdf]"
                   >
-                    <i
-                      class="text-[#707070] text-[20px] fas fa-exclamation-triangle transition duration-300 ease-in group-hover:text-[#576cdf]"
-                    ></i>
-                    <div>
-                      <p
-                      class="text-[15px] ml-[19px] transition duration-300 ease-in group-hover:text-[#576cdf]"
-                      >
-                        Knjige u prekoracenju
-                      </p>
-                    </div>
-                  </a>
+                    Vracene knjige
+                  </p>
                 </div>
-              </span>
+              </a>
             </div>
-          </li>
-          <li class="mb-[4px]">
-            <div class="w-[300px]">
-              <span
-                class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+          </span>
+        </div>
+      </li>
+      <li class="mb-[4px]">
+        <div class="w-[300px] pl-[28px]">
+          <span
+            class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+          >
+            <div
+              class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive='active-link'
+            >
+              <a
+                routerLink="overdue"
+                aria-label="Knjige na raspolaganju"
+                class="flex items-center"
               >
+                <i
+                  class="group-hover:text-[#576cdf] text-[#707070] text-[20px] fas fa-exclamation-triangle transition duration-300 ease-in"
+                ></i>
                 <div>
-                  <a
-                  routerLink="active-reservations"
-                  routerLinkActive="activerl"
-                  class="inline hover:text-blue-800 flex items-center group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
+                  <p
+                    class="text-[15px] ml-[17px] transition duration-300 ease-in group-hover:text-[#576cdf]"
                   >
-                    <i
-                      class="text-[#707070] text-[20px] far fa-calendar-check transition duration-300 ease-in group-hover:text-[#576cdf]"
-                    ></i>
-                    <div>
-                      <p
-                      class="text-[15px] ml-[19px] transition duration-300 ease-in group-hover:text-[#576cdf]"
-                      >
-                        Aktivne rezervacije
-                      </p>
-                    </div>
-                  </a>
+                    Knjige u prekoracenju
+                  </p>
                 </div>
-              </span>
+              </a>
             </div>
-          </li>
-          <li class="mb-[4px]">
-            <div class="w-[300px]">
-              <span
-                class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+          </span>
+        </div>
+      </li>
+      <li class="mb-[4px]">
+        <div class="w-[300px] pl-[32px]">
+          <span
+            class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+          >
+            <div
+              class="group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive='active-link'
+            >
+              <a
+                routerLink="active-reservations"
+                aria-label="Rezervacije"
+                class="flex items-center"
               >
+                <i
+                  class="text-[#707070] group-hover:text-[#576cdf] text-[20px] far fa-calendar-check transition duration-300 ease-in"
+                ></i>
                 <div>
-                  <a
-                  routerLink="archived-reservations"
-                  routerLinkActive="activerl"
-                  class="inline hover:text-blue-800 flex items-center group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
+                  <p
+                    class="text-[15px] ml-[19px] transition duration-300 ease-in group-hover:text-[#576cdf]"
                   >
-                    <i
-                      class="text-[#707070] text-[20px] fas fa-calendar-alt transition duration-300 ease-in group-hover:text-[#576cdf]"
-                    ></i>
-                    <div>
-                      <p
-                      class="text-[15px] ml-[19px] transition duration-300 ease-in group-hover:text-[#576cdf]"
-                      >
-                        Arhivirane rezervacije
-                      </p>
-                    </div>
-                  </a>
+                    Aktivne rezervacije
+                  </p>
                 </div>
-              </span>
+              </a>
             </div>
-          </li>
-        </ul>
-      </div>
-      <!-- <router-outlet></router-outlet> -->
+          </span>
+        </div>
+      </li>
+      <li class="mb-[4px]">
+        <div class="w-[300px] pl-[32px]">
+          <span
+            class="whitespace-nowrap w-full text-[25px] flex justify-between fill-current"
+          >
+            <div
+              class="group hover:bg-[#EFF3F6] hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive='active-link'
+            >
+              <a
+                routerLink="archived-reservations"
+                aria-label="Rezervacije"
+                class="flex items-center"
+              >
+                <i
+                  class="text-[#707070] text-[20px] fas fa-calendar-alt transition duration-300 ease-in group-hover:text-[#576cdf]"
+                ></i>
+                <div>
+                  <p
+                    class="text-[15px] ml-[19px] transition duration-300 ease-in group-hover:text-[#576cdf]"
+                  >
+                    Arhivirane rezervacije
+                  </p>
+                </div>
+              </a>
+            </div>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
-
