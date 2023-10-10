@@ -20,7 +20,7 @@ export class BookService {
     return this.httpClient
       .get<ApiResponse<Book[]>>(this.url, {
         headers: {
-          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
@@ -36,7 +36,7 @@ export class BookService {
     return this.httpClient
       .get(url, {
         headers: {
-          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
@@ -52,9 +52,7 @@ export class BookService {
 
     return this.httpClient
       .get(url, {
-        headers: {
-          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
-        },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .pipe(
         map((response: ApiResponse<Book>) => {
@@ -67,9 +65,7 @@ export class BookService {
   addBook(book: Book) {
     return this.httpClient
       .post<Book>(`${this.url}/store`, book, {
-        headers: {
-          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
-        },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .pipe(
         tap((response: Book) => {
@@ -83,9 +79,7 @@ export class BookService {
 
     return this.httpClient
       .post(url, book, {
-        headers: {
-          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
-        },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .pipe(
         tap((response) => {
@@ -98,9 +92,7 @@ export class BookService {
     const url = `${this.url}/${id}/destroy`;
 
     return this.httpClient.delete(url, {
-      headers: {
-        Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
-      },
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
   }
 

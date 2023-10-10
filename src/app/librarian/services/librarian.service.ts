@@ -21,7 +21,7 @@ export class LibrarianService {
     return this.httpClient
       .get(this.url, {
         headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
@@ -39,7 +39,7 @@ export class LibrarianService {
     return this.httpClient
       .get<ApiResponse<Librarian>>(`${this.url}/${id}`, {
         headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
@@ -53,16 +53,14 @@ export class LibrarianService {
   createNewLibrarian(librarian: LibrarianCreate): Observable<any> {
     return this.httpClient.post(`${this.url}/store`, librarian, {
       headers: {
-        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
   }
 
   editLibrarian(librarian: LibrarianCreate, id: number): Observable<any> {
     return this.httpClient.put(`${this.url}/${id}`, librarian, {
-      headers: {
-        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
-      },
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
   }
 
@@ -110,7 +108,7 @@ export class LibrarianService {
   deleteLibrarian(id: number): Observable<any> {
     return this.httpClient.delete(`${this.url}/${id}`, {
       headers: {
-        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
   }

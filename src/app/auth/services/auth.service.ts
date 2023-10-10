@@ -28,7 +28,31 @@ export class AuthService {
             user._token = response.data.token;
             localStorage.setItem('token', user._token);
           }
-          this.user$.next(user);
+          console.log('Token stored', response.data.token);
+        })
+      );
+  }
+
+  getActiveUser() {
+    const url = `${this.url}/users/me`;
+    const token = localStorage.getItem('token');
+    console.log('Current token: ', localStorage.getItem('token'));
+
+    if (!token) {
+      console.log('Token is empty.');
+      return null;
+    }
+
+    return this.httpClient
+      .post(url, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .pipe(
+        tap((response: { data }) => {
+          this.user$.next(response.data);
+          console.log('Currently active user: ', this.user$.value);
         })
       );
   }

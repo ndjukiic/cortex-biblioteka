@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-login',
@@ -16,14 +17,19 @@ export class AuthLoginComponent implements OnInit {
       device: new FormControl('DivajsNejm'),
     });
   }
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   onSubmit() {
     const user = this.loginForm.value;
     this.authService.loginUser(user).subscribe(
       (apiResponse) => {
         alert('Uspješno ste se ulogovali u aplikaciju.');
-        console.log('success!', apiResponse)
+        console.log('success!', apiResponse);
+        this.router.navigate(['../'], { relativeTo: this.route });
       },
       (error) => {
         alert(

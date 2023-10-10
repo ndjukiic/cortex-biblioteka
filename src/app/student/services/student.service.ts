@@ -20,9 +20,7 @@ export class StudentService {
   loadStudents(): Observable<Student[]> {
     return this.httpClient
       .get(this.url, {
-        headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
-        },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .pipe(
         map((response: ApiResponse<Student[]>) => {
@@ -38,9 +36,7 @@ export class StudentService {
   loadStudent(id: number): Observable<Student> {
     return this.httpClient
       .get<ApiResponse<Student>>(`${this.url}/${id}`, {
-        headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
-        },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .pipe(
         map((response: ApiResponse<Student>) => {
@@ -52,17 +48,13 @@ export class StudentService {
 
   createNewStudent(student: StudentCreate): Observable<any> {
     return this.httpClient.post(`${this.url}/store`, student, {
-      headers: {
-        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
-      },
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
   }
 
   editStudent(student: StudentCreate, id: number): Observable<any> {
     return this.httpClient.put(`${this.url}/${id}`, student, {
-      headers: {
-        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
-      },
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
   }
 
@@ -109,9 +101,7 @@ export class StudentService {
 
   deleteStudent(id: number): Observable<any> {
     return this.httpClient.delete(`${this.url}/${id}`, {
-      headers: {
-        Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
-      },
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
   }
 }

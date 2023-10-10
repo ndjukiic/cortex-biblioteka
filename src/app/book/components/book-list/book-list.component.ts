@@ -3,6 +3,7 @@ import { BookService } from '../../services/book.service';
 import { OnInit } from '@angular/core';
 import { Book } from '../../models/book.model';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-book-list',
@@ -17,7 +18,9 @@ export class BookListComponent implements OnInit, OnDestroy {
   viewSize: number;
   currentPage: number;
 
-  constructor(private bookService: BookService) {}
+  constructor(
+    private bookService: BookService
+  ) {}
 
   ngOnInit() {
     this.loadBooks();
@@ -33,7 +36,6 @@ export class BookListComponent implements OnInit, OnDestroy {
       .subscribe((books: Book[]) => {
         this.books = books;
         this.filteredArray = this.books.slice();
-
       });
   }
 
