@@ -17,6 +17,7 @@ export class ActivityBorrowedListComponent implements OnInit {
   startIndex: number;
   endIndex: number;
   searchName: string;
+  ascendingOrder: boolean = true;
   
   constructor(private activityService: ActivityService) {}
 
@@ -53,6 +54,25 @@ export class ActivityBorrowedListComponent implements OnInit {
       this.setPageRange();
       this.totalPages = Math.ceil(this.borrowedBooks.length / this.rowsPerPage);
     }
+  }
+
+  sortBooksByName() {
+    this.borrowedBooks.sort((a, b) => {
+      const titleA = a.knjiga.title.toUpperCase();
+      const titleB = b.knjiga.title.toUpperCase();
+
+      if (this.ascendingOrder) {
+        return titleA.localeCompare(titleB);
+      } else {
+        return titleB.localeCompare(titleA);
+      }
+    });
+    if (this.searchName && this.searchName.trim() !== '') {
+      this.filterBooks();
+    } else {
+      this.setPageRange();
+    }
+    this.ascendingOrder = !this.ascendingOrder;
   }
 
   nextPage() {

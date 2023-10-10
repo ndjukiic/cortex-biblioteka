@@ -35,9 +35,10 @@
           <th
             class="flex items-center px-4 py-4 leading-4 tracking-wider text-left"
           >
-            Naziv knjige<a href="#"
-              ><i class="ml-2 fa-solid fa-arrow-down-long"></i
-            ></a>
+            Naziv knjige<a (click)="sortBooksByName()">
+              <i *ngIf="ascendingOrder"  class="ml-2 fa-solid fa-arrow-down-long"></i>
+              <i *ngIf="!ascendingOrder"  class="ml-2 fa-solid fa-arrow-up-long"></i>
+            </a>
           </th>
           <th
             class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle"

@@ -17,6 +17,7 @@ export class ActivityOverdueListComponent implements OnInit {
   startIndex: number;
   endIndex: number;
   searchName: string;
+  ascendingOrder: boolean = true;
   
   constructor(private activityService: ActivityService) {}
 
@@ -38,6 +39,25 @@ export class ActivityOverdueListComponent implements OnInit {
     } else {
       this.filteredOverdueBooks = this.overdueBooks.slice(this.startIndex, this.endIndex);
     }
+  }
+
+  sortBooksByName() {
+    this.overdueBooks.sort((a, b) => {
+      const titleA = a.knjiga.title.toUpperCase();
+      const titleB = b.knjiga.title.toUpperCase();
+
+      if (this.ascendingOrder) {
+        return titleA.localeCompare(titleB);
+      } else {
+        return titleB.localeCompare(titleA);
+      }
+    });
+    if (this.searchName && this.searchName.trim() !== '') {
+      this.filterBooks();
+    } else {
+      this.setPageRange();
+    }
+    this.ascendingOrder = !this.ascendingOrder;
   }
 
   filterBooks() {
