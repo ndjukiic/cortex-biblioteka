@@ -21,13 +21,7 @@
         </div>
 
         <hr/>
-        <button 
-        routerLink="edit"
-        class="ml-3 mb-4 inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
-        type="button"
-      >
-        Uredi autora
-      </button> 
+        
         </div>
         
             <div class="flex flex-row ml-[10px] mb-[80px]">
@@ -48,6 +42,29 @@
                 </div>
             </div>
 
+            <div class="absolute bottom-[20px] w-full">
+              <div class="flex flex-row">
+                <div
+                  class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+                >
+                  <button
+                    type="reset"
+                    class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+                    routerLink="../"
+                  >
+                    Poništi
+                    <i class="fas fa-times ml-[4px]"></i>
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
+                    routerLink="edit"
+                  >
+                    Uredi autora
+                  </button>
+                </div>
+              </div>
+            </div>
             
         
     </div>

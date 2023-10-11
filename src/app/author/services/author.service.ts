@@ -11,6 +11,8 @@ import { environment } from 'src/environment/environment';
 export class AuthorService {
   private url = `${environment.apiUrl}/authors`;
   private authors$ = new Subject<Author[]>();
+  private author$ = new Subject<Author>();
+
   private authorId: number;
 
   constructor(private httpClient: HttpClient) {}
@@ -30,6 +32,23 @@ export class AuthorService {
       );
   }
 
+  loadAuthor(id: number): Observable<Author> {
+    const url = `${this.url}/${id}`;
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: 'Bearer 17|827YV4ILOjtMqDtWHl9WkhmHAwwDoLR4N9F7T9kC',
+          
+        },
+      })
+      .pipe(
+        map((response: ApiResponse<Author>) => {
+          this.author$.next(response.data);
+          return response.data;
+        })
+      );
+  }
+
   addAuthor(author: Author) {
     return this.httpClient
       .post<Author>(`${this.url}/store`, author, {
@@ -44,7 +63,16 @@ export class AuthorService {
       );
   }
 
+  getBookID() {
+    return this.authorId;
+  }
+
   setAuthorId(id: number) {
     this.authorId = id;
+  }
+
+  deleteAuthor(authorId: number) {
+    const url = `your_api_url/authors/${authorId}`; // Replace with your API endpoint
+    return this.httpClient.delete(url);
   }
 }

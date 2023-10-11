@@ -26,6 +26,7 @@ export class AuthorDetailComponent {
     biography: 'A brief biography...',
     image: 'author-image.jpg',
   };
+  // author: Author;
   id: number;
 
 
