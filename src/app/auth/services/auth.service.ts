@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
   private url = `${environment.apiUrl}`;
-  private user$ = new BehaviorSubject<User | null>(null);
+  public user$ = new BehaviorSubject<User | null>(null);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -17,30 +17,27 @@ export class AuthService {
     const url = `${this.url}/login`;
 
     return this.httpClient
-      .post<User>(url, user, {
+      .post(url, user, {
         headers: {
           Authorization: 'Bearer b3Rvcmlub2xhcmluZ29sb2dpamE=',
         },
       })
       .pipe(
-        tap((response) => {
+        tap((response: { data }) => {
           if (response.data.token) {
-            user._token = response.data.token;
-            localStorage.setItem('token', user._token);
+            this.user$.next(response.data);
+            localStorage.setItem('token', response.data.token);
           }
-          console.log('Token stored', response.data.token);
         })
       );
   }
 
-  getActiveUser() {
+  getActiveUser(): Observable<boolean> {
     const url = `${this.url}/users/me`;
     const token = localStorage.getItem('token');
-    console.log('Current token: ', localStorage.getItem('token'));
 
     if (!token) {
-      console.log('Token is empty.');
-      return null;
+      return of(false);
     }
 
     return this.httpClient
@@ -50,9 +47,9 @@ export class AuthService {
         },
       })
       .pipe(
-        tap((response: { data }) => {
+        map((response: { data }) => {
           this.user$.next(response.data);
-          console.log('Currently active user: ', this.user$.value);
+          return true;
         })
       );
   }
