@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { TransactionsComponent } from './transactions/transactions.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
@@ -18,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./student/student.module').then((m) => m.StudentModule),
   },
   {
+    path: 'activity',
+    loadChildren: () => import('./activity/activity.module').then((m) => m.ActivityModule),
+  },
+  {
     path: 'books',
     loadChildren: () => import('./book/book.module').then((m) => m.BookModule),
   },
@@ -26,13 +29,13 @@ const routes: Routes = [
     loadChildren: () => import('./author/author.module').then((m) => m.AuthorModule),
   },
   {
-    path: 'transactions',
-    component: TransactionsComponent,
-  },
-  {
     path: 'settings',
     component: SettingsComponent,
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  }
 ];
 
 @NgModule({

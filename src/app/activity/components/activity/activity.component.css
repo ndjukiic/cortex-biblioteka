@@ -1,0 +1,4 @@
+.min-w-full-rest {
+    min-width: calc(100% - 383px);
+    flex-grow: 1;
+}

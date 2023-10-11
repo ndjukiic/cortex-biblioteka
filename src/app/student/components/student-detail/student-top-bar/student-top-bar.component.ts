@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Student } from 'src/app/student/models/student.model';
 import { StudentService } from 'src/app/student/services/student.service';
 
@@ -8,36 +8,20 @@ import { StudentService } from 'src/app/student/services/student.service';
   templateUrl: './student-top-bar.component.html',
   styleUrls: ['./student-top-bar.component.css'],
 })
-export class StudentTopBarComponent implements OnInit {
-  student: Student = {
-    id: 0,
-    role: '',
-    jmbg: '',
-    photoPath: '',
-    username: '',
-    name: '',
-    surname: '',
-    email: '',
-  };
+export class StudentTopBarComponent {
+  @Input() student: Student;
 
-  constructor(
-    private route: ActivatedRoute,
-    private studentService: StudentService
-  ) {}
+  constructor(private studentService: StudentService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.loadStudent();
-  }
+  deleteStudent() {
+    const confirmation = window.confirm(
+      `Da li ste sigurni da želite da izbrišete korisnika ${this.student?.name} ${this.student?.surname}?`
+    );
 
-  loadStudent() {
-    const id = +this.route.snapshot.params['id'];
-    this.studentService.loadStudent(id).subscribe({
-      next: (student: Student) => {
-        this.student = student;
-      },
-      error: (error) => {
-        console.error('Greška pri učitavanju studenta', error);
-      },
-    });
+    if (confirmation) {
+      this.studentService.deleteStudent(this.student.id).subscribe(() => {
+        this.router.navigate(['/students']);
+      });
+    }
   }
 }

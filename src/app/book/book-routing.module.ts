@@ -49,20 +49,6 @@ const routes = [
   {
     path: ':id/edit',
     component: BookEditComponent,
-    children: [
-      {
-        path: '',
-        component: BookEditDetailsComponent,
-      },
-      {
-        path: 'specs',
-        component: BookEditSpecsComponent,
-      },
-      {
-        path: 'multimedia',
-        component: BookEditMultimediaComponent,
-      },
-    ],
   },
 ];
 
