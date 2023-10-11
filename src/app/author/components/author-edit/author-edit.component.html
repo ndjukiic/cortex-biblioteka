@@ -38,6 +38,7 @@
                         type="text"
                         id="title"
                         formControlName="name"
+                        placeholder="{{author.name}} {{author.surname}}"
                         class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                         />
                         <span *ngIf="
@@ -58,6 +59,7 @@
                         id="content"
                         class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                         formControlName="biography"
+                        placeholder="{{lipsum}}"
                         ></textarea>
             
                         

@@ -19,7 +19,13 @@ export class AuthorDetailComponent {
   viewSize: number;
   currentPage: number;
   
-  author: Author;
+  author: Author = {
+    id: 1,
+    name: 'Ivo',
+    surname: 'Andric',
+    biography: 'A brief biography...',
+    image: 'author-image.jpg',
+  };
   id: number;
 
 
@@ -48,6 +54,7 @@ export class AuthorDetailComponent {
 
         });
     }
+    
     
 
     lipsum =
