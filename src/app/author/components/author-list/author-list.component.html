@@ -4,10 +4,9 @@
     <hr />
   </div>
   <div>
-    <div class="edit-opcije">
-      <!-- CRUD options show upon item checkmark selection, we can define them here -->
-       <!-- <a href="authors/add"
-      > -->
+    <div class="flex flex-row justify-between"
+    >
+      
       <button 
         routerLink="add"
         style="margin-left: 30px;"
@@ -16,16 +15,34 @@
       >
         + Novi Autor
       </button> 
-     
-    
-    </div>
-    <div class="table w-full mt-[20px]">
-      <div style="margin-left: 30px;">
-        <label for="search">Pretraga:</label>
-        <input class="rounded-md border-[1px] ml-2" type="text" />
-  
-        
+      
+      <div class="flex items-center">
+        <div class="relative text-gray-600 focus-within:text-gray-400">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <button
+              type="submit"
+              class="p-1 focus:outline-none focus:shadow-outline"
+            >
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            </button>
+          </span>
+          <input
+            [(ngModel)]="searchName"
+            type="text"
+            name="q"
+            class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+            placeholder="Search..."
+            autocomplete="off"
+            
+          />
+        </div>
       </div>
+
+      
+    
+   </div>
+    <div class="table w-full mt-[20px]">
+      
       <div style="width: 1100px; margin-left: 30px;">
         <table
           class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
@@ -40,12 +57,13 @@
           </thead>
           <tbody *ngFor="let author of authors">
             <tr
-            [routerLink]="['/authors', authors.id,'details']"
+            [routerLink]="['/authors', author.id,'details']"
             style="cursor: pointer;"
             class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
           >
               
-              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{ author.name }} {{author.surname}}</td>
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap"
+                  style="font-weight:500;">{{author.id}} {{ author.name }} {{author.surname}}</td>
               <td class="text-left ml-3">{{lipsum}}</td>
             <td
               class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">

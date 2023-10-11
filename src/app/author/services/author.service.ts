@@ -11,6 +11,7 @@ import { environment } from 'src/environment/environment';
 export class AuthorService {
   private url = `${environment.apiUrl}/authors`;
   private authors$ = new Subject<Author[]>();
+  private authorId: number;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -41,5 +42,9 @@ export class AuthorService {
           console.log('succesfully created', response);
         })
       );
+  }
+
+  setAuthorId(id: number) {
+    this.authorId = id;
   }
 }
