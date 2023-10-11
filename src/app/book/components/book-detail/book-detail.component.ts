@@ -17,6 +17,7 @@ export class BookDetailComponent {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((url) => {
       this.bookService.setBookID(+url.get('id'));
+      this.bookService.loadBook(+url.get('id')).subscribe();
     });
   }
 }

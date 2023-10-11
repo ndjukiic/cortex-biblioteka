@@ -16,7 +16,7 @@ export class BookTopBarComponent implements OnInit {
   ngOnInit() {
     this.id = this.bookService.getBookID();
 
-    this.bookService.loadBook(this.id).subscribe((book: Book) => {
+    this.bookService.currentBook$.subscribe(book => {
       this.book = book;
     });
   }

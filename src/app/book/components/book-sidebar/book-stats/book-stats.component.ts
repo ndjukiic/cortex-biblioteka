@@ -9,14 +9,12 @@ import { BookService } from 'src/app/book/services/book.service';
 })
 export class BookStatsComponent implements OnInit {
   book: Book;
-  id: number;
   totalSamples: number;
 
   constructor(private bookService: BookService) {}
   ngOnInit() {
-    this.id = this.bookService.getBookID();
-    this.bookService.loadBook(this.id).subscribe((response) => {
-      this.book = response;
+    this.bookService.currentBook$.subscribe(book => {
+      this.book = book;
       this.totalSamples =
         this.book.samples -
         this.book.rSamples -

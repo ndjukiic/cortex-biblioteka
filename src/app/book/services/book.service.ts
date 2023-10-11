@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../models/book.model';
-import { Observable, Subject, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { environment } from 'src/environments/environment';
 
@@ -13,6 +13,7 @@ export class BookService {
   private books$ = new Subject<Book[]>();
   private book$ = new Subject<Book>();
   private bookID: number;
+  public currentBook$ = new BehaviorSubject<Book>(null);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -41,7 +42,7 @@ export class BookService {
       })
       .pipe(
         map((response: ApiResponse<Book>) => {
-          this.book$.next(response.data);
+          this.currentBook$.next(response.data);
           return response.data;
         })
       );
