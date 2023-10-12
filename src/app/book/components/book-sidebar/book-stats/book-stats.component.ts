@@ -14,7 +14,6 @@ export class BookStatsComponent implements OnInit {
   ngOnInit() {
     this.bookService.currentBook$.subscribe((book) => {
       this.book = book;
-      console.log(this.book);
       this.totalSamples =
         book.samples - book.rSamples - book.bSamples - book.fSamples;
     });

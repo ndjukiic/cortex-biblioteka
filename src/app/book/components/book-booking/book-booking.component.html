@@ -12,7 +12,9 @@
           id=""
           class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
         >
-          <option value="hi">hi</option>
+          <option *ngFor="let student of studentList" [value]="student.name">
+            {{ student.name }} {{ student.surname }}
+          </option>
         </select>
       </div>
       <div class="mt-[20px] flex justify-between w-[90%]">
@@ -26,7 +28,7 @@
         <div class="w-[50%]">
           <label for="return-date">Datum vraćanja</label>
           <input
-            type="text"
+            type="date"
             class="flex w-[80%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
           />
           <p>Rok vraćanja: <span>20</span> dana</p>
