@@ -7,13 +7,8 @@ import { BookTabSpecificationsComponent } from './components/book-tab-specificat
 import { BookTabLogsComponent } from './components/book-tab-logs/book-tab-logs.component';
 import { BookTabMultimediaComponent } from './components/book-tab-multimedia/book-tab-multimedia.component';
 import { BookAddComponent } from './components/book-add/book-add/book-add.component';
-import { BookAddDetailsComponent } from './components/book-add/book-add-details/book-add-details.component';
-import { BookAddSpecsComponent } from './components/book-add/book-add-specs/book-add-specs.component';
-import { BookAddMultimediaComponent } from './components/book-add/book-add-multimedia/book-add-multimedia.component';
 import { BookEditComponent } from './components/book-edit/book-edit/book-edit.component';
-import { BookEditDetailsComponent } from './components/book-edit/book-edit-details/book-edit-details.component';
-import { BookEditSpecsComponent } from './components/book-edit/book-edit-specs/book-edit-specs.component';
-import { BookEditMultimediaComponent } from './components/book-edit/book-edit-multimedia/book-edit-multimedia.component';
+import { BookBookingComponent } from './components/book-booking/book-booking.component';
 
 const routes = [
   {
@@ -50,6 +45,10 @@ const routes = [
     path: ':id/edit',
     component: BookEditComponent,
   },
+  {
+    path: ':id/book',
+    component: BookBookingComponent
+  }
 ];
 
 @NgModule({

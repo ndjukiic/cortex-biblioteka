@@ -22,6 +22,7 @@ import { BookEditSpecsComponent } from './components/book-edit/book-edit-specs/b
 import { BookEditMultimediaComponent } from './components/book-edit/book-edit-multimedia/book-edit-multimedia.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookBookingComponent } from './components/book-booking/book-booking.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BookEditDetailsComponent,
     BookEditSpecsComponent,
     BookEditMultimediaComponent,
+    BookBookingComponent
   ],
   imports: [
     CommonModule,
