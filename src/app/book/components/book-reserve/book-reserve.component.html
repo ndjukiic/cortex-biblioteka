@@ -1,5 +1,6 @@
-<form>
+<form [formGroup]="reserveForm" (ngSubmit)="onSubmit()">
   <app-book-top-bar [bookMode]="bookMode"></app-book-top-bar>
+  <!-- bookMode is getting passed to book-top-bar for the little navigation functionality next to the name of the book -->
   <div class="flex flex-row ml-[30px]">
     <div class="w-[50%] mb-[100px] mr-[100px]">
       <div>
@@ -11,8 +12,10 @@
           name=""
           id=""
           class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          formControlName="student_id"
         >
-          <option *ngFor="let student of studentList" [value]="student.name">
+          <option value=""></option>
+          <option *ngFor="let student of studentList" [value]="student.id">
             {{ student.name }} {{ student.surname }}
           </option>
         </select>
@@ -23,6 +26,7 @@
           <input
             type="date"
             class="flex w-[80%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="datumRezervisanja"
           />
         </div>
         <div class="w-[50%]">

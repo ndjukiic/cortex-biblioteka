@@ -8,7 +8,7 @@ import { BookTabLogsComponent } from './components/book-tab-logs/book-tab-logs.c
 import { BookTabMultimediaComponent } from './components/book-tab-multimedia/book-tab-multimedia.component';
 import { BookAddComponent } from './components/book-add/book-add/book-add.component';
 import { BookEditComponent } from './components/book-edit/book-edit/book-edit.component';
-import { BookBookingComponent } from './components/book-booking/book-booking.component';
+import { BookReserveComponent } from './components/book-reserve/book-reserve.component';
 
 const routes = [
   {
@@ -46,9 +46,9 @@ const routes = [
     component: BookEditComponent,
   },
   {
-    path: ':id/book',
-    component: BookBookingComponent
-  }
+    path: ':id/reserve',
+    component: BookReserveComponent,
+  },
 ];
 
 @NgModule({
