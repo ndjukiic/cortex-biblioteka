@@ -107,32 +107,29 @@
               >
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ book.authors[0].name }} {{ book.authors[0].surname }}
-              <!-- {{ book.authors.name }} -->
+              <div *ngFor="let author of book.authors">
+                <p class="font-medium">
+                  {{ author.name }} {{ author.surname }}
+                </p>
+              </div>
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
               {{ book.categories[0].name }}
-              <!-- {{ book.category }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
               {{ book.samples - book.bSamples }}
-              <!-- {{ book.available }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
               {{ book.bSamples }}
-              <!-- {{ book.bSamples }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
               {{ book.rSamples }}
-              <!-- {{ book.issued }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
               {{ book.fSamples }}
-              <!-- {{ book.exceeded }} -->
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
               {{ book.samples }}
-              <!-- {{ book.samples }} -->
             </td>
             <td
               class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap"

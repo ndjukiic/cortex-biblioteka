@@ -1,29 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-top-bar',
   templateUrl: './book-top-bar.component.html',
-  styleUrls: ['./book-top-bar.component.css'],
 })
 export class BookTopBarComponent implements OnInit {
   book: Book;
   id: number;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private bookService: BookService
-  ) {}
+  constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((url) => {
-      this.id = Number(url.get('id'));
-    });
+    this.id = this.bookService.getBookID();
 
-    this.bookService.loadBook(this.id).subscribe((book: Book) => {
+    this.bookService.currentBook$.subscribe(book => {
       this.book = book;
     });
+  }
+
+  onDelete() {
+    const confirmDelete = window.confirm(
+      `Da li ste sigurni da želite da izbrišete knjigu ${this.book.title}?`
+    );
+
+    if (confirmDelete) {
+      this.bookService.deleteBook(this.id).subscribe((response) => {
+        console.log(response);
+        this.router.navigate(['/books']);
+      });
+    } else {
+      alert('Brisanje knjige je prekinuto.');
+    }
   }
 }

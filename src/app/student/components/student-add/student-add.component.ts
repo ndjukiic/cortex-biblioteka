@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { StudentService } from '../../services/student.service';
 import { Router } from '@angular/router';
+import { createStudentForm } from '../../helpers/student-form.helper';
 
 @Component({
   selector: 'app-student-add',
@@ -14,11 +15,11 @@ export class StudentAddComponent implements OnInit {
   constructor(private studentService: StudentService, private router: Router) {}
 
   ngOnInit(): void {
-    this.studentAddForm = this.studentService.createStudentForm();
+    this.studentAddForm = createStudentForm();
   }
 
   onSubmit() {
-    this.studentService.saveOrEditStudent(this.studentAddForm).subscribe({
+    this.studentService.saveStudent(this.studentAddForm).subscribe({
       next: (response) => {
         console.log('Uspješno sačuvano', response);
         this.router.navigate(['/students']);

@@ -1,4 +1,4 @@
-<form class="text-gray-700 forma">
+<form class="text-gray-700 forma" *ngIf="bookToEdit" (ngSubmit)="onSubmit()">
   <div class="flex flex-row ml-[30px]">
     <div class="w-[50%] mb-[150px]">
       <div class="mt-[20px]">
@@ -6,51 +6,81 @@
         <input
           type="text"
           name="pages"
-          class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" value="264"
+          class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          [value]="bookToEdit.book.pages"
+          [(ngModel)]="bookToEdit.book.pages"
         />
       </div>
       <div class="mt-[20px]">
-        <label for="writing">Pismo </label>
+        <label for="scripts">Pismo </label>
         <select
-          name="writing"
+          name="scripts"
           class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          [(ngModel)]="bookToEdit.book.scripts"
         >
-          <option disabled selected></option>
-          <option value="cyrillic" selected>Ćirilica</option>
-          <option value="latin">Latinica</option>
-          <option value="arabic">Arapsko</option>
-          <option value="chinese">Kinesko</option>
+          <option *ngFor="let value of bookToEdit.scripts" [value]="value.id">
+            {{ value.name }}
+          </option>
         </select>
       </div>
       <div class="mt-[20px]">
-        <label for="cover">Povez</label>
+        <label for="bookbinds">Povez</label>
         <select
-          name="cover"
+          name="bookbinds"
           class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          [(ngModel)]="bookToEdit.book.bookbinds"
         >
-          <option disabled selected></option>
-          <option value="hardcover" selected>Tvrdi</option>
-          <option value="paperback">Meki</option>
+          <option
+            *ngFor="let value of bookToEdit.bookbinds"
+            [value]="value.name"
+          >
+            {{ value.name }}
+          </option>
         </select>
       </div>
       <div class="mt-[20px]">
-        <label for="format">Format</label>
+        <label for="formats">Format</label>
         <select
-          name="format"
+          name="formats"
           class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          [(ngModel)]="bookToEdit.book.formats"
         >
-          <option disabled selected></option>
-          <option value="a1">A1</option>
-          <option value="a2">A2</option>
-          <option value="21" selected>21cm</option>
+          <option *ngFor="let value of bookToEdit.formats" [value]="value.name">
+            {{ value.name }}
+          </option>
         </select>
       </div>
       <div class="mt-[20px]">
         <label for="isbn">International Standard Book Number (ISBN) </label>
         <input
           type="text"
-          class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" value="1546213456878"
+          name="isbn"
+          class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          [value]="bookToEdit.book.isbn"
+          [(ngModel)]="bookToEdit.book.isbn"
         />
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-[20px] w-full">
+    <div class="flex flex-row">
+      <div
+        class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+      >
+        <button
+          type="button"
+          class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+        >
+          Poništi
+          <i class="fas fa-times ml-[4px]"></i>
+        </button>
+        <button
+          type="submit"
+          id="sacuvajKnjigu"
+          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+        >
+          Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+        </button>
       </div>
     </div>
   </div>
