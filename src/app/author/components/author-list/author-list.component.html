@@ -1,16 +1,13 @@
-
-<div class="naslov">
+<div class="naslov ml-4">
     <h1>Autori</h1>
     <hr />
   </div>
-  <div>
+  <div class="ml-4">
     <div class="flex flex-row justify-between"
     >
-      
       <button 
         routerLink="add"
-        style="margin-left: 30px;"
-        class="btn-animation items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
+        class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
         type="button"
       >
         + Novi Autor
@@ -37,11 +34,78 @@
           />
         </div>
       </div>
-
-      
-    
    </div>
+
+   <!-- TABLE -->
+
+
+   <div class="px-[30px] pt-2 bg-white">
     <div class="table w-full mt-[20px]">
+      <table
+        class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
+      >
+        <thead class="bg-[#EFF3F6]">
+          <tr class="border-b-[1px] border-[#e4dfdf]">
+            <th
+              class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
+            >
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+              </label>
+            </th>
+            <th class="px-4 py-4 leading-4 tracking-wider text-left">
+              Naziv knjige
+              
+            </th>
+            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+              Opis
+            </th>
+            <th class="px-4 py-4"></th>
+          </tr>
+        </thead>
+
+        <tbody
+          class="bg-white"
+          *ngFor="let author of authors; let i = index"
+        >
+          <tr
+            class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+          >
+            <td class="px-4 py-4 whitespace-no-wrap">
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+              </label>
+            </td>
+            <td class="flex flex-row items-center px-4 py-4">
+              <a [routerLink]="['/authors', author.id, 'details']"
+                ><span class="font-medium text-left mr-3">{{author.name}} {{author.surname}}</span></a
+              >
+              
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              <a [routerLink]="['/authors', author.id, 'details']"
+                ><span class="font-normal text-right">{{lipsum}}</span></a
+              >
+            </td>
+          
+            
+            
+            <td
+              class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap"
+            >
+              <p
+                class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]"
+              >
+                <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    <!-- <div class="table w-full mt-[20px]">
       
       <div style="width: 1100px; margin-left: 30px;">
         <table
@@ -77,5 +141,5 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
   </div>
