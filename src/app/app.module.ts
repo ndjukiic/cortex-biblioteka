@@ -5,7 +5,6 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ActiveUserProvider } from './auth/services/active-user.provider';
@@ -16,7 +15,6 @@ import { ActiveUserProvider } from './auth/services/active-user.provider';
     HeaderComponent,
     DashboardComponent,
     SidebarComponent,
-    SettingsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterModule],
   providers: [
@@ -25,8 +23,8 @@ import { ActiveUserProvider } from './auth/services/active-user.provider';
       provide: APP_INITIALIZER,
       useFactory: activeUserProviderFactory,
       deps: [ActiveUserProvider],
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SettingsComponent } from './settings/settings.component';
+0;
 
 const routes: Routes = [
   {
@@ -10,15 +10,18 @@ const routes: Routes = [
   },
   {
     path: 'librarians',
-    loadChildren: () => import('./librarian/librarian.module').then((m) => m.LibrarianModule),
+    loadChildren: () =>
+      import('./librarian/librarian.module').then((m) => m.LibrarianModule),
   },
   {
     path: 'students',
-    loadChildren: () => import('./student/student.module').then((m) => m.StudentModule),
+    loadChildren: () =>
+      import('./student/student.module').then((m) => m.StudentModule),
   },
   {
     path: 'activity',
-    loadChildren: () => import('./activity/activity.module').then((m) => m.ActivityModule),
+    loadChildren: () =>
+      import('./activity/activity.module').then((m) => m.ActivityModule),
   },
   {
     path: 'books',
@@ -26,16 +29,18 @@ const routes: Routes = [
   },
   {
     path: 'authors',
-    loadChildren: () => import('./author/author.module').then((m) => m.AuthorModule),
+    loadChildren: () =>
+      import('./author/author.module').then((m) => m.AuthorModule),
   },
   {
     path: 'settings',
-    component: SettingsComponent,
+    loadChildren: () =>
+      import('./settings/settings.module').then((m) => m.SettingsModule),
   },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
-  }
+  },
 ];
 
 @NgModule({
