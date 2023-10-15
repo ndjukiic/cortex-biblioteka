@@ -18,11 +18,13 @@ export class ActivityService {
 
   constructor(private httpClient: HttpClient) {}
 
-  loadBorrowedBooks(): Observable<BorrowedBook[]> {
+  loadBorrowedBooks(bookId?: number): Observable<BorrowedBook[]> {
+    const requestBody = bookId ? { book_id: bookId } : {};
     return this.httpClient
       .get(`${this.url}/borrows`, {
+        params: requestBody,
         headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
@@ -34,11 +36,13 @@ export class ActivityService {
       );
   }
 
-  loadReturnedBooks(): Observable<BorrowedBook[]> {
+  loadReturnedBooks(bookId?: number): Observable<BorrowedBook[]> {
+    const requestBody = bookId ? { book_id: bookId } : {};
     return this.httpClient
       .get(`${this.url}/borrows`, {
+        params: requestBody,
         headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
@@ -50,11 +54,13 @@ export class ActivityService {
       );
   }
 
-  loadOverdueBooks(): Observable<BorrowedBook[]> {
+  loadOverdueBooks(bookId?: number): Observable<BorrowedBook[]> {
+    const requestBody = bookId ? { book_id: bookId } : {};
     return this.httpClient
       .get(`${this.url}/borrows`, {
+        params: requestBody,
         headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
@@ -66,11 +72,13 @@ export class ActivityService {
       );
   }
 
-  loadActiveReservations(): Observable<BorrowedBook[]> {
+  loadActiveReservations(bookId?: number): Observable<BorrowedBook[]> {
+    const requestBody = bookId ? { book_id: bookId } : {};
     return this.httpClient
       .get(`${this.url}/reservations`, {
+        params: requestBody,
         headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
@@ -82,11 +90,13 @@ export class ActivityService {
       );
   }
 
-  loadArchivedReservations(): Observable<BorrowedBook[]> {
+  loadArchivedReservations(bookId?: number): Observable<BorrowedBook[]> {
+    const requestBody = bookId ? { book_id: bookId } : {};
     return this.httpClient
       .get(`${this.url}/reservations`, {
+        params: requestBody,
         headers: {
-          Authorization: 'Bearer 12|NFCVzmhvScnV49j6EsXXcH6ErxYuMEsMWHLSOsPD',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .pipe(
