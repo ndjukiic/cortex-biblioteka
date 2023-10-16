@@ -75,6 +75,23 @@ export class ActivityOverdueListComponent implements OnInit {
     }
   }
 
+  getOverdueDays(returnDate: string): number {
+    const returnDateObj = new Date(returnDate);
+    const currentDate = new Date();
+    const timeDiff = Math.abs(currentDate.getTime() - returnDateObj.getTime());
+    const overdueDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return overdueDays;
+  }
+
+  calculateHoldingDuration(borrowDate: string): number {
+    const borrowDateObj = new Date(borrowDate);
+    const currentDate = new Date();
+
+    const timeDiff = currentDate.getTime() - borrowDateObj.getTime();
+    const holdingDays = Math.floor(timeDiff / (1000 * 3600 * 24));
+    return holdingDays;
+  }
+
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;

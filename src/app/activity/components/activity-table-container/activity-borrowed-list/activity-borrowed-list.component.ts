@@ -5,7 +5,7 @@ import { ActivityService } from '../../../services/activity.service';
 @Component({
   selector: 'app-activity-borrowed-list',
   templateUrl: './activity-borrowed-list.component.html',
-  styleUrls: ['./activity-borrowed-list.component.css']
+  styleUrls: ['./activity-borrowed-list.component.css'],
 })
 export class ActivityBorrowedListComponent implements OnInit {
   borrowedBooks: BorrowedBook[];
@@ -18,26 +18,30 @@ export class ActivityBorrowedListComponent implements OnInit {
   endIndex: number;
   searchName: string;
   ascendingOrder: boolean = true;
-  
+
   constructor(private activityService: ActivityService) {}
 
   ngOnInit(): void {
-    this.activityService.loadBorrowedBooks().subscribe(
-      borrowedBook => {
-        this.borrowedBooks = borrowedBook;
-        this.totalPages = Math.ceil(this.borrowedBooks.length / this.rowsPerPage);
-        this.setPageRange();
-      }
-    )
+    this.activityService.loadBorrowedBooks().subscribe((borrowedBooks) => {
+      this.borrowedBooks = borrowedBooks;
+      this.totalPages = Math.ceil(this.borrowedBooks.length / this.rowsPerPage);
+      this.setPageRange();
+    });
   }
 
   setPageRange() {
     this.startIndex = (this.currentPage - 1) * this.rowsPerPage;
-    this.endIndex = this.startIndex + +(this.rowsPerPage);
+    this.endIndex = this.startIndex + +this.rowsPerPage;
     if (this.searchName && this.searchName.trim() !== '') {
-      this.filteredBorrowedBooks = this.filteredResults.slice(this.startIndex, this.endIndex);
+      this.filteredBorrowedBooks = this.filteredResults.slice(
+        this.startIndex,
+        this.endIndex
+      );
     } else {
-      this.filteredBorrowedBooks = this.borrowedBooks.slice(this.startIndex, this.endIndex);
+      this.filteredBorrowedBooks = this.borrowedBooks.slice(
+        this.startIndex,
+        this.endIndex
+      );
     }
   }
 
@@ -49,7 +53,9 @@ export class ActivityBorrowedListComponent implements OnInit {
         return book.knjiga.title.toLowerCase().includes(searchValue);
       });
       this.filteredBorrowedBooks = this.filteredResults.slice(0, this.rowsPerPage);
-      this.totalPages = Math.ceil(this.filteredResults.length / this.rowsPerPage);
+      this.totalPages = Math.ceil(
+        this.filteredResults.length / this.rowsPerPage
+      );
     } else {
       this.setPageRange();
       this.totalPages = Math.ceil(this.borrowedBooks.length / this.rowsPerPage);
@@ -73,6 +79,20 @@ export class ActivityBorrowedListComponent implements OnInit {
       this.setPageRange();
     }
     this.ascendingOrder = !this.ascendingOrder;
+  }
+
+  calculateDaysBorrowed(borrowDate: string): number {
+    const currentDate = new Date();
+    const borrowDateObj = new Date(borrowDate);
+    const timeDiff = currentDate.getTime() - borrowDateObj.getTime();
+    const daysBorrowed = Math.floor(timeDiff / (1000 * 3600 * 24));
+    return daysBorrowed;
+  }
+
+  checkIfOverdue(returnDate: string): boolean {
+    const currentDate = new Date();
+    const returnDateObj = new Date(returnDate);
+    return returnDateObj < currentDate
   }
 
   nextPage() {

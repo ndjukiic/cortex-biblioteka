@@ -90,14 +90,16 @@
                 {{ activeReservation.action_date }}
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                {{ activeReservation.action_date }} ???
+                 ???
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                 {{ activeReservation.student.name }}
                 {{ activeReservation.student.surname }}
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                {{ activeReservation.status }}
+              <div class="inline-block px-[6px] py-[2px] font-medium bg-yellow-200 rounded-[10px]">
+                <span class="text-xs text-yellow-700">{{ activeReservation.status }}</span>
+              </div>  
             </td>
             <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">
               <p
