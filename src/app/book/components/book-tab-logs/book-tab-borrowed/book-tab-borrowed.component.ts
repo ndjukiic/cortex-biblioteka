@@ -40,6 +40,20 @@ export class BookTabBorrowedComponent implements OnInit, OnDestroy {
       });
   }
 
+  calculateDaysBorrowed(borrowDate: string): number {
+    const currentDate = new Date();
+    const borrowDateObj = new Date(borrowDate);
+    const timeDiff = currentDate.getTime() - borrowDateObj.getTime();
+    const daysBorrowed = Math.floor(timeDiff / (1000 * 3600 * 24));
+    return daysBorrowed;
+  }
+
+  checkIfOverdue(returnDate: string): boolean {
+    const currentDate = new Date();
+    const returnDateObj = new Date(returnDate);
+    return returnDateObj < currentDate
+  }
+
   setPageRange() {
     this.startIndex = (this.currentPage - 1) * this.rowsPerPage;
     this.endIndex = this.startIndex + +this.rowsPerPage;

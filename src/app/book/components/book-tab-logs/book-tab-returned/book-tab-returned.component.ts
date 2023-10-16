@@ -38,6 +38,21 @@ export class BookTabReturnedComponent {
     );
   }
   
+  calculateRetentionDays(borrowDate: string, actionDate: string): number {
+    const borrowDateObj = new Date(borrowDate);
+    const actionDateObj = new Date(actionDate);
+
+    const timeDiff = actionDateObj.getTime() - borrowDateObj.getTime();
+    const retentionDays = Math.floor(timeDiff / (1000 * 3600 * 24));
+    return retentionDays;
+  }
+
+  checkIfOverdue(returnDate: string): boolean {
+    const currentDate = new Date();
+    const returnDateObj = new Date(returnDate);
+    return returnDateObj < currentDate
+  }
+
   setPageRange() {
     this.startIndex = (this.currentPage - 1) * this.rowsPerPage;
     this.endIndex = this.startIndex + +(this.rowsPerPage);
