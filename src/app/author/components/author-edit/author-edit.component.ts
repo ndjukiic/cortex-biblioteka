@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../../models/author.model';
 
@@ -8,17 +8,21 @@ import { Author } from '../../models/author.model';
   styleUrls: ['./author-edit.component.css']
 })
 export class AuthorEditComponent {
-  authorAddForm: FormGroup;
+ 
+  @Output() formEmitter = new EventEmitter<Author>();
+  authorToEdit: Author;
+  id: number;
+  authorEditForm: FormGroup;
 
   ngOnInit(): void {
-    this.authorAddForm = new FormGroup({
+    this.authorEditForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'biography': new FormControl(null)
     });
   }
 
   onSubmit(){
-    console.log(this.authorAddForm);
+   
   }
 
   author: Author = {
