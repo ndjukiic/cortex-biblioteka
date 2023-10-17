@@ -9,6 +9,7 @@ import { AuthorDetailComponent } from './components/author-detail/author-detail.
 import { AuthorEditComponent } from './components/author-edit/author-edit.component';
 import { AuthorListComponent } from './components/author-list/author-list.component';
 import { AuthorService } from './services/author.service';
+import { AuthorTopBarComponent } from './components/author-detail/author-top-bar/author-top-bar.component';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { AuthorService } from './services/author.service';
     AuthorAddComponent,
     AuthorDetailComponent,
     AuthorEditComponent,
-    
+    AuthorTopBarComponent
   ],
   imports: [
     CommonModule,
