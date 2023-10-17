@@ -12,6 +12,8 @@ export class AuthorService {
   private url = `${environment.apiUrl}/authors`;
   private authors$ = new Subject<Author[]>();
   private author$ = new Subject<Author>();
+  public currentAuthor$ = new BehaviorSubject<Author>(null);
+
 
   private authorId: number;
 
@@ -63,16 +65,35 @@ export class AuthorService {
       );
   }
 
-  getBookID() {
+  getAuthorId() {
     return this.authorId;
+  }
+
+  loadAuthorForEdit(id: number): Observable<Author> {
+    const url = `${this.url}/${id}/edit`;
+
+    return this.httpClient
+      .get(url, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      })
+      .pipe(
+        map((response: ApiResponse<Author>) => {
+          this.author$.next(response.data);
+          return response.data;
+        })
+      );
   }
 
   setAuthorId(id: number) {
     this.authorId = id;
   }
 
-  deleteAuthor(authorId: number) {
-    const url = `your_api_url/authors/${authorId}`; // Replace with your API endpoint
-    return this.httpClient.delete(url);
+  
+  deleteAuthor(id: number) {
+    const url = `${this.url}/${id}/destroy`;
+
+    return this.httpClient.delete(url, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
   }
 }

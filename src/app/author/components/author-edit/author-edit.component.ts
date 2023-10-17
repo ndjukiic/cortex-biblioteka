@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../../models/author.model';
+import { AuthorService } from '../../services/author.service';
 
 @Component({
   selector: 'app-author-edit',
@@ -14,15 +15,31 @@ export class AuthorEditComponent {
   id: number;
   authorEditForm: FormGroup;
 
+  constructor(private authorService: AuthorService) {}
+
   ngOnInit(): void {
-    this.authorEditForm = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'biography': new FormControl(null)
+    this.id = +this.authorService.getAuthorId();
+    this.authorService.loadAuthorForEdit(this.id).subscribe((response) => {
+      this.authorToEdit = response;
     });
   }
 
+  initEdit(){
+    this.authorEditForm = new FormGroup({
+      name: new FormControl(this.authorToEdit.name),
+      // surname: new FormControl(this.authorEditForm.surname),
+      biography: new FormControl(this.authorToEdit.biography)
+    })
+  }
+
   onSubmit(){
-   
+    this.initEdit();
+    console.log("test");
+    this.storeToParent();
+  }
+
+  storeToParent() {
+    this.formEmitter.emit(this.authorEditForm.value);
   }
 
   author: Author = {

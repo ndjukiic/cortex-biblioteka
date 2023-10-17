@@ -18,45 +18,24 @@ export class AuthorDetailComponent {
   sorted = false;
   viewSize: number;
   currentPage: number;
-  
-  author: Author = {
-    id: 1,
-    name: 'Ivo',
-    surname: 'Andric',
-    biography: 'A brief biography...',
-    image: 'author-image.jpg',
-  };
-  // author: Author;
+
+  author: Author;
   id: number;
 
 
   constructor(
     private authorService: AuthorService,
-    private activatedRoute: ActivatedRoute
+    private route: ActivatedRoute    
     ) {}
 
   ngOnInit() {
-    this.loadAuthors();
-    this.activatedRoute.paramMap.subscribe((url) => {
-      this.authorService.setAuthorId(+url.get('id'));
+    const id = +this.route.snapshot.params['id'];
+
+    this.authorService.loadAuthor(id).subscribe((author: Author) => {
+      this.author = author;
     });
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  } 
-  
-  loadAuthors() {
-      this.subscription = this.authorService
-        .loadAuthors()
-        .subscribe((authors: Author[]) => {
-          this.authors = authors;
-          this.filteredArray = this.authors.slice();
-
-        });
-    }
-    
-    
 
     lipsum =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ";

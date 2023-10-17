@@ -1,4 +1,4 @@
-<div class="ml-4">
+<!-- <div class="ml-4">
     
     <div class="flex flex-col">
         <div class="naslov">
@@ -68,4 +68,30 @@
             
         
     </div>
+</div> -->
+
+
+<div class="px-6 py-8 flex flex-row justify-between" >
+  <div>
+    <ul>
+      <li>
+        <p class="text-gray-500 text-[20px]">Ime i prezime</p>
+        <div *ngIf = "author">
+        <p class="font-medium">{{ author.name }} {{ author.surname }}</p>
+        </div> 
+      </li>
+      <li class="mt-6">
+        <p class="text-gray-500 text-[20px]">Biografija</p>
+        <div>
+          <p class="font-normal">{{ lipsum }}</p>
+        </div>
+      </li>
+
+      
+      
+  
+       
+      
+    </ul>
+  </div>
 </div>
