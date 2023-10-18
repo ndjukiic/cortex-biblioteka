@@ -26,7 +26,7 @@ export class AuthorTopBarComponent {
 
   deleteAuthor() {
     const confirmation = window.confirm(
-      `Da li ste sigurni da želite da izbrišete korisnika ${this.author?.name} ${this.author?.surname}?`
+      `Da li ste sigurni da želite da izbrišete autora ${this.author?.name} ${this.author?.surname}?`
     );
 
     if (confirmation) {
