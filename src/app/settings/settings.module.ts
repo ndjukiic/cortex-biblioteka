@@ -10,6 +10,12 @@ import { SettingsGenresComponent } from './components/settings-genres/settings-g
 import { SettingsPolicyComponent } from './components/settings-policy/settings-policy.component';
 import { SettingsPublishersComponent } from './components/settings-publishers/settings-publishers.component';
 import { SettingsScriptsComponent } from './components/settings-scripts/settings-scripts.component';
+import { SettingsCategoriesAddComponent } from './components/settings-categories-add/settings-categories-add.component';
+import { SettingsGenresAddComponent } from './components/settings-genres-add/settings-genres-add.component';
+import { SettingsPublishersAddComponent } from './components/settings-publishers-add/settings-publishers-add.component';
+import { SettingsBookbindsAddComponent } from './components/settings-bookbinds-add/settings-bookbinds-add.component';
+import { SettingsFormatsAddComponent } from './components/settings-formats-add/settings-formats-add.component';
+import { SettingsScriptsAddComponent } from './components/settings-scripts-add/settings-scripts-add.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,12 @@ import { SettingsScriptsComponent } from './components/settings-scripts/settings
     SettingsPolicyComponent,
     SettingsPublishersComponent,
     SettingsScriptsComponent,
+    SettingsCategoriesAddComponent,
+    SettingsGenresAddComponent,
+    SettingsPublishersAddComponent,
+    SettingsBookbindsAddComponent,
+    SettingsFormatsAddComponent,
+    SettingsScriptsAddComponent,
   ],
   imports: [CommonModule, SettingsRoutingModule, RouterModule],
 })

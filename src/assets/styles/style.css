@@ -1326,11 +1326,10 @@ h4 {
 .mt-\[100px\] {
   margin-top: 100px;
 }
-.naslov h1{
+.naslov h1 {
   padding: 1rem 0;
-
 }
-.naslov hr{
+.naslov hr {
   margin-left: -4rem;
   padding-bottom: 1.5rem;
 }
@@ -1454,7 +1453,7 @@ h4 {
 .w-8 {
   width: 2rem;
 }
-.w-9{
+.w-9 {
   width: 2.5rem;
 }
 .w-56 {
@@ -2147,7 +2146,7 @@ h4 {
 .pr-1 {
   padding-right: 0.25rem;
 }
-.pr-2{
+.pr-2 {
   padding-right: 1rem;
 }
 .pt-2 {
@@ -2162,7 +2161,7 @@ h4 {
 .pl-\[50px\] {
   padding-left: 50px;
 }
-.pl-1{
+.pl-1 {
   padding-left: 1rem;
 }
 .pb-\[20px\] {

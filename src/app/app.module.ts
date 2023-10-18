@@ -14,7 +14,7 @@ import { ActiveUserProvider } from './auth/services/active-user.provider';
     AppComponent,
     HeaderComponent,
     DashboardComponent,
-    SidebarComponent,
+    SidebarComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterModule],
   providers: [
