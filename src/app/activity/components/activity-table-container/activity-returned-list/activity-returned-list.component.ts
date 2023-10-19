@@ -75,6 +75,15 @@ export class ActivityReturnedListComponent implements OnInit{
     this.ascendingOrder = !this.ascendingOrder;
   }
 
+  calculateRetentionDays(borrowDate: string, actionDate: string): number {
+    const borrowDateObj = new Date(borrowDate);
+    const actionDateObj = new Date(actionDate);
+
+    const timeDiff = actionDateObj.getTime() - borrowDateObj.getTime();
+    const retentionDays = Math.floor(timeDiff / (1000 * 3600 * 24));
+    return retentionDays;
+  }
+  
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;

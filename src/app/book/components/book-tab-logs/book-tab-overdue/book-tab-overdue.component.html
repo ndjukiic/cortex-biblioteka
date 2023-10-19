@@ -1,24 +1,5 @@
 <div class="height-scroll overflow-y-auto pt-3 bg-white">
-  <div class="flex items-center px-6 py-4 space-x-3 rounded-lg">
-    <div class="flex items-center">
-      <div class="relative text-gray-600 focus-within:text-gray-400">
-        <input
-          [(ngModel)]="searchName"
-          type="search"
-          name="q"
-          class="py-2 pl-2 text-sm text-white bg-white border-2 border-gray-200 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-          placeholder="Pretrazi knjige..."
-          autocomplete="off"
-          (input)="filterBooks()"
-        />
-      </div>
-    </div>
-    <a
-      class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
-      >Pretrazi
-    </a>
-  </div>
-  <div class="px-6 py-2">
+  <div class="py-2 pr-[30px]">
     <table
       class="overflow-hidden shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf] rezervacije"
       id="myTable"
@@ -33,31 +14,24 @@
             </label>
           </th>
           <th
-            class="flex items-center px-4 py-4 leading-4 tracking-wider text-left"
-          >
-            Naziv knjige<a (click)="sortBooksByName()"
-              ><i *ngIf="ascendingOrder"  class="ml-2 fa-solid fa-arrow-down-long"></i>
-              <i *ngIf="!ascendingOrder"  class="ml-2 fa-solid fa-arrow-up-long"></i></a>
-          </th>
-          <th
             class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle"
           >
-            Datum rezervacije
+            Datum izdavanja
           </th>
           <th
             class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle"
           >
-            Rezervacija istice
+            Izdato učeniku
+          </th>
+          <th
+            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle"
+          >
+            Prekoračenje u danima
           </th>
           <th
             class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle"
           >
-            Rezervaciju podnio
-          </th>
-          <th
-            class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer statusDrop-toggle"
-          >
-            Status
+            Trenutno zadržavanje knjige
           </th>
           <th class="px-4 py-4"></th>
         </tr>
@@ -65,7 +39,7 @@
       <tbody
         class="bg-white"
         *ngFor="
-          let archivedReservation of filteredArchivedReservations;
+          let bookOverdue of filteredBookOverdue;
           let i = index
         "
       >
@@ -77,30 +51,26 @@
               <input type="checkbox" class="form-checkbox" />
             </label>
           </td>
-          <td class="flex flex-row items-center px-4 py-3">
-            <img class="object-cover w-8 mr-2 h-11" src="" alt="" />
-            <a>
-              <span class="font-medium text-center">{{
-                archivedReservation.knjiga.title
-              }}</span>
-            </a>
-          </td>
           <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-            {{ archivedReservation.action_date }}
+            {{ bookOverdue.borrow_date }}
           </td>
-          <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-            {{ archivedReservation.action_date }} ???
-          </td>
-          <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-            {{ archivedReservation.student.name }}
-            {{ archivedReservation.student.surname }}
+          <td class="flex flex-row items-center px-4 py-4">
+            <img
+              class="object-cover w-8 h-8 mr-2 rounded-full"
+              src=""
+              alt=""
+            /><span class="font-medium text-center"
+              >{{ bookOverdue.student.name }}
+              {{ bookOverdue.student.surname }}</span
+            >
           </td>
           <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
             <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
-              <span class="text-xs text-red-800">
-                {{ archivedReservation.status }}
-              </span>
+              <span class="text-xs text-red-800">{{ getOverdueDays(bookOverdue.return_date) }} dana</span>
             </div>
+          </td>
+          <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+            {{ calculateHoldingDuration(bookOverdue.borrow_date) }} dana
           </td>
           <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">
             <p

@@ -90,10 +90,12 @@
                 {{ overdueBook.student.name }} {{ overdueBook.student.surname }}
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                ???
+              <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                <span class="text-xs text-red-800">{{ getOverdueDays(overdueBook.return_date) }} dana</span>
+              </div>
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-              ???
+              {{ calculateHoldingDuration(overdueBook.borrow_date) }} dana
             </td>
             <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">
               <p

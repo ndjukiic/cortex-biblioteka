@@ -93,7 +93,14 @@
             {{ borrowedBook.borrow_date }}
           </td>
           <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-              ???
+            <ng-container *ngIf="checkIfOverdue(borrowedBook.return_date); else notOverdue">
+              <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                <span class="text-xs text-red-800">{{ calculateDaysBorrowed(borrowedBook.borrow_date) }} dana</span>
+              </div>
+            </ng-container>
+            <ng-template #notOverdue>
+              {{ calculateDaysBorrowed(borrowedBook.borrow_date) }} dana
+            </ng-template>
           </td>
           <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
             {{ borrowedBook.bibliotekar0.name }}
