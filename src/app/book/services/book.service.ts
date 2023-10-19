@@ -97,6 +97,32 @@ export class BookService {
     });
   }
 
+  reserveBook(body: any, id: number) {
+    const url = `${this.url}/${id}/reserve`;
+
+    return this.httpClient
+      .post(url, body, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        tap(
+          (response) => {
+            console.log(response);
+            alert('Uspješno rezervisana knjiga');
+          },
+          (error) => {
+            if (error.data.errors) {
+              alert('Greška!' + error.data.errors);
+            } else if (!error.data.errors) {
+              alert('Greška! ' + error.error.errors);
+            }
+          }
+        )
+      );
+  }
+
   setBookID(id: number) {
     this.bookID = id;
   }

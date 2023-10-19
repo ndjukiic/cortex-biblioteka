@@ -1,24 +1,35 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ActiveUserProvider } from './auth/services/active-user.provider';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DashboardComponent,
-    SidebarComponent,
-    SettingsComponent
+    SidebarComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterModule],
-  providers: [],
+  providers: [
+    ActiveUserProvider,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: activeUserProviderFactory,
+      deps: [ActiveUserProvider],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+export function activeUserProviderFactory(provider: ActiveUserProvider): any {
+  return () => provider.getActiveUser();
+}

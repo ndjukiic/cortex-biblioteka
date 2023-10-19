@@ -3,7 +3,6 @@ import { BookService } from '../../services/book.service';
 import { OnInit } from '@angular/core';
 import { Book } from '../../models/book.model';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-book-list',
@@ -23,6 +22,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    console.log('Init BookListComponent');
     this.loadBooks();
   }
 

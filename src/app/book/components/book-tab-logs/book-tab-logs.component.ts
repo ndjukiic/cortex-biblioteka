@@ -11,15 +11,13 @@ export class BookTabLogsComponent implements OnInit {
       name: 'placeholder',
     },
   ];
-  
+
   book: Book;
-  id: number;
 
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
-    this.id = this.bookService.getBookID();
-    this.bookService.loadBook(this.id).subscribe((book: Book) => {
+    this.bookService.currentBook$.subscribe((book) => {
       this.book = book;
     });
   }

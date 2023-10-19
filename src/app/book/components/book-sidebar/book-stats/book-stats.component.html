@@ -1,4 +1,7 @@
-<div class="ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between w-[80%]" *ngIf="book">
+<div
+  class="ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between w-[80%]"
+  *ngIf="book"
+>
   <div class="text-gray-500">
     <p>Na raspolaganju:</p>
     <p class="mt-[20px]">Rezervisano:</p>
@@ -7,31 +10,31 @@
     <p class="mt-[20px]">Ukupna količina:</p>
   </div>
 
-  <div class="text-center pb-[30px]">
+  <div class="text-center pb-[30px]" *ngIf="book">
     <p
       class="bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]"
     >
-      {{totalSamples}} primjeraka
+      {{ totalSamples }} primjeraka
     </p>
     <p
       class="mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]"
     >
-      <span>{{book.rSamples}}</span> primjerka
+      <span>{{ book.rSamples }}</span> primjerka
     </p>
     <p
       class="mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]"
     >
-      {{book.bSamples}} primjeraka
+      {{ book.bSamples }} primjeraka
     </p>
     <p
       class="mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]"
     >
-      <span>{{book.fSamples}}</span> primjerak
+      <span>{{ book.fSamples }}</span> primjerak
     </p>
     <p
       class="mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]"
     >
-      <span>{{book.samples}}</span> primjerka
+      <span *ngIf="book.samples">{{ book.samples }}</span> primjerka
     </p>
   </div>
 </div>

@@ -7,15 +7,14 @@ import { BookService } from '../../services/book.service';
 })
 export class BookTabSpecificationsComponent implements OnInit {
   book: Book;
-  id: number;
 
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
-    this.id = this.bookService.getBookID();
-    this.bookService.loadBook(this.id).subscribe((book: Book) => {
-      this.book = book;
-
-    });
+    this.bookService.currentBook$.subscribe(
+      book => {
+        this.book = book;
+      }
+    )
   }
 }

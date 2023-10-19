@@ -1,0 +1,57 @@
+<div class="naslov ml-4">
+  <h1>Podešavanja</h1>
+  <hr style="padding-bottom: 0" />
+</div>
+<div class="flex flex-row">
+  <div class="w-full">
+    <div>
+      <ul class="flex flex-row mt-4 w-full border-b-[1px]">
+        <a
+          routerLink="policy"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Polisa</li></a
+        >
+        <a
+          routerLink="categories"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Kategorije</li></a
+        >
+        <a
+          routerLink="genres"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Žanrovi</li></a
+        >
+        <a
+          routerLink="publishers"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Izdavač</li></a
+        >
+        <a
+          routerLink="bookbinds"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Povez</li></a
+        >
+        <a
+          routerLink="formats"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Format</li></a
+        >
+        <a
+          routerLink="scripts"
+          routerLinkActive="active-book-nav"
+          class="ml-[70px]"
+          ><li>Pismo</li></a
+        >
+      </ul>
+    </div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
