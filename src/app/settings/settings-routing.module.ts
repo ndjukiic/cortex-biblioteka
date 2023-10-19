@@ -29,50 +29,51 @@ const routes = [
         component: SettingsGenresComponent,
       },
       {
-        path: 'genres/add',
-        component: SettingsGenresAddComponent,
-      },
-      {
         path: 'categories',
-        component: SettingsCategoriesComponent
+        component: SettingsCategoriesComponent,
       },
-      {
-        path: 'categories/add',
-        component: SettingsCategoriesAddComponent,
-      },
+
       {
         path: 'publishers',
         component: SettingsPublishersComponent,
-      },
-      {
-        path: 'publishers/add',
-        component: SettingsPublishersAddComponent,
       },
       {
         path: 'bookbinds',
         component: SettingsBookbindsComponent,
       },
       {
-        path: 'bookbinds/add',
-        component: SettingsBookbindsAddComponent,
-      },
-      {
         path: 'formats',
         component: SettingsFormatsComponent,
-      },
-      {
-        path: 'formats/add',
-        component: SettingsFormatsAddComponent,
       },
       {
         path: 'scripts',
         component: SettingsScriptsComponent,
       },
-      {
-        path: 'scripts/add',
-        component: SettingsScriptsAddComponent,
-      },
     ],
+  },
+  {
+    path: 'categories/add',
+    component: SettingsCategoriesAddComponent,
+  },
+  {
+    path: 'genres/add',
+    component: SettingsGenresAddComponent,
+  },
+  {
+    path: 'scripts/add',
+    component: SettingsScriptsAddComponent,
+  },
+  {
+    path: 'formats/add',
+    component: SettingsFormatsAddComponent,
+  },
+  {
+    path: 'bookbinds/add',
+    component: SettingsBookbindsAddComponent,
+  },
+  {
+    path: 'publishers/add',
+    component: SettingsPublishersAddComponent,
   },
 ];
 
