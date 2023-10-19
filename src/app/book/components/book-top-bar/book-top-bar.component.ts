@@ -11,6 +11,10 @@ export class BookTopBarComponent implements OnInit {
   book: Book;
   id: number;
   @Input() bookMode: boolean;
+  @Input() dismissMode: boolean;
+  @Input() issueMode: boolean;
+  @Input() reserveMode: boolean;
+  @Input() returnMode: boolean;
 
   constructor(private bookService: BookService, private router: Router) {}
 

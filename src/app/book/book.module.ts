@@ -22,12 +22,15 @@ import { BookEditSpecsComponent } from './components/book-edit/book-edit-specs/b
 import { BookEditMultimediaComponent } from './components/book-edit/book-edit-multimedia/book-edit-multimedia.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BookReserveComponent } from './components/book-reserve/book-reserve.component';
+import { BookIssueComponent } from './components/book-issue/book-issue.component';
 import { BookTabBorrowedComponent } from './components/book-tab-logs/book-tab-borrowed/book-tab-borrowed.component';
 import { BookTabReturnedComponent } from './components/book-tab-logs/book-tab-returned/book-tab-returned.component';
 import { BookTabOverdueComponent } from './components/book-tab-logs/book-tab-overdue/book-tab-overdue.component';
 import { BookTabActiveReservationsComponent } from './components/book-tab-logs/book-tab-active-reservations/book-tab-active-reservations.component';
 import { BookTabArchivedReservationsComponent } from './components/book-tab-logs/book-tab-archived-reservations/book-tab-archived-reservations.component';
+import { BookReturnComponent } from './components/book-return/book-return.component';
+import { BookDismissComponent } from './components/book-dismiss/book-dismiss.component';
+import { BookReserveComponent } from './components/book-reserve/book-reserve.component';
 
 @NgModule({
   declarations: [
@@ -49,12 +52,15 @@ import { BookTabArchivedReservationsComponent } from './components/book-tab-logs
     BookEditDetailsComponent,
     BookEditSpecsComponent,
     BookEditMultimediaComponent,
+    BookIssueComponent,
     BookReserveComponent,
     BookTabBorrowedComponent,
     BookTabReturnedComponent,
     BookTabOverdueComponent,
     BookTabActiveReservationsComponent,
     BookTabArchivedReservationsComponent,
+    BookReturnComponent,
+    BookDismissComponent,
   ],
   imports: [
     CommonModule,

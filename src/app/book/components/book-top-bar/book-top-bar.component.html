@@ -15,8 +15,17 @@
           <p class="uppercase ml-[5px]">{{ book.title }} - ID: {{ book.id }}</p>
         </a>
 
-        <a *ngIf="bookMode">
+        <a *ngIf="dismissMode">
+          <p class="ml-[5px]">/ Otpiši knjigu</p>
+        </a>
+        <a *ngIf="issueMode">
           <p class="ml-[5px]">/ Izdaj knjigu</p>
+        </a>
+        <a *ngIf="returnMode">
+          <p class="ml-[5px]">/ Vrati knjigu</p>
+        </a>
+        <a *ngIf="reserveMode">
+          <p class="ml-[5px]">/ Rezerviši knjigu</p>
         </a>
       </div>
     </div>
@@ -24,14 +33,22 @@
 
   <div>
     <ul class="flex flex-row my-4 pr-2">
-      <a href="" class="hover:text-blue-600"
+      <a routerLink="./dismiss" class="hover:text-blue-600"
         ><li class="px-2">Otpiši knjigu</li></a
       >
-      <a routerLink="./reserve"><li class="px-2">Izdaj knjigu</li></a>
-      <a href=""><li class="px-2">Vrati knjigu</li></a>
-      <a href=""> <li class="px-2">Rezerviši knjigu</li></a>
+      <a routerLink="./issue" class="hover:text-blue-600"
+        ><li class="px-2">Izdaj knjigu</li></a
+      >
+      <a routerLink="./return" class="hover:text-blue-600"
+        ><li class="px-2">Vrati knjigu</li></a
+      >
+      <a routerLink="./reserve" class="hover:text-blue-600">
+        <li class="px-2">Rezerviši knjigu</li></a
+      >
       <!-- kebab menu gets implemented here and incorporates two options below -->
-      <a routerLink="./edit"> <li class="px-2">Izmijeni knjigu</li></a>
+      <a routerLink="./edit" class="hover:text-blue-600">
+        <li class="px-2">Izmijeni knjigu</li></a
+      >
       <a class="cursor-pointer" (click)="onDelete()"
         ><li class="px-2">Izbriši knjigu</li></a
       >
