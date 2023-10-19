@@ -33,21 +33,36 @@
             <div class="flex flex-row ml-[10px] mb-[80px]">
                 <div class="w-[300px]">
                     <div >
-                        <label for="title">Ime i prezime</label>
+                        <label for="nameAndSurname">Ime i prezime</label>
                         <input
                         type="text"
-                        id="title"
-                        formControlName="name"
-                        placeholder="{{author.name}} {{author.surname}}"
+                        name="nameAndSurname"
+                        id="nameAndSurname"
+                        formControlName="nameAndSurname"
+                        
                         class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                        [value]="authorToEdit.name"
-                        [(ngModel)]="authorToEdit.name"
+                        
                         />
                         <span *ngIf="
-                        !authorEditForm.get('name').valid &&
-                        authorEditForm.get('name').touched
+                        !authorEditForm.get('nameAndSurname').valid &&
+                        authorEditForm.get('nameAndSurname').touched
                       "
-                        class="text-red-800">* Polje ne smije biti prazno!
+                        class="text-red-800">
+                        <div
+                        *ngIf="
+                        authorEditForm.get('nameAndSurname').errors['minimumTwoWords']
+                        "
+                      >
+                        *Polje mora sadržati najmanje dvije riječi!
+                      </div>
+                      <div *ngIf="authorEditForm.get('nameAndSurname').errors['pattern']">
+                        *Polje može sadržati samo slova i razmake!
+                      </div>
+                      <div
+                        *ngIf="authorEditForm.get('nameAndSurname').errors['required']"
+                      >
+                        *Ovo polje je obavezno!
+                      </div>
                         </span>
                     </div>
                 </div>
@@ -62,10 +77,9 @@
                         id="content"
                         class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                         formControlName="biography"
-                        placeholder="{{lipsum}}"
                         [value]="authorToEdit.biography"
                         [(ngModel)]="authorToEdit.biography"
-                        ></textarea>
+                        >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </textarea>
             
                         
                     </div>   

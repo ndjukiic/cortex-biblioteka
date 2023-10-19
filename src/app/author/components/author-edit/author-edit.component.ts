@@ -11,18 +11,17 @@ import { AuthorService } from '../../services/author.service';
 export class AuthorEditComponent {
  
   @Output() formEmitter = new EventEmitter<Author>();
+
+  author: Author;
   authorToEdit: Author;
-  id: number;
   authorEditForm: FormGroup;
 
   constructor(private authorService: AuthorService) {}
 
   ngOnInit(): void {
-    this.id = +this.authorService.getAuthorId();
-    this.authorService.loadAuthorForEdit(this.id).subscribe((response) => {
-      this.authorToEdit = response;
-    });
+    
   }
+    
 
   initEdit(){
     this.authorEditForm = new FormGroup({
@@ -42,14 +41,6 @@ export class AuthorEditComponent {
     this.formEmitter.emit(this.authorEditForm.value);
   }
 
-  author: Author = {
-    id: 1,
-    name: 'Ivo',
-    surname: 'Andric',
-    biography: 'A brief biography...',
-    image: 'author-image.jpg',
-  };
-  // author: Author;
 
   lipsum =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ";
