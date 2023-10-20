@@ -27,13 +27,16 @@
             type="date"
             class="flex w-[80%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
             formControlName="datumRezervisanja"
+            (input)="dateInput()"
           />
         </div>
         <div class="w-[50%]">
           <label for="return-date">Datum vraćanja</label>
           <input
-            type="date"
+            type="text"
             class="flex w-[80%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            disabled
+            [value]="returnDate"
           />
           <p>Rok vraćanja: <span>20</span> dana</p>
         </div>

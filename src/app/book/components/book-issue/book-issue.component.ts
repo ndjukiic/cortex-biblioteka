@@ -14,6 +14,7 @@ export class BookIssueComponent implements OnInit {
   studentList: Student[];
   reserveForm: FormGroup;
   id: number;
+  returnDate = '';
 
   constructor(
     private studentService: StudentService,
@@ -42,5 +43,13 @@ export class BookIssueComponent implements OnInit {
       .subscribe((response) => {
         this.router.navigate(['../../'], { relativeTo: this.route });
       });
+  }
+
+  dateInput() {
+    const endDate = new Date(this.reserveForm.value.datumRezervisanja);
+    this.returnDate = `${
+      endDate.getMonth() + 1
+    }/${endDate.getDate()}/${endDate.getFullYear()}`;
+    console.log(endDate);
   }
 }
