@@ -27,8 +27,6 @@ export class AuthLoginComponent implements OnInit {
     const user = this.loginForm.value;
     this.authService.loginUser(user).subscribe(
       (apiResponse) => {
-        alert('Uspješno ste se ulogovali u aplikaciju.');
-        console.log('success!', apiResponse);
         this.router.navigate(['../'], { relativeTo: this.route });
       },
       (error) => {

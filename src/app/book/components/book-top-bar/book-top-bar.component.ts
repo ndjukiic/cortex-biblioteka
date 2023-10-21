@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,13 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BookTopBarComponent implements OnInit {
   book: Book;
   id: number;
+  @Input() bookMode: boolean;
 
   constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit() {
     this.id = this.bookService.getBookID();
 
-    this.bookService.currentBook$.subscribe(book => {
+    this.bookService.currentBook$.subscribe((book) => {
       this.book = book;
     });
   }

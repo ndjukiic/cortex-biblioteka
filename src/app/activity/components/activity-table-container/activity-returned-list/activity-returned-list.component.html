@@ -97,10 +97,10 @@
                 {{ returnedBook.borrow_date }}
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                {{ returnedBook.return_date }}
+                {{ returnedBook.action_date }}
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-              ???
+              {{ calculateRetentionDays(returnedBook.borrow_date, returnedBook.action_date) }} dana
             </td>
             <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                 {{ returnedBook.bibliotekar0.name }}

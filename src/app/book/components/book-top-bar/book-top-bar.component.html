@@ -14,6 +14,10 @@
         <a>
           <p class="uppercase ml-[5px]">{{ book.title }} - ID: {{ book.id }}</p>
         </a>
+
+        <a *ngIf="bookMode">
+          <p class="ml-[5px]">/ Izdaj knjigu</p>
+        </a>
       </div>
     </div>
   </div>
@@ -23,12 +27,14 @@
       <a href="" class="hover:text-blue-600"
         ><li class="px-2">Otpiši knjigu</li></a
       >
-      <a href=""><li class="px-2">Izdaj knjigu</li></a>
+      <a routerLink="./reserve"><li class="px-2">Izdaj knjigu</li></a>
       <a href=""><li class="px-2">Vrati knjigu</li></a>
       <a href=""> <li class="px-2">Rezerviši knjigu</li></a>
       <!-- kebab menu gets implemented here and incorporates two options below -->
       <a routerLink="./edit"> <li class="px-2">Izmijeni knjigu</li></a>
-      <a class="cursor-pointer" (click)="onDelete()"><li class="px-2">Izbriši knjigu</li></a>
+      <a class="cursor-pointer" (click)="onDelete()"
+        ><li class="px-2">Izbriši knjigu</li></a
+      >
     </ul>
   </div>
 </div>

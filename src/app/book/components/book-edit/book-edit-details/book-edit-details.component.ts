@@ -39,7 +39,6 @@ export class BookEditDetailsComponent implements OnInit {
 
   onSubmit() {
     this.initChanges();
-    console.log('ovo se prosledjuje', this.bookEditForm);
     this.storeToParent();
   }
 
