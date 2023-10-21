@@ -8,12 +8,15 @@ import { BookTabLogsComponent } from './components/book-tab-logs/book-tab-logs.c
 import { BookTabMultimediaComponent } from './components/book-tab-multimedia/book-tab-multimedia.component';
 import { BookAddComponent } from './components/book-add/book-add/book-add.component';
 import { BookEditComponent } from './components/book-edit/book-edit/book-edit.component';
-import { BookReserveComponent } from './components/book-reserve/book-reserve.component';
+import { BookIssueComponent } from './components/book-issue/book-issue.component';
 import { BookTabBorrowedComponent } from './components/book-tab-logs/book-tab-borrowed/book-tab-borrowed.component';
 import { BookTabReturnedComponent } from './components/book-tab-logs/book-tab-returned/book-tab-returned.component';
 import { BookTabOverdueComponent } from './components/book-tab-logs/book-tab-overdue/book-tab-overdue.component';
 import { BookTabActiveReservationsComponent } from './components/book-tab-logs/book-tab-active-reservations/book-tab-active-reservations.component';
 import { BookTabArchivedReservationsComponent } from './components/book-tab-logs/book-tab-archived-reservations/book-tab-archived-reservations.component';
+import { BookDismissComponent } from './components/book-dismiss/book-dismiss.component';
+import { BookReturnComponent } from './components/book-return/book-return.component';
+import { BookReserveComponent } from './components/book-reserve/book-reserve.component';
 
 const routes: Routes = [
   {
@@ -43,7 +46,7 @@ const routes: Routes = [
           {
             path: '',
             redirectTo: 'borrowed',
-            pathMatch: 'full'
+            pathMatch: 'full',
           },
           {
             path: 'borrowed',
@@ -65,7 +68,7 @@ const routes: Routes = [
             path: 'archived-reservations',
             component: BookTabArchivedReservationsComponent,
           },
-        ]
+        ],
       },
       {
         path: 'multimedia',
@@ -76,6 +79,18 @@ const routes: Routes = [
   {
     path: ':id/edit',
     component: BookEditComponent,
+  },
+  {
+    path: ':id/dismiss',
+    component: BookDismissComponent,
+  },
+  {
+    path: ':id/issue',
+    component: BookIssueComponent,
+  },
+  {
+    path: ':id/return',
+    component: BookReturnComponent,
   },
   {
     path: ':id/reserve',
