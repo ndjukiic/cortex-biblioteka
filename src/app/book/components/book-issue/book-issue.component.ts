@@ -32,7 +32,7 @@ export class BookIssueComponent implements OnInit {
 
     this.reserveForm = new FormGroup({
       student_id: new FormControl(null),
-      datumRezervisanja: new FormControl(null),
+      datumRezervacije: new FormControl(null),
     });
   }
 
