@@ -63,7 +63,7 @@
 
         <tbody
           class="bg-white"
-          
+          *ngFor="let book of filteredArray; let i = index"
         >
           <tr
             class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
@@ -73,7 +73,21 @@
                 <input type="checkbox" class="form-checkbox" />
               </label>
             </td>
-            
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              Učenik
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              23.10.2023.
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              15 dana
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+             Nema prekoračenja
+            </td>
+            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              Valentina Kašćelan
+             </td>
           
             
           </tr>
