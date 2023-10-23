@@ -2,23 +2,50 @@
   <h1>Dashboard</h1>
   <hr />
 </div>
-<div class="flex ml-4">
-  <div class="flex-auto border-[1px] border-[#e4dfdf]">
-    <p>AKTIVNOSTI</p>
-    <p>dummy text</p>
-    <p>dummy text</p>
-    <p>dummy text</p>
-    <p>dummy text</p>
+<div class="flex flex-row justify-between">
+  <div class="mr-[30px]">
+    <h3 class="uppercase mb-[20px]">Aktivnosti</h3>
+    <div
+      class="flex flex-col mb-6"
+      *ngFor="let reservation of activeReservations"
+    >
+      <div class="text-gray-500">
+        <p class="inline uppercase">Izdavanje knjige</p>
+        <span> - {{ getDaysAgo(reservation.action_date) }} days ago</span>
+      </div>
+      <div>
+        <p>
+          Bibliotekar
+          <a class="text-[#2196f3] hover:text-blue-600"
+            >{{ reservation.bibliotekar0.name }}
+            {{ reservation.bibliotekar0.surname.charAt(0) }}.
+          </a>
+          je izdao knjigu 
+          <span><a class="text-[#2196f3] hover:text-blue-600">{{reservation.knjiga.title}}</a></span> studentu pod imenom
+          <a class="text-[#2196f3] hover:text-blue-600">
+            {{ reservation.student.name }}
+            {{ reservation.student.surname }}
+          </a>
+          dana
+          <span class="font-medium">
+            {{ formatDate(reservation.action_date) }}</span
+          >
+        </p>
+      </div>
+      <div>
+        <a class="text-[#2196f3] hover:text-blue-600">Pogledaj detaljnije >></a>
+      </div>
+    </div>
   </div>
-  <div class="flex-auto">
-    <div class="flex-auto border-[1px] border-[#e4dfdf]">
-      <p>REZERVACIJE KNJIGA</p>
+  <div class="mr-[50px]">
+    <div class="">
+      <h3 class="uppercase mb-[20px] text-left">Rezervacije knjiga</h3>
       <p>dummy text</p>
       <p>dummy text</p>
       <p>dummy text</p>
       <p>dummy text</p>
     </div>
-    <div class="flex-auto border-[1px] border-[#e4dfdf]">
+    <div class="relative">
       <p>STATISTIKA</p>
       <p>dummy text</p>
       <p>dummy text</p>
