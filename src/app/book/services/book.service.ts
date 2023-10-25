@@ -123,6 +123,10 @@ export class BookService {
       );
   }
 
+  dismissBook() {
+    //push request for otpisi book
+  }
+
   getActiveReservations(id?: number) {
     let url = `${this.url}/reservations`;
     if (id) {

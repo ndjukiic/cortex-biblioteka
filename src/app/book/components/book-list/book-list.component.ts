@@ -17,12 +17,9 @@ export class BookListComponent implements OnInit, OnDestroy {
   viewSize: number;
   currentPage: number;
 
-  constructor(
-    private bookService: BookService
-  ) {}
+  constructor(private bookService: BookService) {}
 
   ngOnInit() {
-    console.log('Init BookListComponent');
     this.loadBooks();
   }
 
