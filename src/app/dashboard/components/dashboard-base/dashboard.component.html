@@ -2,5 +2,17 @@
   <h1>Dashboard</h1>
   <hr />
 </div>
-
-<app-dashboard-activities></app-dashboard-activities>
+<div class="flex flex-row justify-between">
+  <!-- content justification will make more sense visibly once reservations and graphs get implemented with data -->
+  <div class="mr-[30px] ml-4">
+    <app-dashboard-activities></app-dashboard-activities>
+  </div>
+  <div class="mr-[50px]">
+    <div class="relative">
+      <app-dashboard-reservations></app-dashboard-reservations>
+    </div>
+    <div class="relative">
+      <app-dashboard-graph></app-dashboard-graph>
+    </div>
+  </div>
+</div>
