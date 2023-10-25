@@ -123,6 +123,25 @@ export class BookService {
       );
   }
 
+  getActiveReservations(id?: number) {
+    let url = `${this.url}/reservations`;
+    if (id) {
+      url = `${this.url}/reservations?book_id=${id}`;
+    }
+
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        tap((response: { data }) => {
+          console.log('Active reservations: ', response.data.active);
+        })
+      );
+  }
+
   setBookID(id: number) {
     this.bookID = id;
   }

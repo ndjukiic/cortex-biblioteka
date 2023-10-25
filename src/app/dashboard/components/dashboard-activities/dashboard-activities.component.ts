@@ -2,23 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/book/services/book.service';
 
 @Component({
-  selector: 'app-book-logs',
-  templateUrl: './book-logs.component.html',
+  selector: 'app-dashboard-activities',
+  templateUrl: './dashboard-activities.component.html',
 })
-export class BookLogsComponent implements OnInit {
-  id: number;
+export class DashboardActivitiesComponent implements OnInit {
   activeReservations;
-
   constructor(private bookService: BookService) {}
 
   ngOnInit(): void {
-    this.id = this.bookService.getBookID();
-
-    this.bookService.getActiveReservations(this.id).subscribe((response) => {
-      this.activeReservations = response.data.active.reverse().slice(0, 3);
+    this.bookService.getActiveReservations().subscribe((response) => {
+      this.activeReservations = response.data.active.reverse();
     });
   }
-
   getDaysAgo(action_date: string) {
     const currentDate = new Date();
     const reservationDate = new Date(action_date);

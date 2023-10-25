@@ -1,0 +1,43 @@
+<h3 class="uppercase mb-[20px] text-left">Rezervacije knjiga</h3>
+<table>
+  <tbody
+    class="bg-white"
+    *ngFor="let activeReservation of filteredActiveReservations; let i = index"
+  >
+    <tr
+      class="border-b-[1px] border-[#e4dfdf]"
+    >
+      <td class="px-4 py-3 flex flex-row items-center text-sm leading-5 whitespace-no-wrap">
+        <img class="object-cover w-8 h-8 mr-2 rounded-full" src="" alt="" />
+        <span>
+            {{ activeReservation.student.name }}
+            {{ activeReservation.student.surname }}
+        </span>
+      </td>
+      <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+        {{ activeReservation.knjiga.title }}
+      </td>
+      <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+        {{ activeReservation.action_date }}
+      </td>
+      <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+        <div
+          class="inline-block px-[6px] py-[2px] font-medium bg-yellow-200 rounded-[10px]"
+        >
+          <span class="text-xs text-yellow-700">{{
+            activeReservation.status
+          }}</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="text-right mt-[5px]">
+  <a
+    routerLink="/activity/active-reservations"
+    class="text-[#2196f3] hover:text-blue-600"
+  >
+    <i class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
+    Prikaži sve
+  </a>
+</div>
