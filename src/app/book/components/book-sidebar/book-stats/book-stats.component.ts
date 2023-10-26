@@ -13,6 +13,10 @@ export class BookStatsComponent implements OnInit {
   constructor(private bookService: BookService) {}
   ngOnInit() {
     this.bookService.currentBook$.subscribe((book) => {
+      if (!book) {
+        return;
+      }
+
       this.book = book;
       this.totalSamples =
         book.samples - book.rSamples - book.bSamples - book.fSamples;
