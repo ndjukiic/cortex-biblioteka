@@ -12,8 +12,8 @@ export class BookReturnComponent implements OnInit, OnDestroy {
   books: Book[];
   filteredArray: Book[];
   subscription: Subscription;
-  searchName: string;
-  sorted = false;
+  toReturn = [];
+  id: number;
   viewSize: number;
   currentPage: number;
 
@@ -23,6 +23,7 @@ export class BookReturnComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadBooks();
+    this.id = this.bookService.getBookID();
   }
 
   ngOnDestroy() {

@@ -40,4 +40,7 @@ export class BookTopBarComponent implements OnInit {
       alert('Brisanje knjige je prekinuto.');
     }
   }
+
+  
+
 }
