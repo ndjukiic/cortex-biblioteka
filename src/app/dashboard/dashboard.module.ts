@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     DashboardRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
 })
 export class DashboardModule {}
