@@ -1,59 +1,56 @@
 <form [formGroup]="reserveForm" (ngSubmit)="onSubmit()">
-<app-book-top-bar [reserveMode]="reserveMode"></app-book-top-bar>
-    <div class="flex flex-row ml-[30px]">
-      <div class="w-[50%] mb-[100px] mr-[100px]">
-        <div>
-          <h3 class="mt-[20px] mb-[10px]">Rezerviši knjigu</h3>
-        </div>
-        <div class="mt-[20px]">
-          <label for="student">Izaberi učenika za koga se knjiga rezerviše</label>
-          <select
-            name=""
-            id=""
-            class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            formControlName="student_id"
-          >
-            <option value=""></option>
-            <option *ngFor="let student of studentList" [value]="student.id">
-              {{ student.name }} {{ student.surname }}
-            </option>
-          </select>
-        </div>
-        <div class="mt-[20px] flex justify-between w-[90%]">
-          <div class="w-[50%]">
-            <label for="date">Datum rezervacije</label>
-            <input
-              type="date"
-              class="flex w-[80%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-              formControlName="datumRezervacije"
-              (input)="dateInput()"
-            />
-          </div>
-          
-        </div>
+  <div class="flex flex-row">
+    <div class="w-[50%] mb-[100px] mr-[100px]">
+      <div>
+        <h3 class="mt-[20px] mb-[10px]">Rezerviši knjigu</h3>
       </div>
-    </div>
-    <div class="absolute bottom-[20px] w-full">
-      <div class="flex flex-row">
-        <div
-          class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+      <div class="mt-[20px]">
+        <label for="student">Izaberi učenika za koga se knjiga rezerviše</label>
+        <select
+          name=""
+          id=""
+          class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          formControlName="student_id"
         >
-          <button
-            type="reset"
-            class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
-          >
-            Poništi
-            <i class="fas fa-times ml-[4px]"></i>
-          </button>
-          <button
-            type="submit"
-            class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-            [disabled]=""
-          >
-            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
-          </button>
+          <option value=""></option>
+          <option *ngFor="let student of studentList" [value]="student.id">
+            {{ student.name }} {{ student.surname }}
+          </option>
+        </select>
+      </div>
+      <div class="mt-[20px] flex justify-between w-[90%]">
+        <div class="w-[50%]">
+          <label for="date">Datum rezervacije</label>
+          <input
+            type="date"
+            class="flex w-[80%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            formControlName="datumRezervacije"
+            (input)="dateInput()"
+          />
         </div>
       </div>
     </div>
-  </form>
-  
+  </div>
+  <div class="absolute bottom-[20px] w-full">
+    <div class="flex flex-row">
+      <div
+        class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+      >
+        <button
+          type="reset"
+          class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+        >
+          Poništi
+          <i class="fas fa-times ml-[4px]"></i>
+        </button>
+        <button
+          type="submit"
+          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+          [disabled]=""
+        >
+          Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
