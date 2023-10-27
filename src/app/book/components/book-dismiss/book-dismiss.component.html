@@ -1,169 +1,164 @@
-<app-book-top-bar [dismissMode]="dismissMode"></app-book-top-bar>
-<div class="ml-4">
-  <!-- TABLE -->
-
-  <div class="px-[30px] pt-2 bg-white mt-[20px]">
-    <div class="table w-full">
-      <div class="flex flex-row justify-between">
-        <h3 class="ml-[10px] text-gray-600">Otpiši knjigu</h3>
-        <div class="flex items-center">
-          <div class="relative text-gray-600 focus-within:text-gray-400">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-              <button
-                type="submit"
-                class="p-1 focus:outline-none focus:shadow-outline"
-              >
-                <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-              </button>
-            </span>
-            <input
-              type="text"
-              name="q"
-              class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-              placeholder="Search..."
-              autocomplete="off"
-            />
-          </div>
+<div class="px-[30px] pt-2 bg-white mt-[20px]">
+  <div class="table w-full">
+    <div class="flex flex-row justify-between">
+      <h3 class="ml-[10px] text-gray-600">Otpiši knjigu</h3>
+      <div class="flex items-center">
+        <div class="relative text-gray-600 focus-within:text-gray-400">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <button
+              type="submit"
+              class="p-1 focus:outline-none focus:shadow-outline"
+            >
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            </button>
+          </span>
+          <input
+            type="text"
+            name="q"
+            class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+            placeholder="Search..."
+            autocomplete="off"
+          />
         </div>
       </div>
-      <table
-        class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
-      >
-        <thead class="bg-[#EFF3F6]">
-          <tr class="border-b-[1px] border-[#e4dfdf]">
-            <th
-              class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
-            >
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-              </label>
-            </th>
-            <th class="px-4 py-4 leading-4 tracking-wider text-left">
-              Izdato učeniku
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Datum izdavanja
-            </th>
-            <th class="px-4 py-4 leading-4 tracking-wider text-left">
-              Trenutno zadržavanje knjige
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Prekoračenje u danima
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Knjigu izdao
-            </th>
-          </tr>
-        </thead>
-        <tbody class="bg-white" *ngFor="let expired of expiredReservations">
-          <tr
-            class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+    </div>
+    <table
+      class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
+    >
+      <thead class="bg-[#EFF3F6]">
+        <tr class="border-b-[1px] border-[#e4dfdf]">
+          <th
+            class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
           >
-            <td class="px-4 py-4 whitespace-no-wrap">
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-              </label>
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ expired.student.name }}
-              {{ expired.student.surname }}
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ formatDate(expired.action_date) }}
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ getDaysAgo(expired.action_date) }} dana
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              <span
-                class="px-[6px] py-[2px] bg-red-200 text-red-800 rounded-[10px]"
-              >
-                {{ getDaysAgo(expired.action_date) - 10 }} dan(a)
-              </span>
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ expired.bibliotekar0.name }}
-              {{ expired.bibliotekar0.surname }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" />
+            </label>
+          </th>
+          <th class="px-4 py-4 leading-4 tracking-wider text-left">
+            Izdato učeniku
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Datum izdavanja
+          </th>
+          <th class="px-4 py-4 leading-4 tracking-wider text-left">
+            Trenutno zadržavanje knjige
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Prekoračenje u danima
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Knjigu izdao
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white" *ngFor="let expired of expiredReservations">
+        <tr
+          class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+        >
+          <td class="px-4 py-4 whitespace-no-wrap">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" />
+            </label>
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            {{ expired.student.name }}
+            {{ expired.student.surname }}
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            {{ formatDate(expired.action_date) }}
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            {{ getDaysAgo(expired.action_date) }} dana
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            <span
+              class="px-[6px] py-[2px] bg-red-200 text-red-800 rounded-[10px]"
+            >
+              {{ getDaysAgo(expired.action_date) - 10 }} dan(a)
+            </span>
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            {{ expired.bibliotekar0.name }}
+            {{ expired.bibliotekar0.surname }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <div class="absolute bottom-[20px] w-full">
-    <div class="flex flex-row">
-      <div
-        class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+<div class="absolute bottom-[20px] w-full">
+  <div class="flex flex-row">
+    <div
+      class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+    >
+      <button
+        type="button"
+        class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
       >
-        <button
-          type="button"
-          class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
-        >
-          Poništi
-          <i class="fas fa-times ml-[4px]"></i>
-        </button>
-        <button
-          type="button"
-          id="sacuvajKnjigu"
-          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-          (click)="onConfirm()"
-        >
-          Otpiši knjigu <i class="fas fa-check ml-[4px]"></i>
-        </button>
-      </div>
+        Poništi
+        <i class="fas fa-times ml-[4px]"></i>
+      </button>
+      <button
+        type="button"
+        id="sacuvajKnjigu"
+        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+        (click)="onConfirm()"
+      >
+        Otpiši knjigu <i class="fas fa-check ml-[4px]"></i>
+      </button>
     </div>
   </div>
+</div>
 
-  <!-- paginacija -->
+<!-- paginacija -->
 
 <div class="flex flex-row items-center justify-end my-2 pr-[30px]">
-     <div>
-       <p class="inline text-md">Rows per page:</p>
-       <select
-         class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
-         name="authors"
-       >
-         <option value="5">5</option>
-         <option value="10">10</option>
-         <option value="15">15</option>
-       </select>
-     </div>
-     <div>
-       <nav class="inline-flex">
-         <div>
-           <p
-             class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
-           >
-             /// of ///
-           </p>
-         </div>
-         <div>
-           <a
-             class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400"
-             aria-label="Previous"
-           >
-             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-               <path
-                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                 clip-rule="evenodd"
-               ></path>
-             </svg>
-           </a>
-         </div>
-         <div>
-           <a
-             class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400"
-             aria-label="Next"
-           >
-             <svg class="w-5 h-5" viewBox="0 0 20 20">
-               <path
-                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-               ></path>
-             </svg>
-           </a>
-         </div>
-       </nav>
-     </div>
-   </div>
+  <div>
+    <p class="inline text-md">Rows per page:</p>
+    <select
+      class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
+      name="authors"
+    >
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+  </div>
+  <div>
+    <nav class="inline-flex">
+      <div>
+        <p
+          class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
+        >
+          /// of ///
+        </p>
+      </div>
+      <div>
+        <a
+          class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400"
+          aria-label="Previous"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+      <div>
+        <a
+          class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400"
+          aria-label="Next"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 20 20">
+            <path
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </div>
 </div>

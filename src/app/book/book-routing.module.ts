@@ -32,6 +32,11 @@ const routes: Routes = [
     component: BookDetailComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'details',
+        pathMatch: 'full',
+      },
+      {
         path: 'details',
         component: BookTabDetailsComponent,
       },
@@ -71,6 +76,10 @@ const routes: Routes = [
         ],
       },
       {
+        path: 'dismiss',
+        component: BookDismissComponent
+      },
+      {
         path: 'multimedia',
         component: BookTabMultimediaComponent,
       },
@@ -79,10 +88,6 @@ const routes: Routes = [
   {
     path: ':id/edit',
     component: BookEditComponent,
-  },
-  {
-    path: ':id/dismiss',
-    component: BookDismissComponent,
   },
   {
     path: ':id/issue',
