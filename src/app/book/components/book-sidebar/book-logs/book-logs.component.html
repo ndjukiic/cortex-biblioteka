@@ -10,17 +10,24 @@
     <div>
       <p>
         Bibliotekar
-        <a class="text-[#2196f3] hover:text-blue-600"
+        <a
+          href="/librarians/{{ reservation.bibliotekar0.id }}"
+          class="text-[#2196f3] hover:text-blue-600"
           >{{ reservation.bibliotekar0.name }}
           {{ reservation.bibliotekar0.surname.charAt(0) }}.
         </a>
         je izdao knjigu studentu pod imenom
-        <a class="text-[#2196f3] hover:text-blue-600">
+        <a
+          href="/students/{{ reservation.student.id }}/details"
+          class="text-[#2196f3] hover:text-blue-600"
+        >
           {{ reservation.student.name }}
           {{ reservation.student.surname }}
         </a>
         dana
-        <span class="font-medium"> {{ formatDate(reservation.action_date) }}</span>
+        <span class="font-medium">
+          {{ formatDate(reservation.action_date) }}</span
+        >
       </p>
     </div>
     <div>

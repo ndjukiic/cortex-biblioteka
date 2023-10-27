@@ -1,35 +1,41 @@
-
-      <h3 class="uppercase mb-[20px]">Aktivnosti</h3>
-      <div
-        class="flex flex-col mb-6"
-        *ngFor="let reservation of activeReservations"
+<h3 class="uppercase mb-[20px]">Aktivnosti</h3>
+<div class="flex flex-col mb-6" *ngFor="let reservation of activeReservations">
+  <div class="text-gray-500">
+    <p class="inline uppercase">Izdavanje knjige</p>
+    <span> - {{ getDaysAgo(reservation.action_date) }} days ago</span>
+  </div>
+  <div>
+    <p>
+      Bibliotekar
+      <a
+        href="/librarians/{{ reservation.bibliotekar0.id }}"
+        class="text-[#2196f3] hover:text-blue-600"
+        >{{ reservation.bibliotekar0.name }}
+        {{ reservation.bibliotekar0.surname.charAt(0) }}.
+      </a>
+      je izdao knjigu
+      <span
+        ><a
+          href="/books/{{ reservation.knjiga.id }}"
+          class="text-[#2196f3] hover:text-blue-600"
+          >{{ reservation.knjiga.title }}</a
+        ></span
       >
-        <div class="text-gray-500">
-          <p class="inline uppercase">Izdavanje knjige</p>
-          <span> - {{ getDaysAgo(reservation.action_date) }} days ago</span>
-        </div>
-        <div>
-          <p>
-            Bibliotekar
-            <a class="text-[#2196f3] hover:text-blue-600"
-              >{{ reservation.bibliotekar0.name }}
-              {{ reservation.bibliotekar0.surname.charAt(0) }}.
-            </a>
-            je izdao knjigu 
-            <span><a class="text-[#2196f3] hover:text-blue-600">{{reservation.knjiga.title}}</a></span> studentu pod imenom
-            <a class="text-[#2196f3] hover:text-blue-600">
-              {{ reservation.student.name }}
-              {{ reservation.student.surname }}
-            </a>
-            dana
-            <span class="font-medium">
-              {{ formatDate(reservation.action_date) }}</span
-            >
-          </p>
-        </div>
-        <div>
-          <a class="text-[#2196f3] hover:text-blue-600">Pogledaj detaljnije >></a>
-        </div>
-      </div>
-
-  
+      studentu pod imenom
+      <a
+        href="/students/{{ reservation.student.id }}/details "
+        class="text-[#2196f3] hover:text-blue-600"
+      >
+        {{ reservation.student.name }}
+        {{ reservation.student.surname }}
+      </a>
+      dana
+      <span class="font-medium">
+        {{ formatDate(reservation.action_date) }}</span
+      >
+    </p>
+  </div>
+  <div>
+    <a class="text-[#2196f3] hover:text-blue-600">Pogledaj detaljnije >></a>
+  </div>
+</div>
