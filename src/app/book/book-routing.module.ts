@@ -84,6 +84,10 @@ const routes: Routes = [
         component: BookIssueComponent,
       },
       {
+        path: 'return',
+        component: BookReturnComponent,
+      },
+      {
         path: 'multimedia',
         component: BookTabMultimediaComponent,
       },
@@ -92,10 +96,6 @@ const routes: Routes = [
   {
     path: ':id/edit',
     component: BookEditComponent,
-  },
-  {
-    path: ':id/return',
-    component: BookReturnComponent,
   },
   {
     path: ':id/reserve',
