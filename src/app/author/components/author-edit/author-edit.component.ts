@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Author } from '../../models/author.model';
 import { AuthorService } from '../../services/author.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { createAuthorForm } from '../../helpers/author-edit.helper';
+
 
 @Component({
   selector: 'app-author-edit',
@@ -10,36 +13,41 @@ import { AuthorService } from '../../services/author.service';
 })
 export class AuthorEditComponent {
  
-  @Output() formEmitter = new EventEmitter<Author>();
-
   author: Author;
   authorToEdit: Author;
   authorEditForm: FormGroup;
 
-  constructor(private authorService: AuthorService) {}
+  constructor(
+    private authorService: AuthorService,
+    private router: Router, 
+    private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    
+    this.authorEditForm = createAuthorForm();
+    const authorId = +this.route.snapshot.paramMap.get('id');
+    this.authorService.loadAuthor(authorId).subscribe((author: Author) => {
+      this.author = author;
+
+      this.authorEditForm.patchValue({
+        'nameAndSurname': author.name + ' ' + author.surname,
+      });
+    });
   }
     
 
   initEdit(){
     this.authorEditForm = new FormGroup({
       name: new FormControl(this.authorToEdit.name),
-      // surname: new FormControl(this.authorEditForm.surname),
       biography: new FormControl(this.authorToEdit.biography)
     })
   }
 
   onSubmit(){
     this.initEdit();
-    console.log("test");
-    this.storeToParent();
+    
   }
 
-  storeToParent() {
-    this.formEmitter.emit(this.authorEditForm.value);
-  }
+  
 
 
   lipsum =
