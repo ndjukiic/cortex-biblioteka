@@ -146,6 +146,23 @@ export class BookService {
       );
   }
 
+  getAllActivities() {
+    //data:{izdate:[status:izdata], prekoracene:[status:izdata], otpisane:[status:otpisana], vracene: [status:vracena]}
+    const url = `${this.url}/borrows`;
+
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        tap((response: { data }) => {
+          console.log('it worked', response.data);
+        })
+      );
+  }
+
   setBookID(id: number) {
     this.bookID = id;
   }

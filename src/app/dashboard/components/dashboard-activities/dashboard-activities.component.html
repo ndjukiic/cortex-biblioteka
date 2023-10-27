@@ -1,38 +1,53 @@
 <h3 class="uppercase mb-[20px]">Aktivnosti</h3>
-<div class="flex flex-col mb-6" *ngFor="let reservation of activeReservations">
+<div class="flex flex-col mb-6" *ngFor="let activity of allActivities">
   <div class="text-gray-500">
-    <p class="inline uppercase">Izdavanje knjige</p>
-    <span> - {{ getDaysAgo(reservation.action_date) }} days ago</span>
+    <p *ngIf="activity.status.includes('Izdata')" class="inline uppercase">
+      Izdavanje knjige
+    </p>
+    <p *ngIf="activity.status.includes('Otpisana')" class="inline uppercase">
+      Otpisivanje knjige
+    </p>
+    <p *ngIf="activity.status.includes('Vracena')" class="inline uppercase">
+      Vraćanje knjige
+    </p>
+    <span> - {{ getDaysAgo(activity.action_date) }} days ago</span>
   </div>
   <div>
     <p>
       Bibliotekar
       <a
-        href="/librarians/{{ reservation.bibliotekar0.id }}"
+        href="/librarians/{{ activity.bibliotekar0.id }}"
         class="text-[#2196f3] hover:text-blue-600"
-        >{{ reservation.bibliotekar0.name }}
-        {{ reservation.bibliotekar0.surname.charAt(0) }}.
+        >{{ activity.bibliotekar0.name }}
+        {{ activity.bibliotekar0.surname.charAt(0) }}.
       </a>
-      je izdao knjigu
+      je <span *ngIf="activity.status.includes('Izdata')">izdao </span>
+      <span *ngIf="activity.status.includes('Otpisana')">otpisao </span>
+      <span *ngIf="activity.status.includes('Vracena')">
+        zaveo kao vraćenu
+      </span>
+      knjigu
       <span
         ><a
-          href="/books/{{ reservation.knjiga.id }}"
+          href="/books/{{ activity.knjiga.id }}"
           class="text-[#2196f3] hover:text-blue-600"
-          >{{ reservation.knjiga.title }}</a
+          >"{{ activity.knjiga.title }}"</a
         ></span
       >
-      studentu pod imenom
+      <span *ngIf="activity.status.includes('Otpisana')">
+        koju nije vratio student</span
+      >
+      <span *ngIf="!activity.status.includes('Otpisana')"> studentu</span> pod
+      imenom
       <a
-        href="/students/{{ reservation.student.id }}/details "
+        href="/students/{{ activity.student.id }}/details "
         class="text-[#2196f3] hover:text-blue-600"
       >
-        {{ reservation.student.name }}
-        {{ reservation.student.surname }}
+        {{ activity.student.name }}
+        {{ activity.student.surname }}
       </a>
       dana
-      <span class="font-medium">
-        {{ formatDate(reservation.action_date) }}</span
-      >
+      <span class="font-medium"> {{ formatDate(activity.action_date) }}</span>
     </p>
   </div>
   <div>
