@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Author } from '../models/author.model';
-import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, tap, throwError } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { environment } from 'src/environment/environment';
+import { FormGroup } from '@angular/forms';
+import { AuthorCreate } from '../models/author-create.model';
 
 @Injectable({
   providedIn: 'root',
@@ -88,6 +90,52 @@ export class AuthorService {
     this.authorId = id;
   }
 
+  saveAuthor(
+    authorForm: FormGroup,
+    authorId: number | null = null
+  ): Observable<any> {
+    if (!authorForm.valid) {
+      return throwError(() => new Error('Forma nije validna'));
+    }
+
+    const nameAndSurname = authorForm.get('nameAndSurname').value;
+    const fullName = nameAndSurname.split(/\s(.+)/);
+    const name = fullName[0];
+    const surname = fullName[1];
+
+    const authorData: AuthorCreate = {
+      name: name,
+      surname: surname,
+    };
+
+    if (authorId) {
+      return this.editAuthor(authorData, authorId).pipe(
+        tap(() => {
+          this.loadAuthors();
+          authorForm.reset();
+        })
+      );
+    } else {
+      return this.createNewAuthor(authorData).pipe(
+        tap(() => {
+          this.loadAuthors();
+          authorForm.reset();
+        })
+      );
+    }
+  }
+
+  editAuthor(author: AuthorCreate, id: number): Observable<any> {
+    return this.httpClient.put(`${this.url}/${id}`, author, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
+  }
+
+  createNewAuthor(author: AuthorCreate): Observable<any> {
+    return this.httpClient.post(`${this.url}/store`, author, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
+  }
   
   deleteAuthor(id: number) {
     const url = `${this.url}/${id}/destroy`;

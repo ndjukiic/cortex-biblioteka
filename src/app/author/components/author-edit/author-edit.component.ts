@@ -35,18 +35,25 @@ export class AuthorEditComponent {
   }
     
 
-  initEdit(){
-    this.authorEditForm = new FormGroup({
-      name: new FormControl(this.authorToEdit.name),
-      biography: new FormControl(this.authorToEdit.biography)
-    })
-  }
-
   onSubmit(){
-    this.initEdit();
+   
     
+    this.authorService
+      .saveAuthor(this.authorEditForm, this.author.id)
+      .subscribe({
+        next: (response) => {
+          console.log('Uspješno sačuvano', response);
+          this.router.navigate(['../details'], { relativeTo: this.route });
+        },
+        error: (error) => {
+          console.error('Greška', error);
+        },
+      });
   }
 
+  onCancel() {
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
   
 
 
