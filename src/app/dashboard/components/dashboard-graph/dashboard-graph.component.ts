@@ -16,12 +16,11 @@ export class DashboardGraphComponent implements OnInit {
 
   ngOnInit(): void {
     forkJoin([
-      this.activityService.loadBorrowedBooks(),
-      this.activityService.loadOverdueBooks(),
+      this.activityService.loadBookCount(),
       this.activityService.loadActiveReservations(),
-    ]).subscribe(([borrowedBooks, overdueBooks, activeReservations]) => {
-      this.borrowedBooksNumber = borrowedBooks.length;
-      this.overdueBooksNumber = overdueBooks.length;
+    ]).subscribe(([bookCount, activeReservations]) => {
+      this.borrowedBooksNumber = bookCount.borrowedCount;
+      this.overdueBooksNumber = bookCount.overdueCount;
       this.activeReservationsNumber = activeReservations.length;
       this.updateChart();
     });
