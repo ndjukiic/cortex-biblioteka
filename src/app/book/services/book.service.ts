@@ -110,7 +110,7 @@ export class BookService {
         tap(
           (response) => {
             console.log(response);
-            alert('Uspješno rezervisana knjiga');
+            alert('Uspješno izdata knjiga');
           },
           (error) => {
             if (error.data.errors) {
@@ -122,6 +122,9 @@ export class BookService {
         )
       );
   }
+
+  
+ 
 
   dismissBook() {
     //push request for otpisi book

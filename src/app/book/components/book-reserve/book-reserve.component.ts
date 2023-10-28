@@ -45,11 +45,5 @@ export class BookReserveComponent {
       });
   }
 
-  dateInput() {
-    const endDate = new Date(this.reserveForm.value.datumRezervisanja);
-    this.returnDate = `${
-      endDate.getMonth() + 1
-    }/${endDate.getDate()}/${endDate.getFullYear()}`;
-    console.log(endDate);
-  }
+
 }
