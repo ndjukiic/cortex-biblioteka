@@ -32,7 +32,7 @@ export class BookIssueComponent implements OnInit {
 
     this.reserveForm = new FormGroup({
       student_id: new FormControl(null),
-      datumRezervisanja: new FormControl(null),
+      reserve_date: new FormControl(null),
     });
   }
 
@@ -45,12 +45,17 @@ export class BookIssueComponent implements OnInit {
       });
   }
 
+  
   dateInput() {
-    const endDate = new Date(this.reserveForm.value.datumRezervisanja);
+    const reserveDate = new Date(this.reserveForm.value.reserve_date); 
+    const endDate = new Date(reserveDate);
+    endDate.setDate(reserveDate.getDate() + 20); 
+  
+   
     this.returnDate = `${
       endDate.getMonth() + 1
     }/${endDate.getDate()}/${endDate.getFullYear()}`;
-    console.log(endDate);
-    console.log(this.returnDate);
+    // console.log(endDate);
   }
+  
 }
