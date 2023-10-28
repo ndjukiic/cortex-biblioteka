@@ -32,7 +32,7 @@ export class BookIssueComponent implements OnInit {
 
     this.reserveForm = new FormGroup({
       student_id: new FormControl(null),
-      datumRezervacije: new FormControl(null),
+      datumRezervisanja: new FormControl(null),
     });
   }
 
@@ -51,5 +51,6 @@ export class BookIssueComponent implements OnInit {
       endDate.getMonth() + 1
     }/${endDate.getDate()}/${endDate.getFullYear()}`;
     console.log(endDate);
+    console.log(this.returnDate);
   }
 }
