@@ -163,6 +163,21 @@ export class BookService {
       );
   }
 
+  getAllBookActivities(id: number){
+    const url = `${this.url}/borrows?book_id=${id}`
+
+    return this.httpClient.get(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }
+    })
+    .pipe(
+      tap((response:{data}) => {
+        console.log('successfull get request!', response.data);
+      })
+    )
+  }
+
   setBookID(id: number) {
     this.bookID = id;
   }

@@ -32,8 +32,6 @@ export class DashboardActivitiesComponent implements OnInit {
 
       return dateB - dateA;
     });
-
-    console.log('post sort', this.allActivities);
   }
 
   getDaysAgo(action_date: string) {
