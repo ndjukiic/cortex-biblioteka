@@ -14,13 +14,16 @@ export class StudentService {
   private url = `${environment.apiUrl}/users`;
   public students$ = new BehaviorSubject<Student[]>(null);
   public student$ = new BehaviorSubject<Student>(null);
+  private uploadedImageUrl: string = '';
 
   constructor(private httpClient: HttpClient) {}
 
   loadStudents(): Observable<Student[]> {
     return this.httpClient
       .get(this.url, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       })
       .pipe(
         map((response: ApiResponse<Student[]>) => {
@@ -72,7 +75,7 @@ export class StudentService {
     const surname = fullName[1];
 
     const studentData: StudentCreate = {
-      role_id: 1,
+      role_id: 2,
       name: name,
       surname: surname,
       jmbg: studentForm.get('jmbg').value,
@@ -80,6 +83,7 @@ export class StudentService {
       username: studentForm.get('username').value,
       password: studentForm.get('password').value,
       password_confirmation: studentForm.get('confirmPassword').value,
+      photoPath: this.uploadedImageUrl,
     };
 
     if (studentId) {
@@ -97,6 +101,14 @@ export class StudentService {
         })
       );
     }
+  }
+
+  setUploadedImageUrl(url: string) {
+    this.uploadedImageUrl = url;
+  }
+
+  getUploadedImageUrl(): string {
+    return this.uploadedImageUrl;
   }
 
   deleteStudent(id: number): Observable<any> {

@@ -27,7 +27,7 @@ export function createLibrarianForm() {
       Validators.required,
       passwordMatch,
     ]),
-    userImage: new FormControl(null),
+    photoPath: new FormControl(null),
   });
 }
 

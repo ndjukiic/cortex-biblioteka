@@ -7,5 +7,6 @@ export interface LibrarianCreate {
     username: string;
     password: string;
     password_confirmation: string;
+    photoPath: string;
   }
   

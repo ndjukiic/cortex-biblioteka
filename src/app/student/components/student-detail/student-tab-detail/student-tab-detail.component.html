@@ -30,8 +30,8 @@
         <p class="font-medium">Prekjuce 11:57 AM</p>
       </div>
     </div>
-    <div class="ml-[100px] mt-[20px]">
-      <img class="p-2 border-2 border-gray-300" width="300px" src="{{ student?.photoPath }}" alt="" />
+    <div class="ml-[100px] mt-[20px]" [style.width.px]="300" [style.height.px]="300">
+      <img class="p-2 border-2 border-gray-300 w-full h-full object-cover"src="{{ student?.photoPath }}" alt="" />
     </div>
   </div>
 </div>
