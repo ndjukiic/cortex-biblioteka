@@ -127,27 +127,7 @@ export class BookService {
     //push request for otpisi book
   }
 
-  getActiveReservations(id?: number) {
-    let url = `${this.url}/reservations`;
-    if (id) {
-      url = `${this.url}/reservations?book_id=${id}`;
-    }
-
-    return this.httpClient
-      .get(url, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      })
-      .pipe(
-        tap((response: { data }) => {
-          console.log('Active reservations: ', response.data.active);
-        })
-      );
-  }
-
   getAllActivities() {
-    //data:{izdate:[status:izdata], prekoracene:[status:izdata], otpisane:[status:otpisana], vracene: [status:vracena]}
     const url = `${this.url}/borrows`;
 
     return this.httpClient
@@ -163,19 +143,20 @@ export class BookService {
       );
   }
 
-  getAllBookActivities(id: number){
-    const url = `${this.url}/borrows?book_id=${id}`
+  getAllBookActivities(id: number) {
+    const url = `${this.url}/borrows?book_id=${id}`;
 
-    return this.httpClient.get(url, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      }
-    })
-    .pipe(
-      tap((response:{data}) => {
-        console.log('successfull get request!', response.data);
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       })
-    )
+      .pipe(
+        tap((response: { data }) => {
+          console.log('successfull get request!', response.data);
+        })
+      );
   }
 
   setBookID(id: number) {

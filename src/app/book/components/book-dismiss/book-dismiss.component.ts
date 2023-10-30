@@ -6,9 +6,7 @@ import { BookService } from '../../services/book.service';
   templateUrl: './book-dismiss.component.html',
 })
 export class BookDismissComponent implements OnInit {
-  dismissMode = true;
-  allReservations = [];
-  expiredReservations = [];
+  expiredReservations;
   id: number;
 
   constructor(private bookService: BookService) {}
@@ -16,25 +14,9 @@ export class BookDismissComponent implements OnInit {
   ngOnInit() {
     this.id = this.bookService.getBookID();
 
-    this.bookService.getActiveReservations(this.id).subscribe((response) => {
-      this.allReservations = response.data.active;
-      console.log('post-call', this.allReservations);
-
-      if (this.allReservations) {
-        this.checkIfExpired();
-      }
+    this.bookService.getAllBookActivities(this.id).subscribe((response) => {
+      this.expiredReservations = response.data.prekoracene;
     });
-  }
-
-  checkIfExpired() {
-    let container: number;
-
-    for (let reservation of this.allReservations) {
-      container = this.getDaysAgo(reservation.action_date);
-      if (container >= 10) {
-        this.expiredReservations.push(reservation);
-      }
-    }
   }
 
   getDaysAgo(action_date: string) {
@@ -57,8 +39,7 @@ export class BookDismissComponent implements OnInit {
     return fullDate;
   }
 
-  onConfirm(){
+  onConfirm() {
     console.log('(ne)uspješno');
   }
-
 }
