@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, map, tap } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { environment } from 'src/environments/environment';
 import { BorrowedBook } from '../models/borrowed-book.model';
@@ -17,6 +17,22 @@ export class ActivityService {
   public archivedReservations$ = new Subject();
 
   constructor(private httpClient: HttpClient) {}
+
+  loadBookCount() {
+    return this.httpClient
+      .get(`${this.url}/borrows`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        map((response: ApiResponse<any>) => {
+          const borrowedCount = response.data.izdate.length;
+          const overdueCount = response.data.prekoracene.length;
+          return { borrowedCount, overdueCount };
+        })
+      );
+  }
 
   loadBorrowedBooks(bookId?: number): Observable<BorrowedBook[]> {
     const requestBody = bookId ? { book_id: bookId } : {};

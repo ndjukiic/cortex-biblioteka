@@ -123,15 +123,35 @@ export class BookService {
       );
   }
 
-  dismissBook() {
+  dismissBook(id: number) {
     //push request for otpisi book
+    const url = `${this.url}/otpisi`;
+    const body = {
+      toWriteoff: [id],
+    };
+
+    return this.httpClient
+      .post(url, body, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        tap(
+          (response) => {
+            console.log('successfull dismission!', response);
+            alert('Uspješno otpisana knjiga');
+          },
+          (error) => {
+            console.log('unsuccessful dismission', error.error);
+            alert('Greška!' + error.data.errors + ' Molimo pokušajte ponovo.');
+          }
+        )
+      );
   }
 
-  getActiveReservations(id?: number) {
-    let url = `${this.url}/reservations`;
-    if (id) {
-      url = `${this.url}/reservations?book_id=${id}`;
-    }
+  getAllActivities() {
+    const url = `${this.url}/borrows`;
 
     return this.httpClient
       .get(url, {
@@ -141,7 +161,23 @@ export class BookService {
       })
       .pipe(
         tap((response: { data }) => {
-          console.log('Active reservations: ', response.data.active);
+          console.log('it worked', response.data);
+        })
+      );
+  }
+
+  getAllBookActivities(id: number) {
+    const url = `${this.url}/borrows?book_id=${id}`;
+
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        tap((response: { data }) => {
+          console.log('successfull get request!', response.data);
         })
       );
   }

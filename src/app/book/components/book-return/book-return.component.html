@@ -1,127 +1,111 @@
-<app-book-top-bar [returnMode]="returnMode"></app-book-top-bar>
+<!-- TABLE -->
 
-<div class="ml-4">
-    
-   <!-- TABLE -->
-
-   <div class="px-[30px] pt-2 bg-white mt-[20px]">
-    <div class="table w-full">
-        <div class="flex flex-row justify-between  ">
-            <h3 class="ml-[10px] text-gray-600">Vrati knjigu</h3>
-          <div class="flex items-center">
-            <div class="relative text-gray-600 focus-within:text-gray-400">
-              <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                
-                <button
-                  type="submit"
-                  class="p-1 focus:outline-none focus:shadow-outline">
-                  <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-                </button>
-              </span>
-              <input
-                
-                type="text"
-                name="q"
-                class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-                placeholder="Search..."
-                autocomplete="off"
-                
-              />
-            </div>
-          </div>
-       </div>
-      <table
-        class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
-      >
-        <thead class="bg-[#EFF3F6]">
-          <tr class="border-b-[1px] border-[#e4dfdf]">
-            <th
-              class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
+<div class="pt-2 bg-white mt-[20px]" style="padding-right: 32px">
+  <div class="table w-full">
+    <div class="flex flex-row justify-between">
+      <h3 class="ml-[10px] text-gray-600">Vrati knjigu</h3>
+      <div class="flex items-center">
+        <div class="relative text-gray-600 focus-within:text-gray-400">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <button
+              type="submit"
+              class="p-1 focus:outline-none focus:shadow-outline"
             >
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-              </label>
-            </th>
-            <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                Izdato učeniku            
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-                Datum izdavanja
-            </th>
-            <th class="px-4 py-4 leading-4 tracking-wider text-left">
-                Trenutno zadržavanje knjige
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-                Prekoračenje u danima
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-                Knjigu izdao
-            </th>
-            <th class="px-4 py-4"></th>
-          </tr>
-        </thead>
-
-        <tbody
-          class="bg-white"
-          *ngFor="let book of filteredArray; let i = index"
-        >
-          <tr
-            class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
-          >
-            <td class="px-4 py-4 whitespace-no-wrap">
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-              </label>
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              Učenik
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              23.10.2023.
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              15 dana
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-             Nema prekoračenja
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              Valentina Kašćelan
-             </td>
-          
-            
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="absolute bottom-[20px] w-full">
-    <div class="flex flex-row">
-      <div
-        class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
-      >
-        <button
-          type="button"
-          class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
-        >
-          Poništi
-          <i class="fas fa-times ml-[4px]"></i>
-        </button>
-        <button
-          type="submit"
-          id="sacuvajKnjigu"
-          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-        >
-          Vrati knjigu <i class="fas fa-check ml-[4px]"></i>
-        </button>
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            </button>
+          </span>
+          <input
+            type="text"
+            name="q"
+            class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+            placeholder="Search..."
+            autocomplete="off"
+          />
+        </div>
       </div>
     </div>
+    <table
+      class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
+    >
+      <thead class="bg-[#EFF3F6]">
+        <tr class="border-b-[1px] border-[#e4dfdf]">
+          <th
+            class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
+          >
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" />
+            </label>
+          </th>
+          <th class="px-4 py-4 leading-4 tracking-wider text-left">
+            Izdato učeniku
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Datum izdavanja
+          </th>
+          <th class="px-4 py-4 leading-4 tracking-wider text-left">
+            Trenutno zadržavanje knjige
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Prekoračenje u danima
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Knjigu izdao
+          </th>
+          <th class="px-4 py-4"></th>
+        </tr>
+      </thead>
+
+      <tbody class="bg-white" *ngFor="let book of filteredArray; let i = index">
+        <tr
+          class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+        >
+          <td class="px-4 py-4 whitespace-no-wrap">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" />
+            </label>
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Učenik</td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            23.10.2023.
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            15 dana
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            Nema prekoračenja
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            Valentina Kašćelan
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="absolute bottom-[20px] w-full">
+  <div class="flex flex-row">
+    <div
+      class="inline-block w-full text-white text-right py-[7px] px-5 mr-[100px]"
+    >
+      <button
+        type="button"
+        class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]"
+      >
+        Poništi
+        <i class="fas fa-times ml-[4px]"></i>
+      </button>
+      <button
+        type="submit"
+        id="sacuvajKnjigu"
+        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+      >
+        Vrati knjigu <i class="fas fa-check ml-[4px]"></i>
+      </button>
+    </div>
   </div>
 
-
-<!-- paginacija -->
-
+  <!-- paginacija -->
 
   <!-- <div class="flex flex-row items-center justify-end my-2 pr-[30px]">
     <div>
@@ -176,4 +160,4 @@
       </nav>
     </div>
   </div> -->
-  </div>
+</div>
