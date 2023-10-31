@@ -18,7 +18,7 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
-    "aws-sdk": "^2.1481.0",
+    "aws-sdk": "^2.1484.0",
     "bootstrap": "^3.4.1",
     "echarts": "^5.4.3",
     "ngx-echarts": "^16.1.1",
