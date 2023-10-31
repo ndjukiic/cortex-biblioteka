@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../services/book.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-dismiss',
@@ -7,9 +8,12 @@ import { BookService } from '../../services/book.service';
 })
 export class BookDismissComponent implements OnInit {
   expiredReservations;
+  checkboxItemContainer;
   id: number;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService,
+    private router: Router,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.id = this.bookService.getBookID();
@@ -40,6 +44,22 @@ export class BookDismissComponent implements OnInit {
   }
 
   onConfirm() {
-    console.log('(ne)uspješno');
+    if(!this.checkboxItemContainer){
+      return 
+    }
+    this.bookService.dismissBook(this.checkboxItemContainer.id).subscribe(
+      (response)=>{
+        this.router.navigate(['../'], { relativeTo: this.route });
+      }
+    );
+  }
+
+  onSingleCheckboxChange(item) {
+    this.checkboxItemContainer = item;
+    console.log(this.checkboxItemContainer);
+  }
+
+  onAllCheckboxChange(expiredReservations) {
+    console.log('svi su odabrani');
   }
 }

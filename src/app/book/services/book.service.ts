@@ -123,8 +123,31 @@ export class BookService {
       );
   }
 
-  dismissBook() {
+  dismissBook(id: number) {
     //push request for otpisi book
+    const url = `${this.url}/otpisi`;
+    const body = {
+      toWriteoff: [id],
+    };
+
+    return this.httpClient
+      .post(url, body, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        tap(
+          (response) => {
+            console.log('successfull dismission!', response);
+            alert('Uspješno otpisana knjiga');
+          },
+          (error) => {
+            console.log('unsuccessful dismission', error.error);
+            alert('Greška!' + error.data.errors + ' Molimo pokušajte ponovo.');
+          }
+        )
+      );
   }
 
   getAllActivities() {
