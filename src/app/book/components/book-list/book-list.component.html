@@ -114,6 +114,11 @@
               </div>
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+              <div *ngFor="let category of book.categories">
+                <p class="font-medium">
+                  {{ category.name }}
+                </p>
+              </div>
               {{ book.categories[0].name }}
             </td>
             <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
@@ -156,7 +161,7 @@
       class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
       (change)="pagPage()"
     >
-      <option value="1">5</option>
+      <option value="5">5</option>
       <option value="10">10</option>
       <option value="15">15</option>
     </select>
