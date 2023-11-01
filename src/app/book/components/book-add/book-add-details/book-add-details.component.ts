@@ -19,6 +19,9 @@ declare var CKEDITOR: any;
 export class BookAddDetailsComponent implements OnInit, AfterViewInit {
   @Output() formEmitter = new EventEmitter<Book>();
   bookAddForm: FormGroup;
+  data;
+
+  constructor(private bookService: BookService) {}
 
   ngOnInit() {
     this.bookAddForm = new FormGroup({
@@ -39,6 +42,11 @@ export class BookAddDetailsComponent implements OnInit, AfterViewInit {
       jezik: new FormControl(1),
       deletePdfs: new FormControl(0),
       //lang and deletePdfs variables were required in api
+    });
+
+    this.bookService.getAllBookProperties().subscribe((response) => {
+      this.data = response;
+      console.log(this.data);
     });
   }
 

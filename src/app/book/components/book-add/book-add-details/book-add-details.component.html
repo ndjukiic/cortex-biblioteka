@@ -44,7 +44,7 @@
           </span>
         </div>
 
-        <div class="mt-[20px]">
+        <div class="mt-[20px]" *ngIf="data">
           <label for="category">Izaberite kategorije </label>
           <select
             id="category"
@@ -52,8 +52,12 @@
             formControlName="categories"
           >
             <option disabled selected></option>
-            <option value="1">Udžbenici</option>
-            <option value="2">Romani</option>
+            <option
+              *ngFor="let value of data.data.categories"
+              [ngValue]="value.name"
+            >
+              {{ value.name }}
+            </option>
           </select>
 
           <span
@@ -65,7 +69,7 @@
             >* Polje ne smije biti prazno!
           </span>
         </div>
-        <div class="mt-[20px]">
+        <div class="mt-[20px]" *ngIf="data">
           <label for="genres">Izaberite žanrove </label>
 
           <select
@@ -74,8 +78,12 @@
             formControlName="genres"
           >
             <option disabled selected></option>
-            <option value="1">Poezija</option>
-            <option value="2">Stručna literatura</option>
+            <option
+              *ngFor="let value of data.data.genres"
+              [ngValue]="value.name"
+            >
+              {{ value.name }}
+            </option>
           </select>
 
           <span
@@ -90,7 +98,7 @@
       </div>
 
       <div class="w-[50%]">
-        <div class="mt-[20px]">
+        <div class="mt-[20px]" *ngIf="data">
           <label for="authors">Izaberite autore </label>
           <select
             name="authors"
@@ -98,8 +106,12 @@
             formControlName="authors"
           >
             <option disabled selected></option>
-            <option value="1">Mark Twain</option>
-            <option value="2">Pero Perić</option>
+            <option
+              *ngFor="let value of data.data.authors"
+              [ngValue]="value.name"
+            >
+              {{ value.name }} {{ value.surname }}
+            </option>
           </select>
 
           <span
@@ -111,7 +123,7 @@
             >* Polje ne smije biti prazno!
           </span>
         </div>
-        <div class="mt-[20px]">
+        <div class="mt-[20px]" *ngIf="data">
           <label for="publishers">Izaberite izdavača </label>
           <select
             name="publishers"
@@ -119,7 +131,13 @@
             formControlName="izdavac"
           >
             <option disabled selected></option>
-            <option value="1">Izdavac 1</option>
+
+            <option
+              *ngFor="let value of data.data.publishers"
+              [ngValue]="value.name"
+            >
+              {{ value.name }}
+            </option>
           </select>
 
           <span
