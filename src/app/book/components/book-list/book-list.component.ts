@@ -14,7 +14,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   searchName: string;
   sorted = false;
-  viewSize: number;
+  viewSize: number = 5;
   currentPage: number;
 
   constructor(private bookService: BookService) {}
@@ -33,6 +33,7 @@ export class BookListComponent implements OnInit, OnDestroy {
       .subscribe((books: Book[]) => {
         this.books = books;
         this.filteredArray = this.books.slice();
+        this.pagPage();
       });
   }
 
