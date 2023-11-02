@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/app/book/services/book.service';
 import { FormDataService } from 'src/app/book/services/form-data.service';
@@ -17,42 +17,12 @@ export class BookAddComponent {
   imageUrls: any;
 
   constructor(
-    private fb: FormBuilder,
     private bookService: BookService,
     private route: ActivatedRoute,
     private router: Router,
     private uploadService: UploadService,
     private formDataService: FormDataService
   ) {}
-
-  ngOnInit() {
-    this.newBookForm = this.fb.group({
-      nazivKnjiga: [null, [Validators.required]],
-      kratki_sadrzaj: [null, [Validators.required]],
-      categories: [null, Validators.required],
-      genres: [null, Validators.required],
-      authors: [null, Validators.required],
-      izdavac: [null, Validators.required],
-      godinaIzdavanja: [null, [Validators.required, Validators.maxLength(4)]],
-      knjigaKolicina: [null, Validators.required],
-      jezik: [null],
-      deletePdfs: [null],
-
-      brStrana: [null, Validators.required],
-      pismo: [null, Validators.required],
-      povez: [null, Validators.required],
-      format: [null, Validators.required],
-      isbn: [null, [Validators.required, Validators.minLength(13)]],
-
-      pictures: [null, [Validators.required]],
-    });
-
-    this.newBookForm.valueChanges.subscribe(() => {
-      this.isnewBookFormValid = this.newBookForm.valid;
-    });
-
-    console.log(this.newBookForm);
-  }
 
   showDetails() {
     this.visibleComponent = 1;

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Book } from 'src/app/book/models/book.model';
 import { FormDataService } from 'src/app/book/services/form-data.service';
 
 @Component({
