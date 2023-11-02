@@ -6,6 +6,7 @@ export class Book {
   categories: { id: number; name: string };
   genres: { id: number; name: string };
   authors: { id: number; name: string };
+  pictures: [];
   publisher: { id: number; name: string };
   pDate: number;
   quantity: number;
@@ -30,6 +31,7 @@ export class Book {
     categories: { id: number; name: string },
     genres: { id: number; name: string },
     authors: { id: number; name: string },
+    pictures: [],
     publisher: { id: number; name: string },
     pDate: number,
     quantity: number,
@@ -52,6 +54,7 @@ export class Book {
     this.categories = categories;
     this.genres = genres;
     this.authors = authors;
+    this.pictures = pictures;
     this.publisher = publisher;
     this.pDate = pDate;
     this.quantity = quantity;

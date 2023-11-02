@@ -1,9 +1,68 @@
-<form>
-  <div
-    class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer"
-  >
-    <h1 class="text-center">IMAGE ADD</h1>
+<form [formGroup]="bookAddForm" class="text-gray-700">
+  <div class="w-9/12 mx-auto bg-white rounded p7 mt-[40px] mb-[150px]">
+    <div
+      class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded"
+    >
+      <div
+        class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer"
+      >
+        <label for="bookImages" class="cursor-pointer text-center mt-4"
+          ><h1 class="text-center">IMAGE ADD</h1></label
+        >
+        <input
+          type="file"
+          class="hidden"
+          id="bookImages"
+          name="bookImages"
+          accept="image/*"
+          (change)="displaySelectedImage($event)"
+          multiple
+        />
+        <div class="grid grid-cols-4 gap-4 mt-4">
+          <ng-container
+            *ngFor="let imageUrl of selectedImagePreviewUrls; let i = index"
+          >
+            <div
+              class="relative flex flex-col items-center overflow-hidden text-center bg-gray-100 border rounded cursor-move select-none"
+              style="padding-top: 100%"
+            >
+              <input
+                class="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
+                type="radio"
+                name="chosen_image"
+                [value]="i"
+              />
+              <button
+                class="absolute bottom-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
+                type="button"
+              >
+                <svg
+                  class="w-[25px] h-[25px] text-gray-700"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  nviewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                [src]="imageUrl"
+                alt="Slika {{ i }}"
+                class="absolute inset-0 z-0 object-cover w-full h-full border-4 border-white preview"
+              />
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
   </div>
+
   <div class="absolute bottom-[20px] w-full">
     <div class="flex flex-row">
       <div
@@ -17,9 +76,17 @@
           <i class="fas fa-times ml-[4px]"></i>
         </button>
         <button
-          type="submit"
-          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+          type="button"
+          class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]" style="background: #325EA8"
+          (click)="onPreviousClick()"
         >
+          <i class="fas fa-arrow-left mr-[4px]"></i> Prethodna
+        </button>
+        <button
+          type="button"
+          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+          (click)="onSubmitClick()"
+          >
           Sačuvaj <i class="fas fa-check ml-[4px]"></i>
         </button>
       </div>

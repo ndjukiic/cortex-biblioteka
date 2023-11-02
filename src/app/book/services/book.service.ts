@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../models/book.model';
-import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, tap, throwError } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { environment } from 'src/environments/environment';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -63,16 +64,14 @@ export class BookService {
       );
   }
 
-  addBook(book: Book) {
+  addBook(bookData: any): Observable<any> {
+    if (!bookData) {
+      return throwError(() => new Error('Nema dostupnih podataka za knjigu'));
+    }
     return this.httpClient
-      .post<Book>(`${this.url}/store`, book, {
+      .post<Book>(`${this.url}/store`, bookData, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
-      .pipe(
-        tap((response: Book) => {
-          console.log('succesfully created', response);
-        })
-      );
   }
 
   editBook(book: Book, id: number) {

@@ -1,7 +1,6 @@
 <form
   class="text-gray-700 forma"
   [formGroup]="bookAddForm"
-  (ngSubmit)="onSubmit()"
 >
   <div class="flex flex-row ml-[30px]">
     <div class="w-[50%] mb-[150px]">
@@ -113,11 +112,19 @@
           <i class="fas fa-times ml-[4px]"></i>
         </button>
         <button
-          type="submit"
-          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-          [disabled]="!bookAddForm.valid"
+          type="button"
+          class="btn-animation shadow-lg mr-[15px] w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" style="background: #325EA8"
+          (click)="onPreviousClick()"
         >
-          Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+          <i class="fas fa-arrow-left mr-[4px]"></i> Prethodna 
+        </button>
+        <button
+          type="button"
+          class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+          [disabled]="!isSpecsFormValid"
+          (click)="onNextClick()"
+        >
+          Sledeća <i class="fas fa-arrow-right ml-[4px]"></i>
         </button>
       </div>
     </div>

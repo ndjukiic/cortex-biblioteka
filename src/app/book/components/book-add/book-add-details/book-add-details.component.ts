@@ -1,7 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Book } from 'src/app/book/models/book.model';
-import { BookService } from 'src/app/book/services/book.service';
+import { FormDataService } from 'src/app/book/services/form-data.service';
 
 @Component({
   selector: 'app-book-add-details',
@@ -9,8 +13,11 @@ import { BookService } from 'src/app/book/services/book.service';
   styleUrls: ['./book-add-details.component.css'],
 })
 export class BookAddDetailsComponent implements OnInit {
-  @Output() formEmitter = new EventEmitter<Book>();
+  @Output() nextClickedFromDetails = new EventEmitter<void>();
   bookAddForm: FormGroup;
+  isDetailsFormValid: boolean = false;
+
+  constructor(private formDataService: FormDataService) {}
 
   ngOnInit() {
     this.bookAddForm = new FormGroup({
@@ -24,20 +31,23 @@ export class BookAddDetailsComponent implements OnInit {
         Validators.required,
         Validators.maxLength(4),
       ]),
-      knjigaKolicina: new FormControl(null, [Validators.required, this.greaterThanZero]),
+      knjigaKolicina: new FormControl(null, [
+        Validators.required,
+        this.greaterThanZero,
+      ]),
       jezik: new FormControl(1),
       deletePdfs: new FormControl(0),
       //lang and deletePdfs variables were required in api, even though they weren't in the prototype form - therefore the static content (temporarily)
     });
+    this.bookAddForm.valueChanges.subscribe(() => {
+      this.isDetailsFormValid = this.bookAddForm.valid;
+    });
+    this.bookAddForm.patchValue(this.formDataService.getFormDataDetails());
   }
 
-  onSubmit() {
-    this.storeToParent();
-    this.bookAddForm.reset();
-  }
-
-  storeToParent() {
-    this.formEmitter.emit(this.bookAddForm.value);
+  onNextClick() {
+    this.formDataService.setFormDataDetails(this.bookAddForm.value);
+    this.nextClickedFromDetails.emit();
   }
 
   greaterThanZero(control: FormControl): {
