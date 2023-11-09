@@ -32,6 +32,7 @@ export class StudentListComponent implements OnInit, OnDestroy {
       .loadStudents()
       .subscribe((students: Student[]) => {
         this.students = students;
+        console.log(this.students);
         this.totalPages = Math.ceil(this.students.length / this.rowsPerPage);
         this.setPageRange();
       });

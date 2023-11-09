@@ -1,40 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../services/book.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-dismiss',
   templateUrl: './book-dismiss.component.html',
 })
 export class BookDismissComponent implements OnInit {
-  dismissMode = true;
-  allReservations = [];
-  expiredReservations = [];
+  expiredReservations;
+  checkboxItemContainer;
   id: number;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService,
+    private router: Router,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.id = this.bookService.getBookID();
 
-    this.bookService.getActiveReservations(this.id).subscribe((response) => {
-      this.allReservations = response.data.active;
-      console.log('post-call', this.allReservations);
-
-      if (this.allReservations) {
-        this.checkIfExpired();
-      }
+    this.bookService.getAllBookActivities(this.id).subscribe((response) => {
+      this.expiredReservations = response.data.prekoracene;
     });
-  }
-
-  checkIfExpired() {
-    let container: number;
-
-    for (let reservation of this.allReservations) {
-      container = this.getDaysAgo(reservation.action_date);
-      if (container >= 10) {
-        this.expiredReservations.push(reservation);
-      }
-    }
   }
 
   getDaysAgo(action_date: string) {
@@ -57,8 +43,23 @@ export class BookDismissComponent implements OnInit {
     return fullDate;
   }
 
-  onConfirm(){
-    console.log('(ne)uspješno');
+  onConfirm() {
+    if(!this.checkboxItemContainer){
+      return 
+    }
+    this.bookService.dismissBook(this.checkboxItemContainer.id).subscribe(
+      (response)=>{
+        this.router.navigate(['../'], { relativeTo: this.route });
+      }
+    );
   }
 
+  onSingleCheckboxChange(item) {
+    this.checkboxItemContainer = item;
+    console.log(this.checkboxItemContainer);
+  }
+
+  onAllCheckboxChange(expiredReservations) {
+    console.log('svi su odabrani');
+  }
 }

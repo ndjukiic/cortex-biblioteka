@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../models/book.model';
-import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map, tap, throwError } from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { environment } from 'src/environments/environment';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -63,16 +64,14 @@ export class BookService {
       );
   }
 
-  addBook(book: Book) {
+  addBook(bookData: any): Observable<any> {
+    if (!bookData) {
+      return throwError(() => new Error('Nema dostupnih podataka za knjigu'));
+    }
     return this.httpClient
-      .post<Book>(`${this.url}/store`, book, {
+      .post<Book>(`${this.url}/store`, bookData, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
-      .pipe(
-        tap((response: Book) => {
-          console.log('succesfully created', response);
-        })
-      );
   }
 
   editBook(book: Book, id: number) {
@@ -123,18 +122,35 @@ export class BookService {
       );
   }
 
-  
- 
-
-  dismissBook() {
+  dismissBook(id: number) {
     //push request for otpisi book
+    const url = `${this.url}/otpisi`;
+    const body = {
+      toWriteoff: [id],
+    };
+
+    return this.httpClient
+      .post(url, body, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        tap(
+          (response) => {
+            console.log('successfull dismission!', response);
+            alert('Uspješno otpisana knjiga');
+          },
+          (error) => {
+            console.log('unsuccessful dismission', error.error);
+            alert('Greška!' + error.data.errors + ' Molimo pokušajte ponovo.');
+          }
+        )
+      );
   }
 
-  getActiveReservations(id?: number) {
-    let url = `${this.url}/reservations`;
-    if (id) {
-      url = `${this.url}/reservations?book_id=${id}`;
-    }
+  getAllActivities() {
+    const url = `${this.url}/borrows`;
 
     return this.httpClient
       .get(url, {
@@ -144,9 +160,38 @@ export class BookService {
       })
       .pipe(
         tap((response: { data }) => {
-          console.log('Active reservations: ', response.data.active);
+          console.log('it worked', response.data);
         })
       );
+  }
+
+  getAllBookActivities(id: number) {
+    const url = `${this.url}/borrows?book_id=${id}`;
+
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(
+        tap((response: { data }) => {
+          console.log('successfull get request!', response.data);
+        })
+      );
+  }
+
+  getAllBookProperties() {
+    const url = `${this.url}/create`;
+
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(tap((response: {data}) => {
+      }));
   }
 
   setBookID(id: number) {

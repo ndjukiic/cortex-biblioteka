@@ -18,26 +18,24 @@
 
 <hr class="ml-[-25px] mt-[7px]" />
 
-<div>
-  <ul class="flex flex-row mt-4 w-full border-b-[1px]">
-    <a class="ml-4 cursor-pointer" (click)="showDetails()"
-      ><li>Osnovni detalji</li></a
-    >
-    <a class="ml-[70px] cursor-pointer" (click)="showSpecs()"
-      ><li>Specifikacija</li></a
-    >
-    <a class="ml-[70px] cursor-pointer" (click)="showMultimedia()"
-      ><li>Multimedija</li></a
-    >
-  </ul>
-</div>
-<div *ngIf="visibleComponent == 1" class="ml-4 py-3">
-  <app-book-add-details (formEmitter)="detailsReceived($event)"></app-book-add-details>
-</div>
-<div *ngIf="visibleComponent == 2" class="ml-4 py-3">
-  <app-book-add-specs (formEmitter)="specsReceived($event)"></app-book-add-specs>
-</div>
-<div *ngIf="visibleComponent == 3" class="ml-4 py-3">
-  <app-book-add-multimedia></app-book-add-multimedia>
+<div class="py-4 text-gray-500 border-b-[1px] border-[#e4dfdf] pl-[30px]">
+  <a class="inline" [class.active-book-nav]="visibleComponent === 1">
+      Osnovni detalji
+  </a>
+  <a  class="inline ml-[70px]" [class.active-book-nav]="visibleComponent === 2">
+      Specifikacija
+  </a>
+  <a class="inline ml-[70px]" [class.active-book-nav]="visibleComponent === 3">
+      Multimedija
+  </a>
 </div>
 
+<div *ngIf="visibleComponent == 1" class="ml-4 py-3">
+  <app-book-add-details (nextClickedFromDetails)="showSpecs()"></app-book-add-details>
+</div>
+<div *ngIf="visibleComponent == 2" class="ml-4 py-3">
+  <app-book-add-specs (nextClickedFromSpecs)="showMultimedia()" (previousClickedFromSpecs)="showDetails()"></app-book-add-specs>
+</div>
+<div *ngIf="visibleComponent == 3" class="ml-4 py-3">
+  <app-book-add-multimedia (previousClickedFromMultimedia)="showSpecs()" (submitClicked)="submitForm()"></app-book-add-multimedia>
+</div>

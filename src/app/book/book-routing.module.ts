@@ -32,6 +32,11 @@ const routes: Routes = [
     component: BookDetailComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'details',
+        pathMatch: 'full',
+      },
+      {
         path: 'details',
         component: BookTabDetailsComponent,
       },
@@ -74,27 +79,27 @@ const routes: Routes = [
         path: 'multimedia',
         component: BookTabMultimediaComponent,
       },
+      {
+        path: 'dismiss',
+        component: BookDismissComponent,
+      },
+      {
+        path: 'issue',
+        component: BookIssueComponent,
+      },
+      {
+        path: 'return',
+        component: BookReturnComponent,
+      },
+      {
+        path: 'reserve',
+        component: BookReserveComponent,
+      },
     ],
   },
   {
     path: ':id/edit',
     component: BookEditComponent,
-  },
-  {
-    path: ':id/dismiss',
-    component: BookDismissComponent,
-  },
-  {
-    path: ':id/issue',
-    component: BookIssueComponent,
-  },
-  {
-    path: ':id/return',
-    component: BookReturnComponent,
-  },
-  {
-    path: ':id/reserve',
-    component: BookReserveComponent,
   },
 ];
 

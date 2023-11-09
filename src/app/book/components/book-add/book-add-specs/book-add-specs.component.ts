@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Book } from 'src/app/book/models/book.model';
-import { BookService } from 'src/app/book/services/book.service';
+import { FormDataService } from 'src/app/book/services/form-data.service';
 
 @Component({
   selector: 'app-book-add-specs',
@@ -9,12 +8,16 @@ import { BookService } from 'src/app/book/services/book.service';
   styleUrls: ['./book-add-specs.component.css'],
 })
 export class BookAddSpecsComponent implements OnInit {
-  @Output() formEmitter = new EventEmitter<Book>();
+  @Output() nextClickedFromSpecs = new EventEmitter<void>();
+  @Output() previousClickedFromSpecs = new EventEmitter<void>();
   bookAddForm: FormGroup;
+  isSpecsFormValid: boolean = false;
+
+  constructor(private formDataService: FormDataService) {}
 
   ngOnInit() {
     this.bookAddForm = new FormGroup({
-      brStrana: new FormControl(null, [Validators.required]),
+      brStrana: new FormControl(null, Validators.required),
       pismo: new FormControl(null, Validators.required),
       povez: new FormControl(null, Validators.required),
       format: new FormControl(null, Validators.required),
@@ -23,15 +26,20 @@ export class BookAddSpecsComponent implements OnInit {
         Validators.minLength(13),
       ]),
     });
+    this.bookAddForm.valueChanges.subscribe(() => {
+      this.isSpecsFormValid = this.bookAddForm.valid;
+    });
+      this.bookAddForm.patchValue(this.formDataService.getFormDataSpecs());
   }
 
-  onSubmit() {
-    this.storeToParent();
-    this.bookAddForm.reset();
+  onNextClick() {
+    this.formDataService.setFormDataSpecs(this.bookAddForm.value);
+    this.nextClickedFromSpecs.emit();
   }
 
-  storeToParent() {
-    this.formEmitter.emit(this.bookAddForm.value);
+  onPreviousClick() {
+    this.formDataService.setFormDataSpecs(this.bookAddForm.value);
+    this.previousClickedFromSpecs.emit();
   }
 
   greaterThanZero(control: FormControl): {

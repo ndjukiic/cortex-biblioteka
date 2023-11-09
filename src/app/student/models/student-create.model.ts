@@ -7,4 +7,5 @@ export interface StudentCreate {
   username: string;
   password: string;
   password_confirmation: string;
+  photoPath: string;
 }

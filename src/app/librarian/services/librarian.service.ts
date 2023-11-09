@@ -14,9 +14,10 @@ export class LibrarianService {
   private url = `${environment.apiUrl}/users`;
   public librarians$ = new BehaviorSubject<Librarian[]>(null);
   public librarian$ = new BehaviorSubject<Librarian>(null);
+  private uploadedImageUrl: string = '';
 
   constructor(private httpClient: HttpClient) {}
-
+  
   loadLibrarians(): Observable<Librarian[]> {
     return this.httpClient
       .get(this.url, {
@@ -86,6 +87,7 @@ export class LibrarianService {
       username: librarianForm.get('username').value,
       password: librarianForm.get('password').value,
       password_confirmation: librarianForm.get('confirmPassword').value,
+      photoPath: this.uploadedImageUrl,
     };
 
     if (librarianId) {
@@ -103,6 +105,14 @@ export class LibrarianService {
         })
       );
     }
+  }
+
+  setUploadedImageUrl(url: string) {
+    this.uploadedImageUrl = url;
+  }
+
+  getUploadedImageUrl(): string {
+    return this.uploadedImageUrl;
   }
 
   deleteLibrarian(id: number): Observable<any> {

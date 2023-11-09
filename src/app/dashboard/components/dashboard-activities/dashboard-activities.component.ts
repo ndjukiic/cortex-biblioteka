@@ -7,13 +7,33 @@ import { BookService } from 'src/app/book/services/book.service';
 })
 export class DashboardActivitiesComponent implements OnInit {
   activeReservations;
+  allActivities;
   constructor(private bookService: BookService) {}
 
   ngOnInit(): void {
-    this.bookService.getActiveReservations().subscribe((response) => {
-      this.activeReservations = response.data.active.reverse();
+    this.bookService.getAllActivities().subscribe((response) => {
+      this.allActivities = [
+        ...response.data.izdate,
+        ...response.data.otpisane,
+        ...response.data.vracene,
+      ];
+
+      this.sortActivities();
     });
   }
+
+  sortActivities() {
+    this.allActivities.sort((a, b) => {
+      const formatDateA = new Date(a.action_date);
+      const formatDateB = new Date(b.action_date);
+
+      const dateA = formatDateA.getTime();
+      const dateB = formatDateB.getTime();
+
+      return dateB - dateA;
+    });
+  }
+
   getDaysAgo(action_date: string) {
     const currentDate = new Date();
     const reservationDate = new Date(action_date);
