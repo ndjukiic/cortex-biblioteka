@@ -181,6 +181,19 @@ export class BookService {
       );
   }
 
+  getAllBookProperties() {
+    const url = `${this.url}/create`;
+
+    return this.httpClient
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .pipe(tap((response: {data}) => {
+      }));
+  }
+
   setBookID(id: number) {
     this.bookID = id;
   }

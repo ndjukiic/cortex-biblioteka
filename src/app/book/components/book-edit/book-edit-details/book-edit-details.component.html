@@ -1,7 +1,9 @@
 <div class="scroll height-content section-content" *ngIf="bookToEdit">
-  <form class="text-gray-700 forma h-screen"
-  [ngForm]="bookEditForm" 
-  (ngSubmit)="onSubmit()">
+  <form
+    class="text-gray-700 forma h-screen"
+    [ngForm]="bookEditForm"
+    (ngSubmit)="onSubmit()"
+  >
     <div class="flex flex-row ml-[30px] mb-[150px]">
       <div class="w-[50%]">
         <div class="mt-[20px]">
@@ -15,9 +17,10 @@
           />
         </div>
 
-        <div class="mt-[20px]">
+        <div class="mt-[20px] w-[90%]">
           <label for="content">Unesite kratak sadržaj </label>
           <textarea
+            id="content"
             name="content"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
             [value]="bookToEdit.book.description"
@@ -35,7 +38,6 @@
             <option
               *ngFor="let value of bookToEdit.categories"
               [ngValue]="value.name"
-              
             >
               {{ value.name }}
             </option>
