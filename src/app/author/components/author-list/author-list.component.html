@@ -1,118 +1,103 @@
 <div class="naslov ml-4">
-    <h1>Autori</h1>
-    <hr />
-  </div>
-  <div class="ml-4">
-    <div class="flex flex-row justify-between"
+  <h1>Autori</h1>
+  <hr />
+</div>
+<div class="height-scroll overflow-y-auto">
+  <div class="ml-4 pr-[30px] flex flex-row justify-between">
+    <button
+      routerLink="add"
+      class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
+      type="button"
     >
-      <button 
-        routerLink="add"
-        class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
-        type="button"
-      >
-        + Novi Autor
-      </button> 
-      
-      <div class="flex items-center">
-        <div class="relative text-gray-600 focus-within:text-gray-400">
-          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-            <button
-              type="submit"
-              class="p-1 focus:outline-none focus:shadow-outline"
-            >
-              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-            </button>
-          </span>
-          <input
-            [(ngModel)]="searchName"
-            type="text"
-            name="q"
-            class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-            placeholder="Search..."
-            autocomplete="off"
-            
-          />
-        </div>
-      </div>
-   </div>
+      + Novi Autor
+    </button>
 
-   <!-- TABLE -->
-
-
-   <div class="px-[30px] pt-2 bg-white">
-    <div class="table w-full mt-[20px]">
-      <table
-        class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
-      >
-        <thead class="bg-[#EFF3F6]">
-          <tr class="border-b-[1px] border-[#e4dfdf]">
-            <th
-              class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
-            >
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-              </label>
-            </th>
-            <th class="px-4 py-4 leading-4 tracking-wider text-left">
-              Naziv knjige
-              
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Opis
-            </th>
-            <th class="px-4 py-4"></th>
-          </tr>
-        </thead>
-
-        <tbody
-          class="bg-white"
-          *ngFor="let author of authors; let i = index"
-        >
-          <tr
-            class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+    <div class="flex items-center">
+      <div class="relative text-gray-600 focus-within:text-gray-400">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+          <button
+            type="submit"
+            class="p-1 focus:outline-none focus:shadow-outline"
           >
-            <td class="px-4 py-4 whitespace-no-wrap">
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-              </label>
-            </td>
-            <td class="flex flex-row items-center px-4 py-4">
-              <img
-                class="object-cover w-8 mr-3 h-11"
-                [src]="author.image"
-                alt="Author image"
-              />
-              <a [routerLink]="['/authors', author.id, 'details']"
-                ><span class="font-medium text-left mr-3">{{author.name}} {{author.surname}}</span></a
-              >
-              
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              <a [routerLink]="['/authors', author.id, 'details']"
-                ><span class="font-normal text-right">{{lipsum}}</span></a
-              >
-            </td>
-          
-            
-            
-            <td
-              class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap"
-            >
-              <p
-                class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]"
-              >
-                <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+          </button>
+        </span>
+        <input
+          [(ngModel)]="searchName"
+          type="text"
+          name="q"
+          class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+          placeholder="Search..."
+          autocomplete="off"
+        />
+      </div>
     </div>
   </div>
 
+  <!-- TABLE -->
 
-<!-- paginacija -->
+  <div class="ml-4 pr-[30px]">
+    <table
+      class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
+    >
+      <thead class="bg-[#EFF3F6]">
+        <tr class="border-b-[1px] border-[#e4dfdf]">
+          <th
+            class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
+          >
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" />
+            </label>
+          </th>
+          <th class="px-4 py-4 leading-4 tracking-wider text-left">
+            Naziv knjige
+          </th>
+          <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+            Opis
+          </th>
+          <th class="px-4 py-4"></th>
+        </tr>
+      </thead>
 
+      <tbody class="bg-white" *ngFor="let author of authors; let i = index">
+        <tr
+          class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+        >
+          <td class="px-4 py-4 whitespace-no-wrap">
+            <label class="inline-flex items-center">
+              <input type="checkbox" class="form-checkbox" />
+            </label>
+          </td>
+          <td class="flex flex-row items-center px-4 py-4">
+            <img
+              class="object-cover w-8 mr-3 h-11"
+              [src]="author.image"
+              alt="Author image"
+            />
+            <a [routerLink]="['/authors', author.id, 'details']"
+              ><span class="font-medium text-left mr-3"
+                >{{ author.name }} {{ author.surname }}</span
+              ></a
+            >
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            <a [routerLink]="['/authors', author.id, 'details']"
+              ><span class="font-normal text-right">{{ lipsum }}</span></a
+            >
+          </td>
+
+          <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
+            <p
+              class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]"
+            >
+              <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- paginacija -->
 
   <div class="flex flex-row items-center justify-end my-2 pr-[30px]">
     <div>
@@ -167,4 +152,4 @@
       </nav>
     </div>
   </div>
-  </div>
+</div>
