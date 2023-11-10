@@ -36,10 +36,17 @@ export class DashboardActivitiesComponent implements OnInit {
 
   getDaysAgo(action_date: string) {
     const reservationDate = new Date(action_date);
+    let interval: number;
 
     const ms = Date.now() - Number(reservationDate);
-    let time = this.msRoundup(ms - 3600000);
-    console.log(time);
+
+    if (Date().includes('GMT+0100')) {
+      interval = ms - 3600000;
+    } else {
+      interval = ms;
+    }
+
+    let time = this.msRoundup(interval);
 
     return time;
   }
