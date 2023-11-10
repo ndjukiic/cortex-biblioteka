@@ -30,12 +30,14 @@
   </a>
 </div>
 
-<div *ngIf="visibleComponent == 1" class="ml-4 py-3">
-  <app-book-add-details (nextClickedFromDetails)="showSpecs()"></app-book-add-details>
-</div>
-<div *ngIf="visibleComponent == 2" class="ml-4 py-3">
-  <app-book-add-specs (nextClickedFromSpecs)="showMultimedia()" (previousClickedFromSpecs)="showDetails()"></app-book-add-specs>
-</div>
-<div *ngIf="visibleComponent == 3" class="ml-4 py-3">
-  <app-book-add-multimedia (previousClickedFromMultimedia)="showSpecs()" (submitClicked)="submitForm()"></app-book-add-multimedia>
+<div class="height-scroll overflow-y-auto">
+  <div *ngIf="visibleComponent == 1" class="ml-4 py-3">
+    <app-book-add-details (nextClickedFromDetails)="showSpecs()"></app-book-add-details>
+  </div>
+  <div *ngIf="visibleComponent == 2" class="ml-4 py-3">
+    <app-book-add-specs (nextClickedFromSpecs)="showMultimedia()" (previousClickedFromSpecs)="showDetails()"></app-book-add-specs>
+  </div>
+  <div *ngIf="visibleComponent == 3" class="ml-4 py-3">
+    <app-book-add-multimedia (previousClickedFromMultimedia)="showSpecs()" (submitClicked)="submitForm()"></app-book-add-multimedia>
+  </div>
 </div>
