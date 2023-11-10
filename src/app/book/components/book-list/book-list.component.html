@@ -2,206 +2,203 @@
   <h1>Knjige</h1>
   <hr />
 </div>
-<div class="ml-4">
-  <div class="flex flex-row justify-between">
-    <!-- CRUD options show upon item checkmark selection, we can define them here -->
-    <a href="books/add"
-      ><button
-        class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
-        type="button"
+<div class="height-scroll overflow-y-auto">
+  <div class="ml-4 pr-[30px] flex items-center justify-between">
+      <!-- CRUD options show upon item checkmark selection, we can define them here -->
+      <a href="books/add"
+        ><button
+          class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]"
+          type="button"
+        >
+          + Nova Knjiga
+        </button></a
       >
-        + Nova Knjiga
-      </button></a
-    >
-
-    <div class="flex items-center">
-      <div class="relative text-gray-600 focus-within:text-gray-400">
-        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-          <button
-            type="submit"
-            class="p-1 focus:outline-none focus:shadow-outline"
-          >
-            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-          </button>
-        </span>
-        <input
-          [(ngModel)]="searchName"
-          type="text"
-          name="q"
-          class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-          placeholder="Search..."
-          autocomplete="off"
-          (input)="filterBooks()"
-        />
+      <div class="flex items-center">
+        <div class="relative text-gray-600 focus-within:text-gray-400">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <button
+              type="submit"
+              class="p-1 focus:outline-none focus:shadow-outline"
+            >
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            </button>
+          </span>
+          <input
+            [(ngModel)]="searchName"
+            type="text"
+            name="q"
+            class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+            placeholder="Search..."
+            autocomplete="off"
+            (input)="filterBooks()"
+          />
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="px-[30px] pt-2 bg-white">
-    <div class="table w-full mt-[20px]">
-      <table
+  
+    <div class="ml-4 pr-[30px]">
+        <table
         class="mt-4 overflow-hidden shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]"
-      >
-        <thead class="bg-[#EFF3F6]">
-          <tr class="border-b-[1px] border-[#e4dfdf]">
-            <th
-              class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
-            >
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-              </label>
-            </th>
-            <th class="px-4 py-4 leading-4 tracking-wider text-left">
-              Naziv knjige
-              <a (click)="sort()" class="cursor-pointer">
-                <i *ngIf="!sorted" class="ml-3 fa-solid fa-arrow-down-long"></i>
-                <i *ngIf="sorted" class="ml-3 fa-solid fa-arrow-up-long"></i
-              ></a>
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Autor
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Kategorija
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Na raspolaganju
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Rezervisano
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Izdato
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              U prekoračenju
-            </th>
-            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
-              Ukupna količina
-            </th>
-
-            <th class="px-4 py-4"></th>
-          </tr>
-        </thead>
-        <tbody
-          class="bg-white"
-          *ngFor="let book of filteredArray; let i = index"
         >
-          <tr
-            class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
+          <thead class="bg-[#EFF3F6]">
+            <tr class="border-b-[1px] border-[#e4dfdf]">
+              <th
+                class="px-4 py-3 leading-4 tracking-wider text-left text-blue-500"
+              >
+                <label class="inline-flex items-center">
+                  <input type="checkbox" class="form-checkbox" />
+                </label>
+              </th>
+              <th class="px-4 py-4 leading-4 tracking-wider text-left">
+                Naziv knjige
+                <a (click)="sort()" class="cursor-pointer">
+                  <i *ngIf="!sorted" class="ml-3 fa-solid fa-arrow-down-long"></i>
+                  <i *ngIf="sorted" class="ml-3 fa-solid fa-arrow-up-long"></i
+                ></a>
+              </th>
+              <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                Autor
+              </th>
+              <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                Kategorija
+              </th>
+              <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                Na raspolaganju
+              </th>
+              <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                Rezervisano
+              </th>
+              <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                Izdato
+              </th>
+              <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                U prekoračenju
+              </th>
+              <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                Ukupna količina
+              </th>
+  
+              <th class="px-4 py-4"></th>
+            </tr>
+          </thead>
+          <tbody
+            class="bg-white"
+            *ngFor="let book of filteredArray; let i = index"
           >
-            <td class="px-4 py-4 whitespace-no-wrap">
-              <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox" />
-              </label>
-            </td>
-            <td class="flex flex-row items-center px-4 py-4">
-              <img
-                class="object-cover w-8 mr-2 h-11"
-                [src]="book.photo"
-                alt="Book cover"
-              /><a [routerLink]="['/books', book.id, 'details']"
-                ><span class="font-medium text-center">{{
-                  book.title
-                }}</span></a
-              >
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              <div *ngFor="let author of book.authors">
-                <p class="font-medium">
-                  {{ author.name }} {{ author.surname }}
-                </p>
-              </div>
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              <div *ngFor="let category of book.categories">
-                <p class="font-medium">
-                  {{ category.name }}
-                </p>
-              </div>
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ book.samples - book.bSamples }}
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ book.bSamples }}
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ book.rSamples }}
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ book.fSamples }}
-            </td>
-            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-              {{ book.samples }}
-            </td>
-            <td
-              class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap"
+            <tr
+              class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
             >
-              <p
-                class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]"
+              <td class="px-4 py-4 whitespace-no-wrap">
+                <label class="inline-flex items-center">
+                  <input type="checkbox" class="form-checkbox" />
+                </label>
+              </td>
+              <td class="flex flex-row items-center px-4 py-4">
+                <img
+                  class="object-cover w-8 mr-2 h-11"
+                  [src]="book.photo"
+                  alt="Book cover"
+                /><a [routerLink]="['/books', book.id, 'details']"
+                  ><span class="font-medium text-center">{{
+                    book.title
+                  }}</span></a
+                >
+              </td>
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                <div *ngFor="let author of book.authors">
+                  <p class="font-medium">
+                    {{ author.name }} {{ author.surname }}
+                  </p>
+                </div>
+              </td>
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                <div *ngFor="let category of book.categories">
+                  <p class="font-medium">
+                    {{ category.name }}
+                  </p>
+                </div>
+              </td>
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                {{ book.samples - book.bSamples }}
+              </td>
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                {{ book.bSamples }}
+              </td>
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                {{ book.rSamples }}
+              </td>
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                {{ book.fSamples }}
+              </td>
+              <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                {{ book.samples }}
+              </td>
+              <td
+                class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap"
               >
-                <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                <p
+                  class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]"
+                >
+                  <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  <!-- pagination -->
+  <div class="flex flex-row items-center justify-end my-2 pr-[30px]">
+    <div>
+      <p class="inline text-md">Rows per page:</p>
+      <select
+        id="viewSize"
+        [(ngModel)]="viewSize"
+        class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
+        (change)="pagPage()"
+      >
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
     </div>
-  </div>
-</div>
-<!-- pagination -->
-<div class="flex flex-row items-center justify-end my-2">
-  <div>
-    <p class="inline text-md">Rows per page:</p>
-    <select
-      id="viewSize"
-      [(ngModel)]="viewSize"
-      class="text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
-      (change)="pagPage()"
-    >
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="15">15</option>
-    </select>
-  </div>
-  <div>
-    <nav class="inline-flex">
-      <div>
-        <a
-          href="#"
-          class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
-        >
-          1 of 1
-        </a>
-      </div>
-      <div>
-        <a
-          class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400 cursor-pointer"
-          aria-label="Previous"
-          (click)="previousPage()"
-        >
-          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-            <path
-              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </a>
-      </div>
-      <div>
-        <a
-          class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400 cursor-pointer"
-          aria-label="Next"
-          (click)="nextPage()"
-        >
-          <svg class="w-5 h-5" viewBox="0 0 20 20">
-            <path
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-            ></path>
-          </svg>
-        </a>
-      </div>
-    </nav>
+    <div>
+      <nav class="inline-flex">
+        <div>
+          <a
+            href="#"
+            class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md"
+          >
+            1 of 1
+          </a>
+        </div>
+        <div>
+          <a
+            class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400 cursor-pointer"
+            aria-label="Previous"
+            (click)="previousPage()"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <div>
+          <a
+            class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400 cursor-pointer"
+            aria-label="Next"
+            (click)="nextPage()"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 20 20">
+              <path
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
   </div>
 </div>
