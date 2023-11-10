@@ -35,12 +35,20 @@ export class DashboardActivitiesComponent implements OnInit {
   }
 
   getDaysAgo(action_date: string) {
-    const currentDate = new Date();
     const reservationDate = new Date(action_date);
+    let interval: number;
 
-    const day = currentDate.getDate() - reservationDate.getDate();
+    const ms = Date.now() - Number(reservationDate);
 
-    return day;
+    if (Date().includes('GMT+0100')) {
+      interval = ms - 3600000;
+    } else {
+      interval = ms;
+    }
+
+    let time = this.msRoundup(interval);
+
+    return time;
   }
 
   formatDate(action_date: string) {
@@ -52,5 +60,76 @@ export class DashboardActivitiesComponent implements OnInit {
     const fullDate = `${day}.${month}.${year}`;
 
     return fullDate;
+  }
+
+  msRoundup(ms: number) {
+    if (ms >= 2629800000) {
+      let interval = Math.round(ms / (1000 * 60 * 60 * 24 * 30));
+      if (interval % 10 == 1) {
+        return `prije ${interval} mjesec`;
+      }
+      if (interval % 10 == 2 || interval % 10 == 3 || interval % 10 == 4) {
+        return `prije ${interval} mjeseca`;
+      }
+      if (
+        interval % 10 == 5 ||
+        interval % 10 == 6 ||
+        interval % 10 == 7 ||
+        interval % 10 == 8 ||
+        interval % 10 == 9
+      ) {
+        return `prije ${interval} mjeseci`;
+      }
+    } else if (ms >= 86400000) {
+      //if days
+      let interval = Math.round(ms / (1000 * 60 * 60 * 24));
+      if (interval % 10 !== 1) {
+        return `prije ${interval} dana`;
+      }
+      return `${interval} dan`;
+    } else if (ms >= 3600000) {
+      //if hours
+      let interval = Math.round(ms / (1000 * 60 * 60));
+      if (interval % 10 == 1) {
+        return `prije ${interval} sat`;
+      }
+      if (interval % 10 == 2 || interval % 10 == 3 || interval % 10 == 4) {
+        return `prije ${interval} sata`;
+      }
+      if (
+        interval % 10 == 5 ||
+        interval % 10 == 6 ||
+        interval % 10 == 7 ||
+        interval % 10 == 8 ||
+        interval % 10 == 9
+      ) {
+        return `prije ${interval} sati`;
+      }
+    } else if (ms >= 60000) {
+      //if minutes
+      let interval = Math.round(ms / (1000 * 60));
+      if (interval % 10 !== 1) {
+        return `prije ${interval} minuta`;
+      }
+      return `${interval} minut`;
+    } else if (ms >= 1000) {
+      //if seconds
+      let interval = Math.round(ms / 1000);
+      if (interval % 10 == 1) {
+        return `prije ${interval} sekundu`;
+      }
+      if (interval % 10 == 2 || interval % 10 == 3 || interval % 10 == 4) {
+        return `prije ${interval} sekunde`;
+      }
+      if (
+        interval % 10 == 5 ||
+        interval % 10 == 6 ||
+        interval % 10 == 7 ||
+        interval % 10 == 8 ||
+        interval % 10 == 9
+      ) {
+        return `prije ${interval} sekundi`;
+      }
+    }
   }
 }
