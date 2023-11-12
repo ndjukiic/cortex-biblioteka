@@ -8,7 +8,7 @@
       class="border-b-[1px] border-[#e4dfdf]"
     >
       <td class="px-4 py-3 flex flex-row items-center text-sm leading-5 whitespace-no-wrap">
-        <img class="object-cover w-8 h-8 mr-2 rounded-full" src="" alt="" />
+        <img class="object-cover w-8 h-8 mr-2 rounded-full" [src]="activeReservation.student.photoPath" alt="" />
         <span>
             {{ activeReservation.student.name }}
             {{ activeReservation.student.surname }}
