@@ -61,6 +61,22 @@ export class BookAddDetailsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     CKEDITOR.replace('content');
+    this.setCKEditorContent();
+  
+    CKEDITOR.instances.content.on('change', () => {
+      const content = this.getDataFromCKEditor();
+      this.bookAddForm.get('kratki_sadrzaj').setValue(content);
+    });
+  
+    this.bookAddForm.patchValue(this.formDataService.getFormDataDetails());
+  }
+
+  setCKEditorContent() {
+    const editor = CKEDITOR.instances.content;
+    if (editor) {
+      const content = this.formDataService.getFormDataDetails()?.kratki_sadrzaj;
+      editor.setData(content);
+    }
   }
 
   getDataFromCKEditor() {
