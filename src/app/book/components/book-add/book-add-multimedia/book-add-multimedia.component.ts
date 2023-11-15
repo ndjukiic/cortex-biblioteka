@@ -36,7 +36,7 @@ export class BookAddMultimediaComponent implements OnInit {
     if (files && files.length > 0) {
       this.selectedImagePreviewUrls = [];
   
-      for (let i = 0; i < files.length; i++) {
+      for (let i = 0; i < files.length && i < 3; i++) {
         const file = files[i];
         const imageUrl: string = URL.createObjectURL(file);
         this.selectedImagePreviewUrls.push(imageUrl);
@@ -44,6 +44,19 @@ export class BookAddMultimediaComponent implements OnInit {
       }
       this.formDataService.setFormDataMultimedia({ pictures: files });
       console.log(this.formDataService.getFormDataMultimedia())
+    }
+  }
+
+  onImageRadioChange(index: number) {
+    const selectedImage = this.selectedImagePreviewUrls[index];
+    const imagesData = this.formDataService.getFormDataMultimedia()?.pictures;
+  
+    if (Array.isArray(imagesData)) {
+      imagesData.forEach((image: any) => {
+        image.isSelected = (image === selectedImage);
+      });
+  
+      this.formDataService.setFormDataMultimedia({ pictures: imagesData });
     }
   }
 
