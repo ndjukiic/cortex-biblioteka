@@ -1,7 +1,7 @@
-<div class="scroll height-content section-content" *ngIf="bookToEdit">
+<div class="scroll height-content section-content" *ngIf="isLoaded">
   <form
     class="text-gray-700 forma h-screen"
-    [ngForm]="bookEditForm"
+    [formGroup]="bookEditForm"
     (ngSubmit)="onSubmit()"
   >
     <div class="flex flex-row ml-[30px] mb-[150px]">
@@ -10,10 +10,10 @@
           <label for="name">Naziv knjige </label>
           <input
             type="text"
-            name="title"
+            id="title"
+            formControlName="nazivKnjiga"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
             [value]="bookToEdit.book.title"
-            [(ngModel)]="bookToEdit.book.title"
           />
         </div>
 
@@ -21,23 +21,23 @@
           <label for="content">Unesite kratak sadržaj </label>
           <textarea
             id="content"
-            name="content"
+            formControlName="kratki_sadrzaj"
             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
             [value]="bookToEdit.book.description"
-            [(ngModel)]="bookToEdit.book.description"
           ></textarea>
         </div>
 
         <div class="mt-[20px]">
           <label for="category">Izaberite kategorije </label>
           <select
-            name="category"
+            id="category"
+            formControlName="categories"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [(ngModel)]="bookToEdit.book.categories"
+            [value]="bookToEdit.book.categories"
           >
             <option
               *ngFor="let value of bookToEdit.categories"
-              [ngValue]="value.name"
+              [ngValue]="value.id"
             >
               {{ value.name }}
             </option>
@@ -47,13 +47,14 @@
           <label for="genre">Izaberite žanrove </label>
 
           <select
-            name="genres"
+            id="genres"
+            formControlName="genres"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [(ngModel)]="bookToEdit.book.genres"
+            [value]="bookToEdit.book.genres"
           >
             <option
               *ngFor="let value of bookToEdit.genres"
-              [value]="value.name"
+              [ngValue]="value.id"
             >
               {{ value.name }}
             </option>
@@ -65,13 +66,14 @@
         <div class="mt-[20px]">
           <label for="authors">Izaberite autore </label>
           <select
-            name="authors"
+            id="authors"
+            formControlName="authors"
             class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [(ngModel)]="bookToEdit.book.authors"
+            [value]="bookToEdit.book.authors"
           >
             <option
               *ngFor="let value of bookToEdit.authors"
-              [value]="value.name"
+              [ngValue]="value.id"
             >
               {{ value.name }} {{ value.surname }}
             </option>
@@ -80,13 +82,14 @@
         <div class="mt-[20px]">
           <label for="publishers">Izaberite izdavača </label>
           <select
-            name="publishers"
+            id="publishers"
+            formControlName="izdavac"
             class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [(ngModel)]="bookToEdit.book.publishers"
+            [value]="bookToEdit.book.publisher"
           >
             <option
               *ngFor="let value of bookToEdit.publishers; let i = index"
-              [value]="value.name"
+              [value]="value.id"
             >
               {{ value.name }}
             </option>
@@ -97,21 +100,20 @@
           <label for="year">Godina izdavanja </label>
           <input
             type="text"
-            name="pDate"
+            id="pDate"
+            formControlName="godinaIzdavanja"
             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
             [value]="bookToEdit.book.pDate"
-            [(ngModel)]="bookToEdit.book.pDate"
           />
         </div>
 
         <div class="mt-[20px]">
           <label for="quantity">Količina </label>
           <input
-            type="text"
-            name="samples"
+            id="quantity"
+            formControlName="knjigaKolicina"
             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [value]="bookToEdit.book.samples"
-            [(ngModel)]="bookToEdit.book.samples"
+            [value]="bookToEdit.book.quantity"
           />
         </div>
       </div>
