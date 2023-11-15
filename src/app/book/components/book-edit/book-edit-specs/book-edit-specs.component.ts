@@ -1,5 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { Book } from 'src/app/book/models/book.model';
 import { BookService } from 'src/app/book/services/book.service';
 
@@ -12,28 +17,43 @@ export class BookEditSpecsComponent implements OnInit {
   bookToEdit: Book;
   id: number;
   bookEditForm: FormGroup;
+  isLoaded: boolean = false;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.initEditForm();
+
     this.id = +this.bookService.getBookID();
     this.bookService.loadBookForEdit(this.id).subscribe((response) => {
       this.bookToEdit = response;
+      this.patchEditForm();
     });
   }
 
-  initChanges() {
-    this.bookEditForm = new FormGroup({
-      brStrana: new FormControl(this.bookToEdit.book.pages),
-      pismo: new FormControl(this.bookToEdit.book.script.id),
-      povez: new FormControl(this.bookToEdit.book.bookbind.id),
-      format: new FormControl(this.bookToEdit.book.format.id),
-      isbn: new FormControl(this.bookToEdit.book.isbn),
+  initEditForm() {
+    this.bookEditForm = this.fb.group({
+      brStrana: ['', [Validators.required]],
+      pismo: [''],
+      povez: ['', [Validators.required]],
+      format: ['', [Validators.required]],
+      isbn: ['', [Validators.required]],
     });
+  }
+
+  patchEditForm() {
+    this.bookEditForm.patchValue({
+      brStrana: this.bookToEdit.book.pages,
+      pismo: this.bookToEdit.book.script,
+      povez: this.bookToEdit.book.bookbind,
+      format: this.bookToEdit.book.format.id,
+      isbn: this.bookToEdit.book.isbn,
+    });
+    this.isLoaded = true;
   }
 
   onSubmit() {
-    this.initChanges();
+    console.log(this.bookEditForm.value);
     this.storeToParent();
   }
 
