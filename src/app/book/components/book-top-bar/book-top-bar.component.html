@@ -2,7 +2,7 @@
 <div id="topbar" class="pl-2 pt-3 flex flex-row justify-between">
   <div class="flex flex-row pl-[32px]">
     <div class="w-9 mr-3">
-      <img src="../../../../assets/images/tomsojer.jpg" alt="" />
+      <img *ngIf="book && book.pictures" [src]="getCoverImage()" alt="{{ book.title }}" />
     </div>
     <div class="flex flex-col" *ngIf="book">
       <h1 class="text-[25px]">{{ book.title }}</h1>

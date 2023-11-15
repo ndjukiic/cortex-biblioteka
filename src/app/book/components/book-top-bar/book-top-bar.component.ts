@@ -26,6 +26,18 @@ export class BookTopBarComponent implements OnInit {
     });
   }
 
+  getCoverImage(): string {
+    const fallbackPath = "../../../../assets/images/tomsojer.jpg"; 
+
+    if (this.book && this.book.pictures) {
+      const coverImage = this.book.pictures.find((pic: any) => pic && pic.cover === 1) as any;
+      return coverImage ? coverImage.path : fallbackPath;
+    } else {
+      return fallbackPath;
+    }
+  }
+  
+
   onDelete() {
     const confirmDelete = window.confirm(
       `Da li ste sigurni da želite da izbrišete knjigu ${this.book.title}?`
