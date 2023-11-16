@@ -6,6 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { BookService } from 'src/app/book/services/book.service';
 import { FormDataService } from 'src/app/book/services/form-data.service';
 
@@ -21,8 +22,12 @@ export class BookAddDetailsComponent implements OnInit, AfterViewInit {
   bookAddForm: FormGroup;
   isDetailsFormValid: boolean = false;
   data;
+  dropdownSettings: IDropdownSettings = {};
 
-  constructor(private formDataService: FormDataService, private bookService: BookService) {}
+  constructor(
+    private formDataService: FormDataService,
+    private bookService: BookService
+  ) {}
 
   ngOnInit() {
     this.bookAddForm = new FormGroup({
@@ -52,15 +57,30 @@ export class BookAddDetailsComponent implements OnInit, AfterViewInit {
       this.isDetailsFormValid = this.bookAddForm.valid;
     });
     this.bookAddForm.patchValue(this.formDataService.getFormDataDetails());
+
+    this.initDropdownSettings();
   }
 
   onNextClick() {
+    console.log(this.bookAddForm.value);
     this.formDataService.setFormDataDetails(this.bookAddForm.value);
     this.nextClickedFromDetails.emit();
   }
 
   ngAfterViewInit() {
     CKEDITOR.replace('content');
+  }
+
+  initDropdownSettings() {
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Izaberi sve',
+      unSelectAllText: 'Poništi izbor',
+      itemsShowLimit: 3,
+      allowSearchFilter: true,
+    };
   }
 
   getDataFromCKEditor() {

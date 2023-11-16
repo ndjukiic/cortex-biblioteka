@@ -1,7 +1,4 @@
-<form
-  class="text-gray-700 forma"
-  [formGroup]="bookAddForm"
->
+<form class="text-gray-700 forma" [formGroup]="bookAddForm">
   <div class="flex flex-row ml-[30px]">
     <div class="w-[50%] mb-[150px]">
       <div class="mt-[20px]">
@@ -22,19 +19,16 @@
           >* Polje ne smije biti prazno, niti manje od 0!
         </span>
       </div>
-      <div class="mt-[20px]">
+      <div class="mt-[20px] w-[90%]" *ngIf="data">
         <label for="script">Pismo </label>
-        <select
-          name="script"
-          class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+        <ng-multiselect-dropdown
+          id="script"
+          placeholder="-"
           formControlName="pismo"
+          [settings]="dropdownSettings"
+          [data]="data.data.scripts"
         >
-          <option disabled selected></option>
-          <option value="1">Ćirilica</option>
-          <option value="2">Latinica</option>
-          <option value="3">Arapsko</option>
-          <option value="4">Kinesko</option>
-        </select>
+        </ng-multiselect-dropdown>
         <span
           *ngIf="
             !bookAddForm.get('pismo').valid && bookAddForm.get('pismo').touched
@@ -43,17 +37,16 @@
           >* Polje ne smije biti prazno!
         </span>
       </div>
-      <div class="mt-[20px]">
+      <div class="mt-[20px] w-[90%]" *ngIf="data">
         <label for="bookbind">Povez</label>
-        <select
-          name="bookbind"
-          class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+        <ng-multiselect-dropdown
+          id="bookbind"
+          placeholder="-"
           formControlName="povez"
+          [settings]="dropdownSettings"
+          [data]="data.data.bookbinds"
         >
-          <option disabled selected></option>
-          <option value="1">Tvrdi</option>
-          <option value="2">Meki</option>
-        </select>
+        </ng-multiselect-dropdown>
         <span
           *ngIf="
             !bookAddForm.get('povez').valid && bookAddForm.get('povez').touched
@@ -62,17 +55,16 @@
           >* Polje ne smije biti prazno!
         </span>
       </div>
-      <div class="mt-[20px]">
+      <div class="mt-[20px] w-[90%]" *ngIf="data">
         <label for="format">Format</label>
-        <select
-          name="format"
-          class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+        <ng-multiselect-dropdown
+          id="format"
+          placeholder="-"
           formControlName="format"
+          [settings]="dropdownSettings"
+          [data]="data.data.formats"
         >
-          <option disabled selected></option>
-          <option value="1">A1</option>
-          <option value="2">A2</option>
-        </select>
+        </ng-multiselect-dropdown>
         <span
           *ngIf="
             !bookAddForm.get('format').valid &&
@@ -113,10 +105,11 @@
         </button>
         <button
           type="button"
-          class="btn-animation shadow-lg mr-[15px] w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" style="background: #325EA8"
+          class="btn-animation shadow-lg mr-[15px] w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+          style="background: #325ea8"
           (click)="onPreviousClick()"
         >
-          <i class="fas fa-arrow-left mr-[4px]"></i> Prethodna 
+          <i class="fas fa-arrow-left mr-[4px]"></i> Prethodna
         </button>
         <button
           type="button"

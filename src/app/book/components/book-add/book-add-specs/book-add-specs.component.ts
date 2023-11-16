@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormDataService } from 'src/app/book/services/form-data.service';
+import { BookService } from 'src/app/book/services/book.service';
 
 @Component({
   selector: 'app-book-add-specs',
@@ -12,8 +14,13 @@ export class BookAddSpecsComponent implements OnInit {
   @Output() previousClickedFromSpecs = new EventEmitter<void>();
   bookAddForm: FormGroup;
   isSpecsFormValid: boolean = false;
+  dropdownSettings: IDropdownSettings = {};
+  data;
 
-  constructor(private formDataService: FormDataService) {}
+  constructor(
+    private formDataService: FormDataService,
+    private bookService: BookService
+  ) {}
 
   ngOnInit() {
     this.bookAddForm = new FormGroup({
@@ -26,15 +33,34 @@ export class BookAddSpecsComponent implements OnInit {
         Validators.minLength(13),
       ]),
     });
+
+    this.bookService.getAllBookProperties().subscribe((response) => {
+      this.data = response;
+    });
     this.bookAddForm.valueChanges.subscribe(() => {
       this.isSpecsFormValid = this.bookAddForm.valid;
     });
-      this.bookAddForm.patchValue(this.formDataService.getFormDataSpecs());
+    this.bookAddForm.patchValue(this.formDataService.getFormDataSpecs());
+
+    this.initDropdownSettings();
   }
 
   onNextClick() {
+    console.log(this.bookAddForm.value);
     this.formDataService.setFormDataSpecs(this.bookAddForm.value);
     this.nextClickedFromSpecs.emit();
+  }
+
+  initDropdownSettings() {
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Izaberi sve',
+      unSelectAllText: 'Poništi izbor',
+      itemsShowLimit: 3,
+      allowSearchFilter: true,
+    };
   }
 
   onPreviousClick() {
