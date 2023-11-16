@@ -62,7 +62,6 @@ export class BookAddDetailsComponent implements OnInit, AfterViewInit {
   }
 
   onNextClick() {
-    console.log(this.bookAddForm.value);
     this.formDataService.setFormDataDetails(this.bookAddForm.value);
     this.nextClickedFromDetails.emit();
   }
