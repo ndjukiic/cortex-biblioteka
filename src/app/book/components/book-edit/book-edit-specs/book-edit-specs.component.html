@@ -13,55 +13,40 @@
             id="pages"
             formControlName="brStrana"
             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [value]="bookToEdit.book.pages"
           />
         </div>
-        <div class="mt-[20px]">
+        <div class="mt-[20px]" *ngIf="data">
           <label for="scripts">Pismo </label>
-          <select
-            id="scripts"
+          <ng-multiselect-dropdown
+            id="script"
+            [placeholder]="existingBook.scripts"
             formControlName="pismo"
-            class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [value]="bookToEdit.book.script"
+            [settings]="dropdownSettings"
+            [data]="data.data.scripts"
           >
-            <option
-              *ngFor="let value of bookToEdit.scripts"
-              [ngValue]="value.id"
-            >
-              {{ value.name }}
-            </option>
-          </select>
+          </ng-multiselect-dropdown>
         </div>
-        <div class="mt-[20px]">
+        <div class="mt-[20px]" *ngIf="data">
           <label for="bookbinds">Povez</label>
-          <select
-            id="bookbinds"
+          <ng-multiselect-dropdown
+            id="bookbind"
+            [placeholder]="existingBook.bookbinds"
             formControlName="povez"
-            class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [value]="bookToEdit.book.bookbind"
+            [settings]="dropdownSettings"
+            [data]="data.data.bookbinds"
           >
-            <option
-              *ngFor="let value of bookToEdit.bookbinds"
-              [ngValue]="value.id"
-            >
-              {{ value.name }}
-            </option>
-          </select>
+          </ng-multiselect-dropdown>
         </div>
-        <div class="mt-[20px]">
+        <div class="mt-[20px]" *ngIf="data">
           <label for="formats">Format</label>
-          <select
-            id="formats"
-            class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [value]="bookToEdit.book.format"
+          <ng-multiselect-dropdown
+            id="format"
+            [placeholder]="existingBook.formats"
+            formControlName="format"
+            [settings]="dropdownSettings"
+            [data]="data.data.formats"
           >
-            <option
-              *ngFor="let value of bookToEdit.formats"
-              [ngValue]="value.id"
-            >
-              {{ value.name }}
-            </option>
-          </select>
+          </ng-multiselect-dropdown>
         </div>
         <div class="mt-[20px]">
           <label for="isbn">International Standard Book Number (ISBN) </label>
@@ -70,7 +55,6 @@
             id="isbn"
             formControlName="isbn"
             class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-            [value]="bookToEdit.book.isbn"
           />
         </div>
       </div>

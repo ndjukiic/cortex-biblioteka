@@ -1,20 +1,13 @@
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   OnInit,
   Output,
 } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Book } from 'src/app/book/models/book.model';
 import { BookService } from 'src/app/book/services/book.service';
-import { FormDataService } from 'src/app/book/services/form-data.service';
 
 declare var CKEDITOR: any;
 
@@ -38,14 +31,12 @@ export class BookEditDetailsComponent implements OnInit {
 
     this.bookService.getAllBookProperties().subscribe((response) => {
       this.data = response;
-      console.log(this.data.data.publishers);
     });
 
     this.id = this.bookService.getBookID();
 
     this.bookService.loadBook(this.id).subscribe((response) => {
       this.existingBook = response;
-      console.log(this.existingBook.publisher);
       this.patchEditForm();
     });
 
@@ -87,6 +78,7 @@ export class BookEditDetailsComponent implements OnInit {
       knjigaKolicina: this.existingBook.samples,
     });
     this.isLoaded = true;
+    CKEDITOR.replace('content');
   }
 
   initDropdownSettings() {
@@ -127,7 +119,6 @@ export class BookEditDetailsComponent implements OnInit {
       return;
     }
     const data = editor.getData();
-    console.log(data, 'ckeditor');
     return data;
   }
 }
