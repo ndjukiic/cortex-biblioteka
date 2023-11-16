@@ -87,7 +87,6 @@ export class BookEditDetailsComponent implements OnInit {
   onSubmit() {
     const content = this.getDataFromCKEditor();
     this.bookEditForm.get('kratki_sadrzaj').setValue(content);
-    console.log(this.bookEditForm.value);
     this.storeToParent();
   }
 

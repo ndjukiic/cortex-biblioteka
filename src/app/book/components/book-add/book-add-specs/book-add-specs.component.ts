@@ -46,7 +46,6 @@ export class BookAddSpecsComponent implements OnInit {
   }
 
   onNextClick() {
-    console.log(this.bookAddForm.value);
     this.formDataService.setFormDataSpecs(this.bookAddForm.value);
     this.nextClickedFromSpecs.emit();
   }

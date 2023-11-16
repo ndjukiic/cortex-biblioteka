@@ -37,7 +37,6 @@ export class BookIssueComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.reserveForm.value);
     this.bookService
       .reserveBook(this.reserveForm.value, +this.bookService.getBookID())
       .subscribe((response) => {
@@ -55,7 +54,6 @@ export class BookIssueComponent implements OnInit {
     this.returnDate = `${
       endDate.getMonth() + 1
     }/${endDate.getDate()}/${endDate.getFullYear()}`;
-    // console.log(endDate);
   }
   
 }

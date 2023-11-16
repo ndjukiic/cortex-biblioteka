@@ -37,7 +37,6 @@ export class BookReserveComponent {
   }
 
   onSubmit() {
-    console.log(this.reserveForm.value);
     this.bookService
       .reserveBook(this.reserveForm.value, +this.bookService.getBookID())
       .subscribe((response) => {

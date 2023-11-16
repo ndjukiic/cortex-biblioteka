@@ -21,7 +21,6 @@ export class BookLogsComponent implements OnInit {
         ...response.data.otpisane,
         ...response.data.vracene,
       ];
-      console.log(this.allActivities);
 
       if (!this.allActivities.length) {
         this.isNull = true;
@@ -50,7 +49,6 @@ export class BookLogsComponent implements OnInit {
 
     const ms = Date.now() - Number(reservationDate);
     let time = this.msRoundup(ms);
-    console.log(time);
 
     return time;
   }

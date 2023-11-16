@@ -53,7 +53,6 @@ export class BookEditSpecsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.bookEditForm.value);
     this.storeToParent();
   }
 
