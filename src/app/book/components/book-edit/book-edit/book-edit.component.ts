@@ -51,6 +51,7 @@ export class BookEditComponent implements OnInit {
         ...this.detailsData,
         ...this.specsData,
       };
+      console.log(this.editedBook);
       this.bookService.editBook(this.editedBook, this.id).subscribe(
         (response) => {},
         (error) => {

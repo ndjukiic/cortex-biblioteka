@@ -1,9 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Book } from 'src/app/book/models/book.model';
@@ -104,9 +99,31 @@ export class BookEditDetailsComponent implements OnInit {
   }
 
   onSubmit() {
+    this.formatContent();
+    console.log(this.bookEditForm.value);
+    this.storeToParent();
+  }
+
+  formatContent() {
+    let categoryIDs = [];
+    let genreIDs = [];
+    let authorIDs = [];
     const content = this.getDataFromCKEditor();
     this.bookEditForm.get('kratki_sadrzaj').setValue(content);
-    this.storeToParent();
+
+    this.bookEditForm.get('categories').value.map((category) => {
+      categoryIDs.push(category.id);
+    });
+    this.bookEditForm.get('genres').value.map((genre) => {
+      genreIDs.push(genre.id);
+    });
+    this.bookEditForm.get('authors').value.map((author) => {
+      authorIDs.push(author.id);
+    });
+
+    this.bookEditForm.get('categories').setValue(categoryIDs);
+    this.bookEditForm.get('genres').setValue(genreIDs);
+    this.bookEditForm.get('authors').setValue(categoryIDs);
   }
 
   storeToParent() {

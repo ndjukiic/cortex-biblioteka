@@ -77,7 +77,28 @@ export class BookEditSpecsComponent implements OnInit {
   }
 
   onSubmit() {
+    this.formatContent();
     this.storeToParent();
+  }
+
+  formatContent() {
+    let scriptID;
+    let bookbindID;
+    let formatID;
+
+    this.bookEditForm.get('pismo').value.map((script) => {
+      scriptID = script.id;
+    });
+    this.bookEditForm.get('povez').value.map((bookbind) => {
+      bookbindID = bookbind.id;
+    });
+    this.bookEditForm.get('format').value.map((format) => {
+      formatID = format.id;
+    });
+
+    this.bookEditForm.get('pismo').setValue(scriptID);
+    this.bookEditForm.get('povez').setValue(bookbindID);
+    this.bookEditForm.get('format').setValue(formatID);
   }
 
   storeToParent() {
