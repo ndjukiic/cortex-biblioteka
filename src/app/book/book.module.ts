@@ -31,6 +31,7 @@ import { BookTabArchivedReservationsComponent } from './components/book-tab-logs
 import { BookReturnComponent } from './components/book-return/book-return.component';
 import { BookDismissComponent } from './components/book-dismiss/book-dismiss.component';
 import { BookReserveComponent } from './components/book-reserve/book-reserve.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { BookReserveComponent } from './components/book-reserve/book-reserve.com
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
 })
 export class BookModule {}

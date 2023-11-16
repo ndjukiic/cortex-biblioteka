@@ -1,8 +1,5 @@
 <div class="scroll height-content section-content">
-  <form
-    class="text-gray-700 forma h-screen"
-    [formGroup]="bookAddForm"
-  >
+  <form class="text-gray-700 forma h-screen" [formGroup]="bookAddForm">
     <div class="flex flex-row ml-[30px] mb-[150px]">
       <div class="w-[50%]">
         <div class="mt-[20px]">
@@ -43,21 +40,16 @@
           </span>
         </div>
 
-        <div class="mt-[20px]" *ngIf="data">
-          <label for="category">Izaberite kategorije </label>
-          <select
-            id="category"
-            class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+        <div class="mt-[20px] w-[90%]" *ngIf="data">
+          <label for="categories">Izaberite kategorije</label>
+          <ng-multiselect-dropdown
+            id="categories"
+            placeholder="-"
             formControlName="categories"
+            [settings]="dropdownSettings"
+            [data]="data.data.categories"
           >
-            <option disabled selected></option>
-            <option
-              *ngFor="let value of data.data.categories"
-              [ngValue]="value.id"
-            >
-              {{ value.name }}
-            </option>
-          </select>
+          </ng-multiselect-dropdown>
 
           <span
             *ngIf="
@@ -68,23 +60,16 @@
             >* Polje ne smije biti prazno!
           </span>
         </div>
-        <div class="mt-[20px]" *ngIf="data">
+        <div class="mt-[20px] w-[90%]" *ngIf="data">
           <label for="genres">Izaberite žanrove </label>
-
-          <select
-            name="genres"
-            class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          <ng-multiselect-dropdown
+            id="genres"
+            placeholder="-"
             formControlName="genres"
+            [settings]="dropdownSettings"
+            [data]="data.data.genres"
           >
-            <option disabled selected></option>
-            <option
-              *ngFor="let value of data.data.genres"
-              [ngValue]="value.id"
-            >
-              {{ value.name }}
-            </option>
-          </select>
-
+          </ng-multiselect-dropdown>
           <span
             *ngIf="
               !bookAddForm.get('genres').valid &&
@@ -97,21 +82,16 @@
       </div>
 
       <div class="w-[50%]">
-        <div class="mt-[20px]" *ngIf="data">
+        <div class="mt-[20px] w-[90%]" *ngIf="data">
           <label for="authors">Izaberite autore </label>
-          <select
-            name="authors"
-            class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          <ng-multiselect-dropdown
+            id="authors"
+            placeholder="-"
             formControlName="authors"
+            [settings]="dropdownSettings"
+            [data]="data.data.authors"
           >
-            <option disabled selected></option>
-            <option
-              *ngFor="let value of data.data.authors"
-              [ngValue]="value.id"
-            >
-              {{ value.name }} {{ value.surname }}
-            </option>
-          </select>
+          </ng-multiselect-dropdown>
 
           <span
             *ngIf="
@@ -122,22 +102,16 @@
             >* Polje ne smije biti prazno!
           </span>
         </div>
-        <div class="mt-[20px]" *ngIf="data">
+        <div class="mt-[20px] w-[90%]" *ngIf="data">
           <label for="publishers">Izaberite izdavača </label>
-          <select
-            name="publishers"
-            class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+          <ng-multiselect-dropdown
+            id="publishers"
+            placeholder="-"
             formControlName="izdavac"
+            [settings]="dropdownSettings"
+            [data]="data.data.publishers"
           >
-            <option disabled selected></option>
-
-            <option
-              *ngFor="let value of data.data.publishers"
-              [ngValue]="value.id"
-            >
-              {{ value.name }}
-            </option>
-          </select>
+          </ng-multiselect-dropdown>
 
           <span
             *ngIf="
