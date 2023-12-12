@@ -32,6 +32,7 @@ import { BookReturnComponent } from './components/book-return/book-return.compon
 import { BookDismissComponent } from './components/book-dismiss/book-dismiss.component';
 import { BookReserveComponent } from './components/book-reserve/book-reserve.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { BookLogsDetailedComponent } from './components/book-sidebar/book-logs/book-logs-detailed/book-logs-detailed.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     BookTabArchivedReservationsComponent,
     BookReturnComponent,
     BookDismissComponent,
+    BookLogsDetailedComponent,
   ],
   imports: [
     CommonModule,

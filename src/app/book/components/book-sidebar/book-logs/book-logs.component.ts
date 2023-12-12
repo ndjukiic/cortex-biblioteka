@@ -134,4 +134,8 @@ export class BookLogsComponent implements OnInit {
       }
     }
   }
+
+  setID(activity: any){
+    this.bookService.setActivityID(activity.id);
+  }
 }

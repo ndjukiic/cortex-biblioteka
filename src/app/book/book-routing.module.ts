@@ -17,6 +17,7 @@ import { BookTabArchivedReservationsComponent } from './components/book-tab-logs
 import { BookDismissComponent } from './components/book-dismiss/book-dismiss.component';
 import { BookReturnComponent } from './components/book-return/book-return.component';
 import { BookReserveComponent } from './components/book-reserve/book-reserve.component';
+import { BookLogsDetailedComponent } from './components/book-sidebar/book-logs/book-logs-detailed/book-logs-detailed.component';
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
         component: BookReserveComponent,
       },
     ],
+  },
+  {
+    path: ':id/details/log',
+    component: BookLogsDetailedComponent
   },
   {
     path: ':id/edit',

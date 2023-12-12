@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../models/book.model';
-import { BehaviorSubject, Observable, Subject, map, tap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  map,
+  tap,
+  throwError,
+} from 'rxjs';
 import { ApiResponse } from 'src/app/shared/api-response.model';
 import { environment } from 'src/environments/environment';
 import { FormGroup } from '@angular/forms';
@@ -14,6 +21,7 @@ export class BookService {
   private books$ = new Subject<Book[]>();
   private book$ = new Subject<Book>();
   private bookID: number;
+  private activityID: number;
   public currentBook$ = new BehaviorSubject<Book>(null);
 
   constructor(private httpClient: HttpClient) {}
@@ -68,10 +76,9 @@ export class BookService {
     if (!bookData) {
       return throwError(() => new Error('Nema dostupnih podataka za knjigu'));
     }
-    return this.httpClient
-      .post<Book>(`${this.url}/store`, bookData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-      })
+    return this.httpClient.post<Book>(`${this.url}/store`, bookData, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    });
   }
 
   editBook(book: Book, id: number) {
@@ -190,8 +197,7 @@ export class BookService {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
-      .pipe(tap((response: {data}) => {
-      }));
+      .pipe(tap((response: { data }) => {}));
   }
 
   setBookID(id: number) {
@@ -200,5 +206,95 @@ export class BookService {
 
   getBookID() {
     return this.bookID;
+  }
+
+  setActivityID(id: number) {
+    this.activityID = id;
+  }
+
+  getActivityID() {
+    return this.activityID;
+  }
+
+  msRoundup(ms: number) {
+    if (ms >= 2629800000) {
+      let interval = Math.round(ms / (1000 * 60 * 60 * 24 * 30));
+      if (interval % 10 == 1) {
+        return `${interval} mjesec`;
+      }
+      if (interval % 10 == 2 || interval % 10 == 3 || interval % 10 == 4) {
+        return `${interval} mjeseca`;
+      }
+      if (
+        interval % 10 == 5 ||
+        interval % 10 == 6 ||
+        interval % 10 == 7 ||
+        interval % 10 == 8 ||
+        interval % 10 == 9
+      ) {
+        return `${interval} mjeseci`;
+      }
+    } else if (ms >= 86400000) {
+      //if days
+      let interval = Math.round(ms / (1000 * 60 * 60 * 24));
+      if (interval % 10 !== 1) {
+        return `${interval} dana`;
+      }
+      return `${interval} dan`;
+    } else if (ms >= 3600000) {
+      //if hours
+      let interval = Math.round(ms / (1000 * 60 * 60));
+      if (interval % 10 == 1) {
+        return `${interval} sat`;
+      }
+      if (interval % 10 == 2 || interval % 10 == 3 || interval % 10 == 4) {
+        return `${interval} sata`;
+      }
+      if (
+        interval % 10 == 5 ||
+        interval % 10 == 6 ||
+        interval % 10 == 7 ||
+        interval % 10 == 8 ||
+        interval % 10 == 9
+      ) {
+        return `${interval} sati`;
+      }
+    } else if (ms >= 60000) {
+      //if minutes
+      let interval = Math.round(ms / (1000 * 60));
+      if (interval % 10 !== 1) {
+        return `${interval} minuta`;
+      }
+      return `${interval} minut`;
+    } else if (ms >= 1000) {
+      //if seconds
+      let interval = Math.round(ms / 1000);
+      if (interval % 10 == 1) {
+        return `${interval} sekundu`;
+      }
+      if (interval % 10 == 2 || interval % 10 == 3 || interval % 10 == 4) {
+        return `${interval} sekunde`;
+      }
+      if (
+        interval % 10 == 5 ||
+        interval % 10 == 6 ||
+        interval % 10 == 7 ||
+        interval % 10 == 8 ||
+        interval % 10 == 9
+      ) {
+        return `${interval} sekundi`;
+      }
+    }
+  }
+
+  msInDays(ms: number){
+    if (ms >= 86400000) {
+      //if days
+      let interval = Math.round(ms / (1000 * 60 * 60 * 24));
+      if (interval % 10 !== 1) {
+        return `${interval} dana`;
+      }
+      return `${interval} dan`;
+    }
   }
 }

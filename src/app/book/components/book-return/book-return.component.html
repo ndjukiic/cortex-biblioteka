@@ -55,7 +55,7 @@
         </tr>
       </thead>
 
-      <tbody class="bg-white" *ngFor="let book of filteredArray; let i = index">
+      <tbody class="bg-white" *ngFor="let issued of toReturn">
         <tr
           class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]"
         >
@@ -64,18 +64,20 @@
               <input type="checkbox" class="form-checkbox" />
             </label>
           </td>
-          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Učenik</td>
           <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-            23.10.2023.
+            {{ issued.student.name }} {{ issued.student.surname }}
           </td>
           <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-            15 dana
+            {{ formatDate(issued.borrow_date) }}
           </td>
           <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-            Nema prekoračenja
+            {{ getDaysAgo(issued.borrow_date) }}
           </td>
           <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-            Valentina Kašćelan
+            {{ checkTransgression(issued.borrow_date) }}
+          </td>
+          <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+            {{ issued.bibliotekar0.name }}{{ issued.bibliotekar0.surname }}
           </td>
         </tr>
       </tbody>
