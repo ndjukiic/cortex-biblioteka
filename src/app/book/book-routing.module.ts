@@ -77,6 +77,10 @@ const routes: Routes = [
         ],
       },
       {
+        path: 'details/logs/:id',
+        component: BookLogsDetailedComponent,
+      },
+      {
         path: 'multimedia',
         component: BookTabMultimediaComponent,
       },
@@ -98,10 +102,10 @@ const routes: Routes = [
       },
     ],
   },
-  {
-    path: ':id/details/log',
-    component: BookLogsDetailedComponent
-  },
+  // {
+  //   path: ':id/details/log/:id',
+  //   component: BookLogsDetailedComponent,
+  // },
   {
     path: ':id/edit',
     component: BookEditComponent,

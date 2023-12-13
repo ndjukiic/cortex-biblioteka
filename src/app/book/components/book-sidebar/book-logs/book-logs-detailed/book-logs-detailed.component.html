@@ -1,1 +1,71 @@
-<p>book-logs-detailed works!</p>
+<div
+  class="flex flex-row height-detaljiIzdavanje scroll pb-[20px]"
+  *ngIf="activity"
+>
+  <div class="">
+    <!-- Space for content -->
+    <div class="pl-[30px] section- mt-[20px]">
+      <div class="flex flex-row justify-between">
+        <div class="mr-[30px]">
+          <div class="mt-[20px]">
+            <span class="text-gray-500">Tip transakcije</span><br />
+            <p
+              *ngIf="activity.status.includes('Izdata')"
+              class="inline-block bg-blue-200 text-blue-800 rounded-[10px] text-center px-[6px] py-[2px]"
+            >
+              Izdavanje knjiga
+            </p>
+            <p
+              *ngIf="activity.status.includes('Otpisana')"
+              class="inline-block bg-blue-200 text-blue-800 rounded-[10px] text-center px-[6px] py-[2px]"
+            >
+              Otpisivanje knjiga
+            </p>
+
+            <p
+              *ngIf="activity.status.includes('Vracena')"
+              class="inline-block bg-blue-200 text-blue-800 rounded-[10px] text-center px-[6px] py-[2px]"
+            >
+              Vraćanje knjige
+            </p>
+          </div>
+          <div class="mt-[40px]">
+            <span class="text-gray-500">Datum akcije</span>
+            <p class="font-medium">{{ formatDate(activity.action_date) }}</p>
+          </div>
+          <div class="mt-[40px]">
+            <span class="text-gray-500"
+              >Trenutno zadrzavanje knjige u danima</span
+            >
+            <p class="font-medium">
+              {{ currentRetention(activity.action_date) }}
+            </p>
+          </div>
+          <div class="mt-[40px]">
+            <span class="text-gray-500">Prekoracenje</span>
+            <p class="font-medium">
+              {{ checkTransgression(activity.action_date) }}
+            </p>
+          </div>
+          <div class="mt-[40px]">
+            <span class="text-gray-500">Bibliotekar</span>
+            <a
+              href="/librarians/{{ activity.bibliotekar0.id }}"
+              class="block font-medium text-[#2196f3] hover:text-blue-600"
+              >{{ activity.bibliotekar0.name }}
+              {{ activity.bibliotekar0.surname }}</a
+            >
+          </div>
+          <div class="mt-[40px]">
+            <span class="text-gray-500">Ucenik</span>
+            <a
+              href="/students/{{ activity.student.id }}/details "
+              class="block font-medium text-[#2196f3] hover:text-blue-600"
+              >{{ activity.student.name }} {{ activity.student.surname }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

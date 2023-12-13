@@ -27,16 +27,17 @@ export class BookTopBarComponent implements OnInit {
   }
 
   getCoverImage(): string {
-    const fallbackPath = "../../../../assets/images/tomsojer.jpg"; 
+    const fallbackPath = '../../../../assets/images/tomsojer.jpg';
 
     if (this.book && this.book.pictures) {
-      const coverImage = this.book.pictures.find((pic: any) => pic && pic.cover === 1) as any;
+      const coverImage = this.book.pictures.find(
+        (pic: any) => pic && pic.cover === 1
+      ) as any;
       return coverImage ? coverImage.path : fallbackPath;
     } else {
       return fallbackPath;
     }
   }
-  
 
   onDelete() {
     const confirmDelete = window.confirm(
@@ -45,14 +46,10 @@ export class BookTopBarComponent implements OnInit {
 
     if (confirmDelete) {
       this.bookService.deleteBook(this.id).subscribe((response) => {
-        console.log(response);
         this.router.navigate(['/books']);
       });
     } else {
       alert('Brisanje knjige je prekinuto.');
     }
   }
-
-  
-
 }
